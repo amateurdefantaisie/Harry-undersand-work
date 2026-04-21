@@ -20,7 +20,35 @@
     <a href="#tarifs">Tarifs</a>
     <a href="#contact">Contact</a>
   </nav>
-  <button class="btn">Connexion</button>
+  <div id="loginModal" class="modal">
+  <div class="modal-content fade-in">
+    <span class="close-modal">&times;</span>
+    
+    <div class="modal-logo">
+      <div class="logo-icon"></div>
+      <h2>H.U Studio</h2>
+    </div>
+    
+    <h3>Bienvenue</h3>
+    <p>Connectez-vous pour accéder à vos outils intelligents</p>
+
+    <div class="login-options">
+      <button class="auth-btn google" onclick="loginGoogle()">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+        Continuer avec Google
+      </button>
+
+      <div class="divider"><span>ou</span></div>
+
+      <button class="auth-btn whatsapp" onclick="loginWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
+        Utiliser WhatsApp
+      </button>
+    </div>
+    
+    <p class="footer-note">En vous connectant, vous acceptez nos conditions d'utilisation.</p>
+  </div>
+</div>
 </header>
 
 <section id="accueil" class="hero fade-in">
