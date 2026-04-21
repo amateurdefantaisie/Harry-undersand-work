@@ -6,28 +6,35 @@ import { onAuthStateChanged, signInWithPopup, signOut } from "https://www.gstati
  */
 onAuthStateChanged(auth, (user) => {
     const isDashboard = window.location.pathname.includes("dashboard.html");
-    const btnConnexion = document.querySelector(".btn-connexion");
+    const authBtn = document.getElementById('auth-trigger-btn'); // Le bouton Connexion
+    const profileMenu = document.getElementById('user-profile-menu'); // Le nouveau menu icône
+    const avatar = document.getElementById('user-avatar');
 
     if (user) {
-        // Si l'utilisateur est sur l'accueil, on adapte le bouton de connexion
-        if (btnConnexion) {
-            btnConnexion.textContent = "Mon Dashboard";
-            btnConnexion.onclick = () => window.location.href = "dashboard.html";
-        }
+        // Masquer connexion, afficher profil
+        if (authBtn) authBtn.style.display = 'none';
+        if (profileMenu) profileMenu.style.display = 'block';
+        if (avatar && user.photoURL) avatar.src = user.photoURL;
         
-        // Mise à jour du nom d'utilisateur si l'élément existe (ex: sur le dashboard)
+        // Stockage local pour la page profil
+        localStorage.setItem('user_info', JSON.stringify({
+            name: user.displayName,
+            email: user.email,
+            photo: user.photoURL,
+            provider: user.providerData[0].providerId
+        }));
+
         const userNameEl = document.getElementById('user-name');
         if (userNameEl) userNameEl.textContent = user.displayName;
-        
     } else {
-        // Redirection forcée si un utilisateur non-connecté tente d'accéder au dashboard
-        if (isDashboard) {
-            window.location.href = "index.html";
-        }
+        if (authBtn) authBtn.style.display = 'block';
+        if (profileMenu) profileMenu.style.display = 'none';
+        if (isDashboard) window.location.href = "index.html";
     }
 });
 
-// Fonctions globales de connexion/déconnexio
+// Fonctions globales de connexion/déconnexion
+// Connexion Google stabilisée
 window.loginGoogle = async () => {
     try {
         const result = await signInWithPopup(auth, provider);
@@ -36,6 +43,55 @@ window.loginGoogle = async () => {
         console.error("Erreur Google:", err);
     }
 };
+
+// Menu Dropdown
+window.toggleDropdown = () => {
+    const dropdown = document.getElementById('dropdown-content');
+    dropdown.classList.toggle('show');
+};
+
+// Gestion du Thème (Sombre / Clair / Système)
+window.changeTheme = (theme) => {
+    const body = document.body;
+    if (theme === 'light') {
+        body.classList.add('light-theme');
+    } else if (theme === 'dark') {
+        body.classList.remove('light-theme');
+    } else {
+        // Détection auto du système
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        body.classList.toggle('light-theme', !isDark);
+    }
+    localStorage.setItem('theme-pref', theme);
+};
+
+// Gestion de la Langue
+window.changeLanguage = (lang) => {
+    console.log("Langue changée en :", lang);
+    localStorage.setItem('lang-pref', lang);
+    // Ici on pourra ajouter une logique de traduction plus tard
+};
+
+// Déconnexion
+window.logout = () => {
+    signOut(auth).then(() => {
+        localStorage.removeItem('user_info');
+        window.location.href = "index.html";
+    });
+};
+
+// Fermer le menu profil si on clique en dehors
+    window.addEventListener('click', (e) => {
+        const dropdown = document.getElementById('dropdown-content');
+        const profileBtn = document.querySelector('.profile-icon-btn');
+        if (dropdown && !profileBtn.contains(e.target)) {
+            dropdown.classList.remove('show');
+        }
+    });
+    
+    // Appliquer le thème sauvegardé au démarrage
+    const savedTheme = localStorage.getItem('theme-pref') || 'dark';
+    window.changeTheme(savedTheme);
 
 // Pour WhatsApp (Ouvrir le panneau de scan)
 window.loginWhatsApp = () => {
