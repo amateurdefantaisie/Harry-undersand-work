@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Connexion — Undersand Pages</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:Inter;
+background:#0a0a0f;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh
+}
+.card{
+background:#141421;
+border:1px solid rgba(139,92,246,.3);
+border-radius:18px;
+padding:40px;
+text-align:center;
+width:320px
+}
+button{
+width:100%;
+margin-top:14px;
+padding:12px;
+border-radius:25px;
+border:none;
+cursor:pointer;
+font-weight:600
+}
+.google{background:#db4437;color:white}
+.whatsapp{background:#25d366;color:white}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h2>Connexion</h2>
+<p>Accédez à votre tableau de bord</p>
+
+<button class="google" onclick="loginGoogle()">
+<i class="fab fa-google"></i> Google
+</button>
+
+<button class="whatsapp" onclick="loginWhatsApp()">
+<i class="fab fa-whatsapp"></i> WhatsApp
+</button>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } 
+from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+
+const app = initializeApp({
+apiKey:"AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
+authDomain:"harry-undersand.firebaseapp.com",
+projectId:"harry-undersand"
+});
+
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+window.loginGoogle = () => signInWithPopup(auth, provider);
+
+window.loginWhatsApp = () => {
+window.location.href = "https://wa.me/242066973413?text=Connexion%20au%20dashboard";
+};
+
+onAuthStateChanged(auth, user => {
+if(user){
+window.location.href = "dashboard.html";
+}
+});
+</script>
+
+</body>
+</html>
