@@ -51,3 +51,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+// --- CHARGEMENT DYNAMIQUE DU FOOTER ---
+function loadFooter() {
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    
+    if (footerPlaceholder) {
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) throw new Error("Erreur lors du chargement du footer");
+                return response.text();
+            })
+            .then(data => {
+                footerPlaceholder.innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                footerPlaceholder.innerHTML = "<footer><p>© 2026 Harry Undersand Studio</p></footer>";
+            });
+    }
+}
+
+// Appeler la fonction au chargement du document
+document.addEventListener('DOMContentLoaded', loadFooter);
