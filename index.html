@@ -1,198 +1,656 @@
-<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Undersand Pages - Outils intelligents et gestion de productivité.">
-    <title>Undersand Pages | Plateforme Intelligente</title>
+<meta charset="UTF-8">
+<meta name="author" content="Harry Undersand">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harry Undersand — Développeur & Architecte IA</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N696WFVZ8G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N696WFVZ8G');
+</script>
+
+<!-- Open Graph (WhatsApp, Facebook, Telegram, Discord) -->
+<meta property="og:title" content="Harry Undersand — Développeur & Architecte IA">
+<meta property="og:description" content="Chatbots IA, Streaming Premium, Hébergement Cloud et solutions digitales modernes.">
+<meta property="og:image" content="https://files.catbox.moe/7p2g2y.jpg">
+<meta property="og:url" content="https://harry-undersand.vercel.app">
+<meta property="og:type" content="website">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Harry Undersand — Développeur & Architecte IA">
+<meta name="twitter:description" content="Chatbots IA, Streaming Premium, Hébergement Cloud et automatisation digitale.">
+<meta name="twitter:image" content="https://files.catbox.moe/7p2g2y.jpg">
+
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⛩️</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="cookies.css">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4304218039779695"
+crossorigin="anonymous"></script>
 </head>
+
 <body>
 
-    <header>
-        <div class="logo-container">
-            <h1 class="logo">Undersand Pages</h1>
-        </div>
-        <nav>
-            <a href="#accueil">Accueil</a>
-            <a href="#features">Fonctionnalités</a>
-            <a href="#tarifs">Tarifs</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <div class="auth-wrapper">
-    <button id="auth-trigger-btn" class="btn btn-connexion">Connexion</button>
-    
-    <div id="user-profile-menu" class="profile-dropdown" style="display: none;">
-        <div class="profile-icon-btn" onclick="toggleDropdown()">
-            <img id="user-avatar" src="https://ui-avatars.com/api/?name=User" alt="Profil">
-        </div>
-        <div id="dropdown-content" class="dropdown-content">
-            <a href="profile.html"><i class="fas fa-user-circle"></i> Profil</a>
-            <div class="dropdown-item">
-                <i class="fas fa-language"></i> Langue
-                <select id="lang-select" onchange="changeLanguage(this.value)">
-                    <option value="fr">Français</option>
-                    <option value="en">English</option>
-                </select>
-            </div>
-            <div class="dropdown-item">
-                <i class="fas fa-adjust"></i> Thème
-                <select id="theme-select" onchange="changeTheme(this.value)">
-                    <option value="dark">Sombre</option>
-                    <option value="light">Clair</option>
-                    <option value="system">Système de l'appareil</option>
-                </select>
-            </div>
-            <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
-            <hr>
-            <a href="#" onclick="logout()" class="logout-link"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
-        </div>
-    </div>
+<header>
+<section class="container" id="adminPanel" style="display:none">
+  <div class="card">
+    <h2>👑 Administration</h2>
+
+    <p>📊 Visites : <b><span id="adminVisits">0</span></b></p>
+
+    <h3>👥 Utilisateurs</h3>
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Rôle</th>
+          <th>Statut</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="usersTable"></tbody>
+    </table>
+  </div>
+</section>
+
+<div class="navbar">
+<a class="logo" href="/">彡『𝐀𝐦𝐚𝐭𝐞𝐮𝐫 <span>𝐃𝐞</span> 𝐅𝐚𝐧𝐭𝐚𝐢𝐬𝐢𝐞 』彡</a>
+<div class="menu-btn" onclick="openDrawer()">
+  <i class="fas fa-bars"></i>
 </div>
-    </header>
 
-    <main>
-        <section id="accueil" class="hero fade-in">
-            <div class="hero-text">
-                <h2>Une plateforme intelligente pour booster votre productivité</h2>
-                <p>
-                    Accédez à des outils puissants, sécurisés et rapides pour gérer vos tâches,
-                    communiquer efficacement et profiter d’un système de crédits innovant.
-                </p>
-                <div class="hero-buttons">
-                    <button class="btn" onclick="document.querySelector('#tarifs').scrollIntoView({behavior:'smooth'})">Commencer</button>
-                    <button class="btn btn-secondary">En savoir plus</button>
-                </div>
-            </div>
-        </section>
+<div id="notifBell" onclick="toggleNotifications()">
+🔔 <span id="notifCount">0</span>
+</div>
 
-        <section id="features" class="features">
-            <h2 class="fade-in">Fonctionnalités principales</h2>
-            <div class="feature-grid">
-                <div class="feature fade-in">
-                    <div class="icon">🔐</div>
-                    <h3>Sécurité</h3>
-                    <p>Vos données sont protégées grâce à des systèmes de chiffrement modernes.</p>
-                </div>
-                <div class="feature fade-in">
-                    <div class="icon">⚡</div>
-                    <h3>Rapidité</h3>
-                    <p>Une infrastructure optimisée pour une expérience utilisateur sans latence.</p>
-                </div>
-                <div class="feature fade-in">
-                    <div class="icon">💰</div>
-                    <h3>Crédits</h3>
-                    <p>Un système de crédits flexible pour ne payer que ce que vous utilisez.</p>
-                </div>
-                <div class="feature fade-in">
-                    <div class="icon">💬</div>
-                    <h3>Messagerie</h3>
-                    <p>Intégration native avec WhatsApp pour une communication fluide.</p>
-                </div>
-            </div>
-        </section>
+<div class="auth-actions" id="authGuest">
+<button class="btn btn-outline" id="loginBtn">Connexion</button>
+<button class="btn btn-primary" id="registerBtn">Inscription</button>
+</div>
+<div class="auth-actions" id="authUser" style="display:none">
+<span id="welcomeText"></span>
+<img id="userPhoto" src="https://via.placeholder.com/40" alt="Avatar">
+<button class="btn btn-outline" id="logoutBtn">Déconnexion</button>
+</div>
+</div>
+</header>
 
-        <section id="tarifs" class="pricing">
-            <h2 class="fade-in">Nos offres</h2>
-            <div class="price-grid">
-                <div class="price-card fade-in">
-                    <h3>500 FCFA</h3>
-                    <p>Pack Découverte</p>
-                    <ul class="price-features">
-                        <li>Accès basique</li>
-                        <li>Support standard</li>
-                    </ul>
-                    <button class="btn">Acheter</button>
-                </div>
-                <div class="price-card popular fade-in">
-                    <h3>1000 FCFA</h3>
-                    <p>Pack Avancé</p>
-                    <ul class="price-features">
-                        <li>Fonctionnalités avancées</li>
-                        <li>Crédits bonus</li>
-                    </ul>
-                    <button class="btn">Acheter</button>
-                </div>
-                <div class="price-card fade-in">
-                    <h3>5000 FCFA</h3>
-                    <p>Pack Premium</p>
-                    <ul class="price-features">
-                        <li>Accès complet</li>
-                        <li>Support prioritaire 24/7</li>
-                    </ul>
-                    <button class="btn">Acheter</button>
-                </div>
-            </div>
-        </section>
+<main>
 
-        <section class="cta fade-in">
-            <h2>Prêt à transformer votre flux de travail ?</h2>
-            <p>Rejoignez Harry Undersand Studio dès aujourd'hui.</p>
-            <button class="btn btn-secondary">Créer un compte</button>
-        </section>
-    </main>
+<!-- ⏳ Compte à rebours journée -->
+<div class="day-countdown">
+  <div class="countdown-box">
+    <span id="countHours">00</span>
+    <small>Heures</small>
+  </div>
+  <div class="countdown-separator">:</div>
+  <div class="countdown-box">
+    <span id="countMinutes">00</span>
+    <small>Minutes</small>
+  </div>
+  <div class="countdown-separator">:</div>
+  <div class="countdown-box">
+    <span id="countSeconds">00</span>
+    <small>Secondes</small>
+  </div>
+</div>
 
-<div id="loginModal" class="modal">
-        <div class="modal-content fade-in">
-            <span class="close-modal">&times;</span>
-            <div class="modal-logo">
-                <div class="logo-icon"></div>
-                <h2>Undersand Pages</h2>
-            </div>
+<div class="drawer-overlay" onclick="closeDrawer()"></div>
 
-            <div id="auth-selection">
-                <h3>Bienvenue</h3>
-                <p>Choisissez votre mode de connexion</p>
-                <div class="login-options">
-                    <button class="auth-btn google" onclick="loginGoogle()">
-                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
-                        Continuer avec Google
-                    </button>
-                    <div class="divider"><span>ou</span></div>
-                    <button class="auth-btn whatsapp" onclick="showWhatsAppOptions()">
-                        <i class="fab fa-whatsapp"></i>
-                        Utiliser WhatsApp
-                    </button>
-                </div>
-            </div>
+<aside class="drawer" id="drawerMenu">
+  <div class="drawer-header">
+    <span>Menu Principal</span>
+    <button onclick="closeDrawer()" style="background:none; border:none; color:white; font-size:24px; cursor:pointer;">✕</button>
+  </div>
 
-            <div id="whatsapp-auth-panel" style="display: none;">
-                <h3>Lier votre WhatsApp</h3>
-                
-                <div class="auth-tabs">
-                    <button class="tab-btn active" onclick="switchWamethod('qr')">QR Code</button>
-                    <button class="tab-btn" onclick="switchWamethod('code')">Code d'appariement</button>
-                </div>
+  <div class="drawer-search">
+    <input type="text" id="drawerSearch" placeholder="Rechercher un service..." style="width:100%; padding:10px; border-radius:8px; background:var(--bg); border:1px solid var(--border); color:white; margin-bottom:15px;">
+  </div>
 
-                <div id="wa-qr-container" class="wa-method">
-                    <div class="qr-frame">
-                        <div id="qrcode"><i class="fas fa-qrcode"></i></div>
-                        <p class="small-text">Scannez ce code avec WhatsApp > Appareils liés</p>
-                    </div>
-                </div>
+<nav class="drawer-links">
+  <a href="harry-undersand.html" class="drawer-cta" style="--i:1">👤 Harry Undersand</a>
+  <a href="chatbot.html" style="--i:2">🤖 Chatbots IA</a>
+  <a href="streaming.html" class="drawer-cta" style="--i:3">🎬 Streaming</a>
+  <a href="hosting.html" style="--i:4">☁️ Hébergement</a>
+  <a href="premium.html" class="drawer-cta" style="--i:5">💎 Premium</a>
+  <a href="services.html" style="--i:6">🧩 Services</a>
+  <a href="pack-streaming.html" class="drawer-cta" style="--i:7">🎁 Pack Streaming</a>
+  <a href="about.html" style="--i:8">💡 A Propos</a>
+  <a href="alice.html" class="drawer-cta" style="--i:9">🗣️ Alice</a>
+  <a href="chat.html" style="--i:10">🚀 Méssagerie</a>
+  <a href="commande.html" class="drawer-cta" style="--i:11">🛒 Commander 🛍️</a>
+  <a href="contact.html" style="--i:12">📞 Contact ☎️</a>
+  <a href="amateurbox.html" class="drawer-cta" style="--i:13">🎬 Amateur Box 🎭</a>
+  <a href="jeunetransitaire.html" style="--i:14">📢 Publicités 📊</a>
+  <a href="netflix.html" class="drawer-cta" style="--i:15">🎭 Netflix 🎭</a>
+  <a href="iptv.html" style="--i:16">🖥️ IPTV 🖥️</a>
+  <a href="mycanal.html" class="drawer-cta" style="--i:17">📡 MyCanal 📡</a>
+  <a href="anonymous/index.html" style="--i:18">📬 Message Anonyme 📨</a>
+  <a href="insolites.html" class="drawer-cta" style=--i:19">🚷 Insolites Moments 🔞</a>
+  <a href="espaceclient.html" style="--i:20">🌐 Espace Client 💱</a>
 
-                <div id="wa-code-container" class="wa-method" style="display: none;">
-                    <div class="pairing-box">
-                        <input type="text" id="phone-number" placeholder="Ex: 242066973413">
-                        <button class="btn-small" onclick="generatePairingCode()">Générer le code</button>
-                        <div id="display-pairing-code" class="pairing-display">-- -- -- --</div>
-                    </div>
-                    <p class="small-text">Saisissez votre numéro avec l'indicatif pays.</p>
-                </div>
+<div style="border-top: 1px solid var(--border); margin-top: 10px; padding-top: 10px;">
+      <a href="https://undersand-market.vercel.app" target="_blank" style="color: var(--violet);">🛍️ Undersand Market shop 🛒</a>
+      <a href="https://jeunetransitaire.vercel.app" target="_blank" style="color: var(--violet);">⚖️ Jeune Transitaire Officiel ⚓</a>
+    </div>
+  </nav>
+</aside>
 
-                <button class="btn-link" onclick="backToAuthSelection()">Retour</button>
-            </div>
+<div class="online-badge" id="draggableBadge">
+  <div class="dot"></div>
+  <span id="onlineCount">0</span> en ligne
+</div>
 
-            <p class="footer-note">En vous connectant, vous acceptez nos conditions d'utilisation.</p>
-        </div>
+<section class="hero">
+<h1>Harry Undersand<br><span>Développeur & Architecte IA</span></h1>
+<p>Chatbots IA, Streaming Premium, Hébergement Cloud et automatisation digitale.</p>
+</section>
+
+<section class="platform container">
+
+<h2 class="section-title">
+<i class="fas fa-layer-group"></i>
+Plateforme Digitale Complète
+</h2>
+
+<p class="section-sub">
+La plateforme Harry Undersand est un écosystème digital complet qui propose
+des services d'intelligence artificielle, d'automatisation, de streaming premium,
+d'hébergement cloud et d'outils interactifs.
+</p>
+
+<div class="platform-grid">
+
+<div class="platform-card">
+<div class="icon">
+<i class="fas fa-robot"></i>
+</div>
+<h3>Intelligence Artificielle</h3>
+<p>
+Création de chatbots intelligents capables de répondre automatiquement
+aux utilisateurs, d'assister les clients et d'automatiser des services
+en ligne.
+</p>
+<button class="platform-btn">Découvrir</button>
+</div>
+
+<div class="platform-card">
+<div class="icon">
+<i class="fas fa-comments"></i>
+</div>
+<h3>Chat en ligne</h3>
+<p>
+Un système de messagerie permettant aux utilisateurs de discuter,
+collaborer et échanger en temps réel directement sur la plateforme.
+</p>
+<a href="chat.html" class="platform-btn">Accéder au chat</a>
+</div>
+
+<div class="platform-card">
+<div class="icon">
+<i class="fas fa-cloud"></i>
+</div>
+<h3>Hébergement & Cloud</h3>
+<p>
+Solutions d'hébergement modernes pour sites web, applications et
+services numériques avec performance et sécurité.
+</p>
+<a href="hosting.html" class="platform-btn">Voir l'hébergement</a>
+</div>
+
+<div class="platform-card">
+<div class="icon">
+<i class="fas fa-video"></i>
+</div>
+<h3>Streaming Premium</h3>
+<p>
+Accès à différents services de streaming et packs premium
+pour profiter de contenus exclusifs.
+</p>
+<a href="streaming.html" class="platform-btn">Voir les offres</a>
+</div>
+
+<div class="platform-card">
+<div class="icon">
+<i class="fas fa-store"></i>
+</div>
+<h3>Marketplace</h3>
+<p>
+Une plateforme moderne pour vendre et acheter des produits
+digitaux et services innovants.
+</p>
+<button class="platform-btn">Voir la plateforme</button>
+</div>
+
+<div class="platform-card">
+<div class="icon">
+<i class="fas fa-bolt"></i>
+</div>
+<h3>Automatisation</h3>
+<p>
+Automatisez vos tâches, vos workflows et vos processus
+grâce à des outils intelligents.
+</p>
+<button class="platform-btn">Automatiser</button>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="container">
+
+<h2>Outils disponibles sur la plateforme</h2>
+
+<div class="grid">
+
+<div class="platform-card">
+<div class="icon">
+<i class="fas fa-chart-line"></i>
+</div>
+<h3>Dashboard utilisateur</h3>
+<p>
+Chaque utilisateur dispose d'un tableau de bord personnel
+permettant de gérer ses services, ses commandes et ses paramètres.
+</p>
+<a href="dashboard.html" class="platform-btn">Voir le dashboard</a>
+</div>
+
+<div class="platform-card">
+<div class="icon">
+<i class="fas fa-envelope"></i>
+</div>
+<h3>Messages anonymes</h3>
+<p>
+Un système permettant aux utilisateurs de recevoir
+des messages anonymes et d'interagir avec leur communauté.
+</p>
+<a href="anonymous/index.html" class="platform-btn">Essayer</a>
+</div>
+
+<div class="platform-card">
+<div class="icon">
+<i class="fas fa-shopping-cart"></i>
+</div>
+<h3>Commandes en ligne</h3>
+<p>
+Un système simple permettant de commander
+des services et produits directement sur la plateforme.
+</p>
+<a href="commande.html" class="platform-btn">Commander</a>
+</div>
+
+<div class="platform-card">
+<div class="icon">
+<i class="fas fa-user"></i>
+</div>
+<h3>Gestion de compte</h3>
+<p>
+Les utilisateurs peuvent créer un compte, se connecter,
+gérer leurs données et accéder à leurs services premium.
+</p>
+<a href="login.html" class="platform-btn">Connexion</a>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="container">
+
+<h2>Pourquoi choisir notre plateforme ?</h2>
+
+<div class="grid">
+
+<div class="platform-card">
+<div class="icon">
+<i class="fas fa-bolt"></i>
+</div>
+<h3>Performance</h3>
+<p>
+Infrastructure optimisée pour offrir rapidité,
+fiabilité et stabilité aux utilisateurs.
+</p>
+</div>
+
+<div class="platform-card">
+<div class="icon">
+<i class="fas fa-shield-alt"></i>
+</div>
+<h3>Sécurité</h3>
+<p>
+Protection des données, authentification sécurisée
+et respect de la confidentialité.
+</p>
+</div>
+
+<div class="platform-card">
+<div class="icon">
+<i class="fas fa-globe"></i>
+</div>
+<h3>Accessibilité mondiale</h3>
+<p>
+Nos services sont accessibles partout dans le monde
+avec une disponibilité permanente.
+</p>
+</div>
+
+<div class="platform-card">
+<div class="icon">
+<i class="fas fa-rocket"></i>
+</div>
+<h3>Innovation</h3>
+<p>
+Nous développons constamment de nouvelles solutions
+basées sur l'intelligence artificielle et l'automatisation.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <h2>Mes services</h2>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <i class="fas fa-robot"></i>
+      <h3>IA & Automatisation</h3>
+      <p>
+        Développement de chatbots intelligents et systèmes automatisés capables d’optimiser la relation client, d’automatiser les tâches répétitives et d'améliorer la productivité.
+      </p>
     </div>
 
-    <div id="footer-placeholder"></div>
+    <div class="service-card">
+      <i class="fas fa-cloud"></i>
+      <h3>Cloud & Hébergement</h3>
+      <p>
+        Déploiement d’infrastructures cloud modernes pour héberger vos projets avec performance, sécurité et évolutivité.
+      </p>
+    </div>
 
-    <script type="module" src="script.js"></script>
+    <div class="service-card">
+      <i class="fas fa-video"></i>
+      <h3>Streaming Premium</h3>
+      <p>
+        Mise en place de plateformes de streaming performantes, sécurisées et optimisées pour offrir une expérience fluide et professionnelle.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <i class="fas fa-gears"></i>
+      <h3>Automatisation</h3>
+      <p>
+        Automatisation de processus métier pour gagner du temps,
+        réduire les erreurs et améliorer la productivité.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<button onclick="openMarket()" class="market-btn">
+  🛒 Ouvrir Marketplace
+</button>
+
+<div id="market-container" style="display:none;"></div>
+
+<section class="container" style="text-align:center;margin-top:40px">
+  <p style="color:#c4b5fd;font-size:1.1rem">
+    📅 Aujourd’hui : <b><span id="todayVisits">0</span></b>
+  </p>
+</section>
+
+<div class="kpi-card">
+  <h4>En ligne</h4>
+  <p id="onlineUsers">0</p>
+</div>
+
+<section class="dashboard container">
+
+  <h2 class="dashboard-title">🚀 ↓ Analyses Utilisateurs ↑ 🚀</h2>
+
+  <!-- KPI CARDS -->
+  <div class="kpi-grid">
+
+<div class="kpi-card">
+  <div class="badge-float neutral" id="todayBadge"></div>
+  <h4>Aujourd’hui</h4>
+  <p id="todayVisitsCard" class="counter">0</p>
+</div>
+
+<div class="kpi-card">
+  <div class="badge-float neutral" id="monthBadge"></div>
+  <h4>Ce mois</h4>
+  <p id="monthVisits" class="counter">0</p>
+</div>
+
+<div class="kpi-card">
+  <div class="badge-float neutral" id="yearBadge"></div>
+  <h4>Cette année</h4>
+  <p id="yearVisits" class="counter">0</p>
+</div>
+
+    <div class="kpi-card">
+      <h4>Évolution</h4>
+      <p id="todayPercent">0%</p>
+    </div>
+
+  </div>
+
+  <!-- TABLEAU DETAILLE -->
+  <div class="stats-table-card">
+    <table class="stats-table">
+      <thead>
+        <tr>
+          <th>Période</th>
+          <th>Visites</th>
+          <th>Moyenne</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Aujourd’hui</td>
+          <td id="todayTable">0</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>Mois en cours</td>
+          <td id="monthTable">0</td>
+          <td id="avgDay">0</td>
+        </tr>
+        <tr>
+          <td>Année en cours</td>
+          <td id="yearTable">0</td>
+          <td id="avgMonth">0</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GRAPHIQUES -->
+  <div class="charts-grid">
+    <canvas id="monthlyChart"></canvas>
+    <canvas id="realtimeChart"></canvas>
+    <canvas id="hourlyChart"></canvas>
+    <canvas id="periodChart"></canvas>
+  </div>
+
+</section>
+
+<!-- HEATMAP -->
+<div class="heatmap-card">
+  <h3>🔥 Activité journalière</h3>
+  <div id="heatmap" class="heatmap-grid"></div>
+</div>
+
+<!-- MODALE AUTH -->
+<div class="modal-bg" id="authModal">
+<div class="modal">
+<h2>Connexion</h2>
+<p>Choisis un moyen pour continuer</p>
+<hr style="margin:16px 0;opacity:.2">
+
+<input id="emailInput" type="email" placeholder="Email"
+style="width:100%;padding:12px;margin-top:10px;border-radius:10px;border:none">
+
+<input id="passwordInput" type="password" placeholder="Mot de passe"
+style="width:100%;padding:12px;margin-top:10px;border-radius:10px;border:none">
+
+<button class="auth-btn" id="emailLogin">
+Se connecter avec Email
+</button>
+
+<button class="auth-btn" id="emailRegister">
+Créer un compte
+</button>
+<button class="auth-btn google" id="googleLogin"><i class="fab fa-google"></i> Google</button>
+<button class="auth-btn facebook" id="facebookLogin"><i class="fab fa-facebook"></i> Facebook</button>
+<button class="auth-btn github" id="githubLogin"><i class="fab fa-github"></i> GitHub</button>
+<button class="close-btn" id="closeModal">Fermer</button>
+</div>
+</div>
+
+<section id="comments">
+
+  <h2>Avis clients</h2>
+
+  <form id="comment-form">
+    <input type="text" id="username" placeholder="Votre nom" required>
+
+    <div class="stars">
+      <span data-value="1">⭐</span>
+      <span data-value="2">⭐</span>
+      <span data-value="3">⭐</span>
+      <span data-value="4">⭐</span>
+      <span data-value="5">⭐</span>
+    </div>
+
+    <input type="hidden" id="rating">
+
+    <textarea id="comment" placeholder="Votre commentaire" required></textarea>
+
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <p>Moyenne : <span id="avg-rating">0</span> ⭐  
+     (<span id="rating-count">0</span> avis)</p>
+
+  <div id="comments-list"></div>
+
+  <div style="text-align:center;margin-top:30px">
+  <button id="loadMoreComments" class="btn btn-outline">
+    Voir plus
+  </button>
+</div>
+</section>
+
+<div id="loginToast" class="toast-success">
+  <span class="icon">✔️</span>
+  Connexion réussie
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+<div id="notifPanel">
+
+<h3>🔔 Notifications</h3>
+
+<div id="notifList">
+Aucune notification
+</div>
+
+</div>
+  
+<div id="toastContainer"></div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-container">
+    
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Harry Undersand</h3>
+        <p>
+          Plateforme digitale spécialisée dans l'intelligence artificielle, 
+          le streaming premium, l'automatisation et les solutions web modernes.
+        </p>
+        
+        <div class="footer-social">
+          <a href="https://wa.me/242064687352" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Admin" title="WhatsApp Admin"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://wa.me/message/MEKLQKZMEJ6EF1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Équipe" title="WhatsApp Équipe"><i class="fab fa-whatsapp"></i></a>
+          
+          <a href="https://t.me/aliceiaofficiel" target="_blank" rel="noopener noreferrer" aria-label="Telegram" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="mailto:amateurdefantaisie@gmail.com" aria-label="Email" title="Nous envoyer un email"><i class="fas fa-envelope"></i></a>
+          
+          <a href="https://www.facebook.com/profile.php?id=61585121305403" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Notre Profil"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.instagram.com/amateurdefantaisietech" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Profil Équipe"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com/amateurdefantaisietech" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+          
+          <a href="https://www.twitch.tv/amateurdefantaisie" target="_blank" rel="noopener noreferrer" aria-label="Twitch"><i class="fab fa-twitch"></i></a>
+          <a href="https://www.snapchat.com/@harryundersand?sender_web_id=9c038349-5871-49c4-9dd2-da8b8b69b8fb&device_type=desktop&is_copy_url=true" target="_blank" rel="noopener noreferrer" aria-label="Snapchat"><i class="fab fa-snapchat"></i></a>
+          
+          <a href="https://discord.gg/6raY3cPpGm" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fab fa-discord"></i></a>
+          <a href="https://github.com/amateurdefantaisie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://cg.linkedin.com/in/harry-undersand-1854192a9" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          
+          <a href="https://fr.pinterest.com/amateurdefantaisie" target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="chatbot.html">Chatbot IA</a></li>
+          <li><a href="hosting.html">Hébergement</a></li>
+          <li><a href="streaming.html">Streaming</a></li>
+          <li><a href="pack-streaming.html">Packs premium</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Plateforme</h4>
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="login.html">Connexion</a></li>
+          <li><a href="admin.html">Admin</a></li>
+          <li><a href="anonymous/index.html">Messages anonymes</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Harry Undersand — Tous droits réservés.</p>
+    </div>
+
+  </div>
+</footer>
 </body>
 </html>
