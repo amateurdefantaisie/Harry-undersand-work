@@ -107,26 +107,57 @@
         </section>
     </main>
 
-    <div id="loginModal" class="modal">
+<div id="loginModal" class="modal">
         <div class="modal-content fade-in">
             <span class="close-modal">&times;</span>
             <div class="modal-logo">
                 <div class="logo-icon"></div>
                 <h2>H.U Studio</h2>
             </div>
-            <h3>Bienvenue</h3>
-            <p>Choisissez votre mode de connexion</p>
-            <div class="login-options">
-                <button class="auth-btn google" onclick="loginGoogle()">
-                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
-                    Continuer avec Google
-                </button>
-                <div class="divider"><span>ou</span></div>
-                <button class="auth-btn whatsapp" onclick="loginWhatsApp()">
-                    <i class="fab fa-whatsapp"></i>
-                    Utiliser WhatsApp
-                </button>
+
+            <div id="auth-selection">
+                <h3>Bienvenue</h3>
+                <p>Choisissez votre mode de connexion</p>
+                <div class="login-options">
+                    <button class="auth-btn google" onclick="loginGoogle()">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                        Continuer avec Google
+                    </button>
+                    <div class="divider"><span>ou</span></div>
+                    <button class="auth-btn whatsapp" onclick="showWhatsAppOptions()">
+                        <i class="fab fa-whatsapp"></i>
+                        Utiliser WhatsApp
+                    </button>
+                </div>
             </div>
+
+            <div id="whatsapp-auth-panel" style="display: none;">
+                <h3>Lier votre WhatsApp</h3>
+                
+                <div class="auth-tabs">
+                    <button class="tab-btn active" onclick="switchWamethod('qr')">QR Code</button>
+                    <button class="tab-btn" onclick="switchWamethod('code')">Code d'appariement</button>
+                </div>
+
+                <div id="wa-qr-container" class="wa-method">
+                    <div class="qr-frame">
+                        <div id="qrcode"><i class="fas fa-qrcode"></i></div>
+                        <p class="small-text">Scannez ce code avec WhatsApp > Appareils liés</p>
+                    </div>
+                </div>
+
+                <div id="wa-code-container" class="wa-method" style="display: none;">
+                    <div class="pairing-box">
+                        <input type="text" id="phone-number" placeholder="Ex: 242066973413">
+                        <button class="btn-small" onclick="generatePairingCode()">Générer le code</button>
+                        <div id="display-pairing-code" class="pairing-display">-- -- -- --</div>
+                    </div>
+                    <p class="small-text">Saisissez votre numéro avec l'indicatif pays.</p>
+                </div>
+
+                <button class="btn-link" onclick="backToAuthSelection()">Retour</button>
+            </div>
+
             <p class="footer-note">En vous connectant, vous acceptez nos conditions d'utilisation.</p>
         </div>
     </div>
