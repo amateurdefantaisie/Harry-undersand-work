@@ -1,131 +1,138 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harry Undersand Studio - Plateforme intelligente</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Harry Undersand Studio - Outils intelligents et gestion de productivité.">
+    <title>Harry Undersand Studio | Plateforme Intelligente</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
-  <h1 class="logo">H.U Studio</h1>
-  <nav>
-    <a href="#accueil">Accueil</a>
-    <a href="#features">Fonctionnalités</a>
-    <a href="#tarifs">Tarifs</a>
-    <a href="#contact">Contact</a>
-  </nav>
- <button class="btn btn-connexion">Connexion</button>
-</header>
+    <header>
+        <div class="logo-container">
+            <h1 class="logo">H.U Studio</h1>
+        </div>
+        <nav>
+            <a href="#accueil">Accueil</a>
+            <a href="#features">Fonctionnalités</a>
+            <a href="#tarifs">Tarifs</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button class="btn btn-connexion">Connexion</button>
+    </header>
 
-<section id="accueil" class="hero fade-in">
-  <div class="hero-text">
-    <h2>Une plateforme intelligente pour booster votre productivité</h2>
-    <p>
-      Accédez à des outils puissants, sécurisés et rapides pour gérer vos tâches,
-      communiquer efficacement et profiter d’un système de crédits innovant.
-    </p>
-    <div class="hero-buttons">
-      <button class="btn">Commencer</button>
-      <button class="btn btn-secondary">En savoir plus</button>
+    <main>
+        <section id="accueil" class="hero fade-in">
+            <div class="hero-text">
+                <h2>Une plateforme intelligente pour booster votre productivité</h2>
+                <p>
+                    Accédez à des outils puissants, sécurisés et rapides pour gérer vos tâches,
+                    communiquer efficacement et profiter d’un système de crédits innovant.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn" onclick="document.querySelector('#tarifs').scrollIntoView({behavior:'smooth'})">Commencer</button>
+                    <button class="btn btn-secondary">En savoir plus</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2 class="fade-in">Fonctionnalités principales</h2>
+            <div class="feature-grid">
+                <div class="feature fade-in">
+                    <div class="icon">🔐</div>
+                    <h3>Sécurité</h3>
+                    <p>Vos données sont protégées grâce à des systèmes de chiffrement modernes.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="icon">⚡</div>
+                    <h3>Rapidité</h3>
+                    <p>Une infrastructure optimisée pour une expérience utilisateur sans latence.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="icon">💰</div>
+                    <h3>Crédits</h3>
+                    <p>Un système de crédits flexible pour ne payer que ce que vous utilisez.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="icon">💬</div>
+                    <h3>Messagerie</h3>
+                    <p>Intégration native avec WhatsApp pour une communication fluide.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tarifs" class="pricing">
+            <h2 class="fade-in">Nos offres</h2>
+            <div class="price-grid">
+                <div class="price-card fade-in">
+                    <h3>500 FCFA</h3>
+                    <p>Pack Découverte</p>
+                    <ul class="price-features">
+                        <li>Accès basique</li>
+                        <li>Support standard</li>
+                    </ul>
+                    <button class="btn">Acheter</button>
+                </div>
+                <div class="price-card popular fade-in">
+                    <h3>1000 FCFA</h3>
+                    <p>Pack Avancé</p>
+                    <ul class="price-features">
+                        <li>Fonctionnalités avancées</li>
+                        <li>Crédits bonus</li>
+                    </ul>
+                    <button class="btn">Acheter</button>
+                </div>
+                <div class="price-card fade-in">
+                    <h3>5000 FCFA</h3>
+                    <p>Pack Premium</p>
+                    <ul class="price-features">
+                        <li>Accès complet</li>
+                        <li>Support prioritaire 24/7</li>
+                    </ul>
+                    <button class="btn">Acheter</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta fade-in">
+            <h2>Prêt à transformer votre flux de travail ?</h2>
+            <p>Rejoignez Harry Undersand Studio dès aujourd'hui.</p>
+            <button class="btn btn-secondary">Créer un compte</button>
+        </section>
+    </main>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content fade-in">
+            <span class="close-modal">&times;</span>
+            <div class="modal-logo">
+                <div class="logo-icon"></div>
+                <h2>H.U Studio</h2>
+            </div>
+            <h3>Bienvenue</h3>
+            <p>Choisissez votre mode de connexion</p>
+            <div class="login-options">
+                <button class="auth-btn google" onclick="loginGoogle()">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                    Continuer avec Google
+                </button>
+                <div class="divider"><span>ou</span></div>
+                <button class="auth-btn whatsapp" onclick="loginWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    Utiliser WhatsApp
+                </button>
+            </div>
+            <p class="footer-note">En vous connectant, vous acceptez nos conditions d'utilisation.</p>
+        </div>
     </div>
-  </div>
-</section>
 
-<div id="loginModal" class="modal">
-  <div class="modal-content fade-in">
-    <span class="close-modal">&times;</span>
-    
-    <div class="modal-logo">
-      <div class="logo-icon"></div>
-      <h2>H.U Studio</h2>
-    </div>
-    
-    <h3>Bienvenue</h3>
-    <p>Connectez-vous pour accéder à vos outils intelligents</p>
+    <div id="footer-placeholder"></div>
 
-    <div class="login-options">
-      <button class="auth-btn google" onclick="loginGoogle()">
-        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
-        Continuer avec Google
-      </button>
-
-      <div class="divider"><span>ou</span></div>
-
-      <button class="auth-btn whatsapp" onclick="loginWhatsApp()">
-        <i class="fab fa-whatsapp"></i>
-        Utiliser WhatsApp
-      </button>
-    </div>
-    
-    <p class="footer-note">En vous connectant, vous acceptez nos conditions d'utilisation.</p>
-  </div>
-</div>
-
-<section id="features" class="features">
-  <h2 class="fade-in">Fonctionnalités principales</h2>
-
-  <div class="feature-grid">
-    <div class="feature fade-in">
-      <h3>🔐 Sécurité</h3>
-      <p>Vos données sont protégées grâce à des systèmes modernes de sécurité avancée.</p>
-    </div>
-
-    <div class="feature fade-in">
-      <h3>⚡ Rapidité</h3>
-      <p>Une plateforme optimisée pour offrir une expérience fluide et rapide.</p>
-    </div>
-
-    <div class="feature fade-in">
-      <h3>💰 Crédits</h3>
-      <p>Utilisez des crédits pour accéder à des fonctionnalités premium.</p>
-    </div>
-
-    <div class="feature fade-in">
-      <h3>💬 Messagerie</h3>
-      <p>Communiquez facilement avec vos utilisateurs en temps réel.</p>
-    </div>
-  </div>
-</section>
-
-<section id="tarifs" class="pricing">
-  <h2 class="fade-in">Nos offres</h2>
-
-  <div class="price-grid">
-    <div class="price-card fade-in">
-      <h3>500 FCFA</h3>
-      <p>Accès de base</p>
-      <button class="btn">Acheter</button>
-    </div>
-
-    <div class="price-card fade-in">
-      <h3>1000 FCFA</h3>
-      <p>Fonctionnalités avancées</p>
-      <button class="btn">Acheter</button>
-    </div>
-
-    <div class="price-card fade-in">
-      <h3>5000 FCFA</h3>
-      <p>Accès premium complet</p>
-      <button class="btn">Acheter</button>
-    </div>
-  </div>
-</section>
-
-<section class="cta fade-in">
-  <h2>Rejoignez-nous dès maintenant</h2>
-  <p>Commencez à utiliser la plateforme aujourd’hui</p>
-  <button class="btn">Créer un compte</button>
-</section>
-
-<div id="footer-placeholder"></div>
-
-<script src="script.js"></script>
-
+    <script type="module" src="script.js"></script>
 </body>
 </html>
