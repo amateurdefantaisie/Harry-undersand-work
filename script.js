@@ -34,8 +34,35 @@ window.loginGoogle = () => {
         .catch(err => console.error("Erreur de connexion Google:", err));
 };
 
+// Affiche les options WhatsApp (QR/Code) au lieu de rediriger directement
 window.loginWhatsApp = () => {
-    window.location.href = "https://wa.me/242066973413?text=Je%20souhaite%20me%20connecter%20au%20Studio";
+    document.getElementById('auth-selection').style.display = 'none';
+    document.getElementById('whatsapp-auth-panel').style.display = 'block';
+};
+
+// Fonction pour revenir au choix initial (Google/WhatsApp)
+window.backToAuthSelection = () => {
+    document.getElementById('auth-selection').style.display = 'block';
+    document.getElementById('whatsapp-auth-panel').style.display = 'none';
+};
+
+// Alterne entre l'affichage du QR Code et du Code d'appariement
+window.switchWamethod = (method) => {
+    const tabs = document.querySelectorAll('.tab-btn');
+    const qrContainer = document.getElementById('wa-qr-container');
+    const codeContainer = document.getElementById('wa-code-container');
+
+    tabs.forEach(tab => tab.classList.remove('active'));
+
+    if (method === 'qr') {
+        tabs[0].classList.add('active');
+        qrContainer.style.display = 'block';
+        codeContainer.style.display = 'none';
+    } else {
+        tabs[1].classList.add('active');
+        qrContainer.style.display = 'none';
+        codeContainer.style.display = 'block';
+    }
 };
 
 window.logout = () => {
@@ -113,8 +140,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const spanClose = document.querySelector(".close-modal");
 
     if (btnConnexionHeader && modal) {
-        btnConnexionHeader.onclick = () => modal.style.display = "flex";
-    }
+    btnConnexionHeader.onclick = () => {
+        modal.style.display = "flex";
+        // On s'assure de montrer le menu principal de la modal à l'ouverture
+        if(typeof window.backToAuthSelection === "function") window.backToAuthSelection();
+    };
+}
     if (spanClose) {
         spanClose.onclick = () => modal.style.display = "none";
     }
@@ -122,6 +153,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target == modal) modal.style.display = "none";
     };
 });
+
+window.generatePairingCode = () => {
+    const phone = document.getElementById('phone-number').value;
+    if (!phone) {
+        alert("Veuillez entrer votre numéro de téléphone");
+        return;
+    }
+    
+    const display = document.getElementById('display-pairing-code');
+    display.textContent = "CHARGEMENT...";
+
+    // Simulation d'appel API vers un bot (ex: Baileys)
+    setTimeout(() => {
+        // Logique de génération de code aléatoire pour l'exemple
+        const randomCode = Math.random().toString(36).substring(2, 10).toUpperCase();
+        display.textContent = randomCode.match(/.{1,4}/g).join('-');
+    }, 1500);
+};
 
 /**
  * 3. FONCTION DE CHARGEMENT DU FOOTER
