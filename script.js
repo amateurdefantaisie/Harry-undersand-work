@@ -27,7 +27,7 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-// Fonctions globales de connexion/déconnexion
+// Fonctions globales de connexion/déconnexio
 window.loginGoogle = async () => {
     try {
         const result = await signInWithPopup(auth, provider);
@@ -37,9 +37,14 @@ window.loginGoogle = async () => {
     }
 };
 
+// Pour WhatsApp (Ouvrir le panneau de scan)
 window.loginWhatsApp = () => {
-    document.getElementById('auth-selection').style.display = 'none';
-    document.getElementById('whatsapp-auth-panel').style.display = 'block';
+    const authSelection = document.getElementById('auth-selection');
+    const waPanel = document.getElementById('whatsapp-auth-panel');
+    if (authSelection && waPanel) {
+        authSelection.style.display = 'none';
+        waPanel.style.display = 'block';
+    }
 };
 
 // Fonction pour revenir au choix initial (Google/WhatsApp)
