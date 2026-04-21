@@ -186,3 +186,100 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* MODAL OVERLAY */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 2000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+}
+
+/* MODAL CONTENT */
+.modal-content {
+  background: #1e293b;
+  padding: 40px;
+  border-radius: 24px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* LOGO DESIGN DANS LE POPUP */
+.modal-logo {
+  margin-bottom: 20px;
+}
+.logo-icon {
+  width: 50px; height: 50px;
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  margin: 0 auto 10px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+}
+.logo-icon::after {
+  content: '';
+  position: absolute;
+  top: 15px; left: 15px;
+  width: 20px; height: 20px;
+  border: 3px solid white;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* BOUTONS D'AUTH */
+.auth-btn {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.auth-btn img, .auth-btn i { font-size: 20px; width: 20px; }
+
+.google { background: white; color: #1e293b; }
+.whatsapp { background: #25d366; color: white; }
+
+.auth-btn:hover { transform: scale(1.02); filter: brightness(1.1); }
+
+.divider {
+  margin: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+}
+.divider span {
+  position: absolute;
+  top: -10px; left: 50%;
+  transform: translateX(-50%);
+  background: #1e293b;
+  padding: 0 10px;
+  color: #64748b;
+  font-size: 0.8em;
+}
+
+.close-modal {
+  position: absolute;
+  right: 20px; top: 15px;
+  font-size: 24px;
+  color: #64748b;
+  cursor: pointer;
+}
