@@ -23,6 +23,19 @@ body {
   line-height: 1.6;
 }
 
+/* Nouveau : Conteneur global pour les pages de services */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+section {
+    padding: 60px 0;
+    text-align: center;
+}
+
 /* HEADER */
 header {
   display: flex;
@@ -448,3 +461,73 @@ body.light-theme {
     --text-muted: #64748b;
 }
 body.light-theme header { background: rgba(248, 250, 252, 0.8); border-bottom: 1px solid #e2e8f0; }
+
+/* --- STYLES FORMULAIRE & COMMANDE --- */
+input, textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg-card);
+    color: white;
+    font-size: 16px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+/* Grille de boutons de commande */
+.order-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.order-grid button {
+    padding: 15px;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.order-grid button:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 5%;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    /* Les boutons de commande prennent toute la largeur sur petit écran */
+    .order-grid {
+        grid-template-columns: 1fr;
+    }
+}
