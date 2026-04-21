@@ -28,13 +28,15 @@ onAuthStateChanged(auth, (user) => {
 });
 
 // Fonctions globales de connexion/déconnexion
-window.loginGoogle = () => {
-    signInWithPopup(auth, provider)
-        .then(() => window.location.href = "dashboard.html")
-        .catch(err => console.error("Erreur de connexion Google:", err));
+window.loginGoogle = async () => {
+    try {
+        const result = await signInWithPopup(auth, provider);
+        if (result.user) window.location.href = "dashboard.html";
+    } catch (err) {
+        console.error("Erreur Google:", err);
+    }
 };
 
-// Affiche les options WhatsApp (QR/Code) au lieu de rediriger directement
 window.loginWhatsApp = () => {
     document.getElementById('auth-selection').style.display = 'none';
     document.getElementById('whatsapp-auth-panel').style.display = 'block';
