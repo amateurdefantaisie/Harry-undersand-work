@@ -1,67 +1,103 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joyeux Anniversaire Mederisse Odyssée !</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joyeux Anniversaire Mederisse Odyssée 🎉</title>
 </head>
 <body>
 
-    <div id="welcome-overlay" class="overlay">
-        <div class="overlay-content">
-            <h1>Merci de votre visite !</h1>
-            <p>Bienvenue sur la page spéciale de Mederisse Odyssée.</p>
-        </div>
+  <!-- Écran d'accueil avec paillettes -->
+  <div id="welcome-screen">
+    <div class="welcome-content">
+      <h1>✨ Bienvenue ✨</h1>
+      <p>Merci de visiter cette page dédiée à Mederisse Odyssée 💖</p>
+    </div>
+  </div>
+
+  <!-- Banderoles / guirlandes -->
+  <header>
+    <h1>🎉 Joyeux Anniversaire Mederisse 🎉</h1>
+    <p>De la part de Harry Undersand 💜</p>
+  </header>
+
+  <!-- Section message -->
+  <section id="messages">
+    <h2>💌 Messages</h2>
+    <p>Que cette journée soit remplie de bonheur, de joie et d'amour !</p>
+    <p>Tu es une personne incroyable ❤️</p>
+  </section>
+
+  <!-- Section posts (photos/vidéos) -->
+  <section id="posts">
+    <h2>📸 Souvenirs</h2>
+
+    <!-- Images -->
+    <div class="post">
+      <img src="https://files.catbox.moe/5zlqrq.jpg" alt="photo">
+      <div class="actions">
+        <button>❤️ Like</button>
+        <button>💬 Commenter</button>
+      </div>
+      <input type="text" placeholder="Écrire un commentaire...">
     </div>
 
-    <header class="decorations">
-        <div class="garland"></div>
-        <div class="banner">
-            <h1>Joyeux Anniversaire Mederisse ! 🎂</h1>
-        </div>
-    </header>
+    <div class="post">
+      <img src="https://files.catbox.moe/txw10j.jpg" alt="photo">
+      <div class="actions">
+        <button>❤️ Like</button>
+        <button>💬 Commenter</button>
+      </div>
+      <input type="text" placeholder="Écrire un commentaire...">
+    </div>
 
-    <main class="container">
-        
-        <section class="wishes-section">
-            <div class="card purple-card">
-                <h3>Le mot de Mederisse</h3>
-                <p>"Bienvenue dans mon univers pour cette journée spéciale !"</p>
-            </div>
-            <div class="card purple-card">
-                <h3>Le mot de Harry Undersand</h3>
-                <p>"Joyeux anniversaire à une amie exceptionnelle. Profite de chaque instant !"</p>
-            </div>
-        </section>
+    <div class="post">
+      <img src="https://files.catbox.moe/d8w88k.jpg" alt="photo">
+      <div class="actions">
+        <button>❤️ Like</button>
+        <button>💬 Commenter</button>
+      </div>
+      <input type="text" placeholder="Écrire un commentaire...">
+    </div>
 
-        <section id="posts-container">
-            <div class="post purple-card">
-                <div class="post-media">
-                    <div class="placeholder-img">Photo de l'événement</div>
-                </div>
-                <div class="post-actions">
-                    <button class="btn-rose">❤️ Like</button>
-                    <button class="btn-rose">💬 Commenter</button>
-                </div>
-            </div>
-        </section>
+    <div class="post">
+      <img src="https://files.catbox.moe/twifwy.jpg" alt="photo">
+      <div class="actions">
+        <button>❤️ Like</button>
+        <button>💬 Commenter</button>
+      </div>
+      <input type="text" placeholder="Écrire un commentaire...">
+    </div>
 
-    </main>
+    <!-- Vidéos -->
+    <div class="post">
+      <video controls width="300">
+        <source src="https://files.catbox.moe/qnyb82.mp4" type="video/mp4">
+      </video>
+      <div class="actions">
+        <button>❤️ Like</button>
+        <button>💬 Commenter</button>
+      </div>
+      <input type="text" placeholder="Écrire un commentaire...">
+    </div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        
-        const firebaseConfig = {
-            apiKey: "AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
-            authDomain: "harry-undersand.firebaseapp.com",
-            projectId: "harry-undersand",
-            // Ajoutez ici le reste si nécessaire (storageBucket, etc.)
-        };
+    <div class="post">
+      <video controls width="300">
+        <source src="https://files.catbox.moe/p59csd.mp4" type="video/mp4">
+      </video>
+      <div class="actions">
+        <button>❤️ Like</button>
+        <button>💬 Commenter</button>
+      </div>
+      <input type="text" placeholder="Écrire un commentaire...">
+    </div>
 
-        const app = initializeApp(firebaseConfig);
-    </script>
-    <script src="script.js"></script>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Créé avec amour par Harry Undersand 💕</p>
+  </footer>
+
 </body>
 </html>
