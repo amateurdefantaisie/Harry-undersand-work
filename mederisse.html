@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeux Anniversaire Mederisse Odyssée !</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div id="welcome-overlay" class="overlay">
+        <div class="overlay-content">
+            <h1>Merci de votre visite !</h1>
+            <p>Bienvenue sur la page spéciale de Mederisse Odyssée.</p>
+        </div>
+    </div>
+
+    <header class="decorations">
+        <div class="garland"></div>
+        <div class="banner">
+            <h1>Joyeux Anniversaire Mederisse ! 🎂</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="wishes-section">
+            <div class="card purple-card">
+                <h3>Le mot de Mederisse</h3>
+                <p>"Bienvenue dans mon univers pour cette journée spéciale !"</p>
+            </div>
+            <div class="card purple-card">
+                <h3>Le mot de Harry Undersand</h3>
+                <p>"Joyeux anniversaire à une amie exceptionnelle. Profite de chaque instant !"</p>
+            </div>
+        </section>
+
+        <section id="posts-container">
+            <div class="post purple-card">
+                <div class="post-media">
+                    <div class="placeholder-img">Photo de l'événement</div>
+                </div>
+                <div class="post-actions">
+                    <button class="btn-rose">❤️ Like</button>
+                    <button class="btn-rose">💬 Commenter</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
+            authDomain: "harry-undersand.firebaseapp.com",
+            projectId: "harry-undersand",
+            // Ajoutez ici le reste si nécessaire (storageBucket, etc.)
+        };
+
+        const app = initializeApp(firebaseConfig);
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
