@@ -109,3 +109,56 @@ footer {
     margin: 10px;
   }
 }
+
+/* BOUTON FERMER */
+#close-welcome {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* COMPTE À REBOURS */
+#countdown {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* BACKGROUND ANIMÉ */
+body {
+  background: linear-gradient(-45deg, #8B0000, #6a0dad, #ff1493, #ff8c00);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% }
+  50% { background-position: 100% }
+  100% { background-position: 0% }
+}
+
+/* EFFET HOVER POSTS */
+.post {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.post:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
+
+/* GUirlandes */
+header::before {
+  content: "🎈🎉🎊🎈🎉🎊🎈🎉";
+  display: block;
+  font-size: 24px;
+  margin-bottom: 10px;
+  animation: swing 2s infinite alternate;
+}
+
+@keyframes swing {
+  from { transform: rotate(-2deg); }
+  to { transform: rotate(2deg); }
+}
