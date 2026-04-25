@@ -1,199 +1,225 @@
-/* RESET */
+:root {
+    --apple-dark: #000000;
+    --apple-gray: #1c1c1e;
+    --premium-violet: #8b5cf6;
+    --premium-pink: #ec4899;
+    --premium-gold: #facc15;
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background: radial-gradient(circle at top, var(--premium-violet), var(--apple-bg));
-  color: #fff;
-  font-family: 'Inter', -apple-system, sans-serif;
-  overflow-x: hidden;
-  background-size: 400% 400%;
-  animation: gradientMove 10s ease infinite;
+    background-color: var(--apple-dark);
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-:root {
-  --apple-bg: #000000;
-  --premium-red: #800020;
-  --premium-violet: #4B0082;
-  --premium-pink: #FF69B4;
-  --glass: rgba(255, 255, 255, 0.1);
+/* --- Arrière-plan Animé --- */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 40%);
+    z-index: -1;
+    animation: pulseBg 10s ease infinite alternate;
 }
 
-
-
-/* Glassmorphism Card */
-.glass-overlay {
-  backdrop-filter: blur(20px);
-  background: rgba(0,0,0,0.7);
+@keyframes pulseBg {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
 }
 
-.welcome-card {
-  background: var(--glass);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 30px;
-  padding: 50px;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-  text-align: center;
+/* --- Overlay de Bienvenue (Ultra Premium) --- */
+.premium-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(30px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Bouton Style Apple */
-.btn-premium {
-  background: white;
-  color: black;
-  border: none;
-  padding: 15px 40px;
-  border-radius: 50px;
-  font-weight: 800;
-  margin-top: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.glass-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    padding: 3rem;
+    border-radius: 40px;
+    text-align: center;
+    max-width: 90%;
+    width: 450px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-.btn-premium:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px var(--premium-pink);
+.cake-icon {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    animation: cakeFloat 3s ease-in-out infinite;
 }
 
-/* Post Style Instagram/Apple */
-.post {
-  background: var(--glass);
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
-  margin-bottom: 40px;
-  overflow: hidden;
+@keyframes cakeFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(1.1); }
 }
 
-/* Animation Gâteau */
-.cake-container {
-  font-size: 80px;
-  cursor: pointer;
-  animation: float 3s ease-in-out infinite;
+/* --- Boutons et Actions --- */
+.btn-main {
+    background: white;
+    color: black;
+    border: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 2rem;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+.btn-main:hover {
+    transform: scale(1.05);
+    background: var(--premium-pink);
+    color: white;
 }
 
-/* HEADER */
-header {
-  text-align: center;
-  padding: 20px;
-  background: #6a0dad; /* violet */
+/* --- Lecteur de Musique Flottant --- */
+.music-controller {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(28, 28, 30, 0.8);
+    backdrop-filter: blur(20px);
+    padding: 0.8rem 1.5rem;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid var(--glass-border);
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* SECTIONS */
-section {
-  margin: 20px auto;
-  padding: 20px;
-  max-width: 600px;
-  background: #7b1fa2; /* violet */
-  border-radius: 15px;
+.disc {
+    animation: rotate 3s linear infinite;
+    animation-play-state: paused;
 }
 
-/* POSTS */
-.post {
-  background: #5e0f73;
-  padding: 15px;
-  border-radius: 15px;
-  margin-bottom: 20px;
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-.post img, .post video {
-  width: 100%;
-  border-radius: 10px;
+/* --- Sections Messages (Style WhatsApp) --- */
+.chat-section {
+    max-width: 600px;
+    margin: 4rem auto;
+    padding: 0 1rem;
 }
 
-/* ACTIONS */
-.actions {
-  margin-top: 10px;
-  display: flex;
-  gap: 10px;
+.chat-bubble {
+    padding: 1rem 1.5rem;
+    border-radius: 25px;
+    margin-bottom: 1.5rem;
+    position: relative;
+    max-width: 85%;
+    font-size: 0.95rem;
 }
 
-button {
-  background: pink;
-  border: none;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
+.chat-bubble.left {
+    background: var(--apple-gray);
+    border-bottom-left-radius: 5px;
+    margin-right: auto;
 }
 
-button:hover {
-  transform: scale(1.05);
+.chat-bubble.right {
+    background: var(--premium-violet);
+    border-bottom-right-radius: 5px;
+    margin-left: auto;
 }
 
-/* COMMENT INPUT */
-input {
-  margin-top: 10px;
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
+.sender {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+    opacity: 0.8;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 15px;
-  background: #6a0dad;
+/* --- Galerie de Posts --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* RESPONSIVE */
-@media (max-width: 600px) {
-  section {
-    margin: 10px;
-  }
+.post-card {
+    background: var(--apple-gray);
+    border-radius: 30px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    transition: 0.4s cubic-bezier(0.2, 1, 0.2, 1);
 }
 
-/* BOUTON FERMER */
-#close-welcome {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  cursor: pointer;
-  font-size: 20px;
+.post-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--premium-pink);
 }
 
-/* COMPTE À REBOURS */
-#countdown {
-  margin-top: 10px;
-  font-size: 14px;
-  opacity: 0.8;
+.post-media img, .post-media video {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
 }
 
-@keyframes gradientMove {
-  0% { background-position: 0% }
-  50% { background-position: 100% }
-  100% { background-position: 0% }
+.post-footer {
+    padding: 1.5rem;
 }
 
-/* EFFET HOVER POSTS */
-.post {
-  transition: transform 0.3s, box-shadow 0.3s;
+.comment-input {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 15px;
+    color: white;
+    outline: none;
+    margin-top: 1rem;
 }
 
-.post:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 20px rgba(255,255,255,0.4);
+/* --- Effets de Texte --- */
+.gradient-text {
+    background: linear-gradient(135deg, white, var(--premium-pink), var(--premium-violet));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-align: center;
 }
 
-/* GUirlandes */
-header::before {
-  content: "🎈🎉🎊🎈🎉🎊🎈🎉";
-  display: block;
-  font-size: 24px;
-  margin-bottom: 10px;
-  animation: swing 2s infinite alternate;
-}
-
-@keyframes swing {
-  from { transform: rotate(-2deg); }
-  to { transform: rotate(2deg); }
+.handwriting {
+    font-family: 'Dancing Script', cursive;
+    color: var(--premium-pink);
+    text-align: center;
+    font-size: 2rem;
 }
