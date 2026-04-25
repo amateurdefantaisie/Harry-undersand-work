@@ -1,132 +1,123 @@
-// CONFIG FIREBASE
-const firebaseConfig = {
-  apiKey: "AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
-  authDomain: "harry-undersand.firebaseapp.com",
-  projectId: "harry-undersand"
-};
+// --- INITIALISATION & VARIABLES ---
+const overlay = document.getElementById('welcome-overlay');
+const startBtn = document.getElementById('start-experience');
+const closeManual = document.getElementById('manual-close');
+const timerSpan = document.querySelector('#auto-close-timer span');
+const audio = document.getElementById('bg-audio');
+const musicBtn = document.getElementById('play-pause');
+const disc = document.querySelector('.disc');
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+let timeLeft = 10;
 
-// WELCOME SCREEN (10 secondes
-const welcome = document.getElementById("welcome-screen");
-const closeBtn = document.getElementById("close-welcome");
-const countdownEl = document.getElementById("countdown");
-
-let timeLeft = 2;
-
-const timer = setInterval(() => {
-  timeLeft--;
-  countdownEl.innerText = `Fermeture dans ${timeLeft}s...`;
-
-  if (timeLeft <= 0) {
-    closeWelcome();
-  }
+// --- GESTION DE L'OVERLAY (FERMETURE & TIMER) ---
+const countdown = setInterval(() => {
+    timeLeft--;
+    timerSpan.innerText = timeLeft;
+    if (timeLeft <= 0) {
+        closeExperience();
+    }
 }, 1000);
 
-function closeWelcome() {
-  welcome.style.display = "none";
-  clearInterval(timer);
-  launchFireworks();
+function closeExperience() {
+    clearInterval(countdown);
+    overlay.style.opacity = '0';
+    overlay.style.transform = 'scale(1.1)';
+    
+    setTimeout(() => {
+        overlay.remove();
+        // Lancement auto de la musique et des paillettes
+        handleMusic(true);
+        launchPremiumConfetti();
+    }, 800);
 }
 
-closeBtn.addEventListener("click", closeWelcome);
+startBtn.addEventListener('click', closeExperience);
+closeManual.addEventListener('click', closeExperience);
 
-// LIKES SIMPLES
-const likeButtons = document.querySelectorAll(".actions button:first-child");
-
-likeButtons.forEach((btn, index) => {
-  let count = 0;
-  btn.addEventListener("click", () => {
-    count++;
-    btn.innerText = `❤️ ${count}`;
-  });
-});
-
-// COMMENTAIRES SIMPLES AVEC FIREBASE
-const posts = document.querySelectorAll(".post");
-
-posts.forEach((post, index) => {
-  const input = post.querySelector("input");
-
-  input.addEventListener("keypress", async (e) => {
-    if (e.key === "Enter" && input.value.trim() !== "") {
-      const comment = input.value;
-
-      await db.collection("comments").add({
-        postId: index,
-        text: comment,
-        createdAt: new Date()
-      });
-
-      const p = document.createElement("p");
-      p.textContent = comment;
-      post.appendChild(p);
-
-      input.value = "";
+// --- SYSTÈME AUDIO PREMIUM ---
+function handleMusic(play) {
+    if (play) {
+        audio.play();
+        musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        disc.style.animationPlayState = 'running';
+    } else {
+        audio.pause();
+        musicBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+        disc.style.animationPlayState = 'paused';
     }
-  });
+}
+
+musicBtn.addEventListener('click', () => {
+    const isPaused = audio.paused;
+    handleMusic(isPaused);
 });
 
-// EFFET PAILLETTES (simple)
-setInterval(() => {
-  const emoji = document.createElement("div");
-  const emojis = ["💖","✨","🎉","🎊","💫"];
+// --- EXPLOSION DE PAILLETTES (CANVAS-CONFETTI) ---
+function launchPremiumConfetti() {
+    const count = 200;
+    const defaults = { origin: { y: 0.7 }, zIndex: 10000 };
 
-  emoji.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+    function fire(particleRatio, opts) {
+        confetti(Object.assign({}, defaults, opts, {
+            particleCount: Math.floor(count * particleRatio),
+        }));
+    }
 
-  emoji.style.position = "fixed";
-  emoji.style.top = "-20px";
-  emoji.style.left = Math.random() * window.innerWidth + "px";
-  emoji.style.fontSize = "20px";
-  emoji.style.zIndex = 999;
-
-  document.body.appendChild(emoji);
-
-  emoji.animate([
-    { transform: "translateY(0px)", opacity: 1 },
-    { transform: "translateY(100vh)", opacity: 0 }
-  ], {
-    duration: 3000,
-    easing: "linear"
-  });
-
-  setTimeout(() => emoji.remove(), 3000);
-}, 200);
-
-function launchFireworks() {
-  for (let i = 0; i < 30; i++) {
-    createFirework();
-  }
+    fire(0.25, { spread: 26, startVelocity: 55 });
+    fire(0.2, { spread: 60 });
+    fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+    fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+    fire(0.1, { spread: 120, startVelocity: 45 });
 }
 
-function createFirework() {
-  const firework = document.createElement("div");
+// --- INTERACTIVITÉ DES POSTS (LIKES & VIDÉOS) ---
+document.querySelectorAll('.post-card').forEach(card => {
+    const video = card.querySelector('video');
+    const playBtn = card.querySelector('.video-play-btn');
+    const likeBtn = card.querySelector('.like-trigger');
+    const countSpan = card.querySelector('.count');
+    const input = card.querySelector('.comment-input');
+    const commentList = card.querySelector('.comments-list');
 
-  firework.style.position = "fixed";
-  firework.style.width = "8px";
-  firework.style.height = "8px";
-  firework.style.background = `hsl(${Math.random()*360},100%,50%)`;
-  firework.style.borderRadius = "50%";
-  firework.style.top = "50%";
-  firework.style.left = "50%";
-  firework.style.zIndex = 9999;
+    // Lecture vidéo au clic
+    if (video) {
+        card.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                if(playBtn) playBtn.style.opacity = '0';
+            } else {
+                video.pause();
+                if(playBtn) playBtn.style.opacity = '1';
+            }
+        });
+    }
 
-  document.body.appendChild(firework);
+    // Système de Like
+    let likes = 0;
+    likeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        likes++;
+        countSpan.innerText = likes;
+        likeBtn.style.color = '#ec4899';
+        confetti({ particleCount: 20, spread: 50, origin: { y: 0.8 } });
+    });
 
-  const angle = Math.random() * 2 * Math.PI;
-  const distance = Math.random() * 200 + 50;
+    // Commentaires "En direct"
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && input.value.trim() !== "") {
+            const comment = document.createElement('p');
+            comment.style.cssText = "font-size: 0.85rem; margin-top: 5px; opacity: 0.8; border-left: 2px solid #ec4899; padding-left: 10px;";
+            comment.innerText = input.value;
+            commentList.appendChild(comment);
+            input.value = "";
+        }
+    });
+});
 
-  const x = Math.cos(angle) * distance;
-  const y = Math.sin(angle) * distance;
-
-  firework.animate([
-    { transform: "translate(0,0)", opacity: 1 },
-    { transform: `translate(${x}px, ${y}px)`, opacity: 0 }
-  ], {
-    duration: 1000,
-    easing: "ease-out"
-  });
-
-  setTimeout(() => firework.remove(), 1000);
-}
+// Reveal des éléments au scroll
+ScrollReveal().reveal('.post-card', { 
+    delay: 300, 
+    distance: '50px', 
+    origin: 'bottom', 
+    interval: 100 
+});
