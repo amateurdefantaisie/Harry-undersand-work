@@ -1,4 +1,3 @@
-<script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
   getAuth,
@@ -1154,9 +1153,6 @@ panel.style.display =
 panel.style.display==="block" ? "none" : "block";
 
 }
-</script>
-
-<script>
 
 const cards = document.querySelectorAll(".platform-card");
 
@@ -1175,24 +1171,6 @@ card.style.transform="translateY(40px)";
 card.style.transition="all .6s ease";
 observer.observe(card);
 });
-
-</script>
-
-<script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
-<script src="https://files.bpcontent.cloud/2025/12/10/23/20251210230142-FSLKPSBI.js" defer></script>
-
-<section id="projet-transitaire" style="padding:60px 20px; text-align:center;">
-  <h2>🚢 Projet : Jeune Transitaire</h2>
-  <p>
-    Plateforme spécialisée dans le transit, la logistique et le commerce international.
-  </p>
- <a href="https://jeunetransitaire.vercel.app"
-   target="_blank"
-   onclick="registerLinkClick()"
-   style="display:inline-block;padding:12px 25px;background:#2563eb;color:white;border-radius:8px;text-decoration:none;">
-   Visiter mon site
- </a>
-</section>
   
 <!-- 🍪 Bandeau Cookies -->
 <div id="cookie-banner" class="cookie-banner">
@@ -1208,11 +1186,6 @@ observer.observe(card);
   </div>
 </div>
 
-<script src="cookies.js"></script>
-
-<script src="cookies.js"></script>
-
-<script>
 async function openMarket() {
 
   const user = firebase.auth().currentUser;
@@ -1264,9 +1237,7 @@ async function openMarket() {
 function closeMarket() {
   document.getElementById("market-container").innerHTML = "";
 }
-</script>
 
-<script>
 const observer = new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
@@ -1279,9 +1250,7 @@ document.querySelectorAll(".card, section, .hero").forEach(el=>{
 el.classList.add("fade-up")
 observer.observe(el)
 })
-</script>
 
-<script>
 const observer = new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
@@ -1293,4 +1262,4 @@ entry.target.classList.add("show")
 document.querySelectorAll(".service-card").forEach(el=>{
 observer.observe(el)
 })
-</script>
+
