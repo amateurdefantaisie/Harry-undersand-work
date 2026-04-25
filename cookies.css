@@ -1,0 +1,47 @@
+/* 🍪 COOKIE BANNER */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 10, 25, 0.95);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 20px;
+  display: none;
+  z-index: 9999;
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+}
+
+.cookie-content {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cookie-buttons button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#accept-cookies {
+  background: #00d9ff;
+  color: black;
+}
+
+#reject-cookies {
+  background: #444;
+  color: white;
+}
+
+.cookie-buttons button:hover {
+  transform: scale(1.05);
+}
