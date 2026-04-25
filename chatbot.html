@@ -16,13 +16,107 @@
 
   gtag('config', 'G-N696WFVZ8G');
 </script>
-
-<link rel="stylesheet" href="style.css">
+  
 <link rel="icon" type="image/svg+xml"
 href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⛩️</text></svg>">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter;background:#0a0a0f;color:#fff}
+section{padding:5.5rem 1.5rem}
+.container{max-width:1200px;margin:auto}
+h1,h2,h3{font-weight:800}
+p{color:#c7c7d1;line-height:1.7}
+
+.hero{text-align:center;padding-top:140px}
+.hero h1{font-size:3rem}
+.hero p{max-width:780px;margin:20px auto}
+
+header{
+  text-align:center;
+  padding:45px 18px;
+}
+
+nav{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#a3a3ff;
+  text-decoration:none;
+  padding:8px 14px;
+  border-radius:6px;
+}
+
+nav a:hover{
+  background:#3d3cff;
+  color:#fff;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:28px;
+margin-top:40px
+}
+
+.card{
+background:#141425;
+border:1px solid rgba(139,92,246,.3);
+border-radius:20px;
+padding:28px;
+transition:.4s;
+}
+.card:hover{
+transform:translateY(-8px);
+border-color:#8b5cf6
+}
+.card i{
+font-size:2.2rem;
+color:#8b5cf6;
+margin-bottom:14px
+}
+
+.btn{
+display:inline-block;
+margin-top:16px;
+padding:12px 24px;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+background:linear-gradient(135deg,#8b5cf6,#7c3aed);
+color:#fff
+}
+.btn-outline{
+background:none;
+border:1px solid rgba(139,92,246,.4)
+}
+
+.badge{
+display:flex;
+align-items:center;
+gap:14px;
+background:#10101c;
+border:1px solid rgba(139,92,246,.4);
+border-radius:18px;
+padding:22px;
+max-width:850px;
+margin:50px auto 0
+}
+.badge i{font-size:2.5rem;color:#8b5cf6}
+
+.reveal{opacity:0;transform:translateY(40px);transition:.8s}
+.reveal.active{opacity:1;transform:none}
+
+footer{text-align:center;padding:3rem;color:#7a7a9a}
+</style>
 </head>
   
 <body>
@@ -180,6 +274,67 @@ Starter
 </button>
 
 <script src="js/sheets.js"></script>
+
+<footer>
+© 2026 Amateur De Fantaisie — Chatbots by Harry Undersand
+</footer>
+
+<script>
+const observer=new IntersectionObserver(e=>{
+e.forEach(el=>{
+if(el.isIntersecting)el.target.classList.add("active");
+});
+},{threshold:0.15});
+document.querySelectorAll(".reveal").forEach(x=>observer.observe(x));
+</script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+import { 
+getAuth, 
+onAuthStateChanged 
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+import { 
+getFirestore, 
+collection, 
+addDoc, 
+serverTimestamp 
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+const app = initializeApp({
+apiKey:"AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
+authDomain:"harry-undersand.firebaseapp.com",
+projectId:"harry-undersand"
+});
+
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let currentUser = null;
+
+onAuthStateChanged(auth, user => {
+if(!user){
+window.location.href = "login.html";
+} else {
+currentUser = user;
+}
+});
+
+window.createOrder = async (service, pack, price) => {
+if(!currentUser) return;
+
+await addDoc(collection(db,"orders"),{
+userId: currentUser.uid,
+service: service,
+pack: pack,
+price: price,
+status: "En attente",
+createdAt: serverTimestamp()
+});
+
+alert("✅ Commande envoyée avec succès !");
+window.location.href = "dashboard.html";
+};
+</script>
 
 <!-- 🍪 Bandeau Cookies -->
 <div id="cookie-banner" class="cookie-banner">
