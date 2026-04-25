@@ -1,6 +1,4 @@
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script>
-        // Confettis auto au chargement
+ // Confettis auto au chargement
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: ['#8b5cf6', '#ec4899', '#facc15'] });
@@ -38,4 +36,3 @@
 
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
-    </script>
