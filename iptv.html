@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPTV Ultra Premium | HD • 4K • Monde entier</title>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N696WFVZ8G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N696WFVZ8G');
+</script>
+
+<link rel="stylesheet" href="cookies.css">
+
+<meta name="description" content="IPTV Ultra Premium. +15 000 chaînes, Sport, Netflix, Prime, Canal+, HD & 4K. Activation instantanée via WhatsApp.">
+
+<meta property="og:title" content="IPTV Ultra Premium">
+<meta property="og:description" content="+15 000 Chaînes • Sport • Films • Séries • HD & 4K – Activation rapide via WhatsApp">
+<meta property="og:image" content="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?q=80&w=1200">
+
+<!-- Open Graph (WhatsApp, Facebook, Telegram, Discord) -->
+<meta property="og:title" content="IPTV Ultra Premium | HD • 4K • Monde entier">
+<meta property="og:description" content="+15 000 Chaînes • Sport • Films • Séries • HD & 4K – Activation rapide via WhatsApp">
+<meta property="og:image" content="https://files.catbox.moe/k2es35.jpg">
+<meta property="og:url" content="https://harry-undersand.vercel.app/iptv.html">
+<meta property="og:type" content="website">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IPTV Ultra Premium | HD • 4K • Monde entier">
+<meta name="twitter:description" content="+15 000 Chaînes • Sport • Films • Séries • HD & 4K – Activation rapide via WhatsApp">
+<meta name="twitter:image" content="https://files.catbox.moe/k2es35.jpg">
+
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⛩️</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#000,#0f0f1a);
+color:white;
+overflow-x:hidden;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+background:url('https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?q=80&w=1600') center/cover no-repeat;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+position:relative;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+top:0;left:0;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.hero h1{
+font-size:60px;
+background:linear-gradient(90deg,#00f0ff,#ff00ff);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.btn{
+background:linear-gradient(90deg,#00f0ff,#ff00ff);
+padding:15px 35px;
+border-radius:30px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+display:inline-block;
+margin-top:20px;
+transition:0.4s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+}
+
+/* SECTION */
+.section{
+padding:80px 20px;
+text-align:center;
+opacity:0;
+transform:translateY(50px);
+transition:1s;
+}
+
+.section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* PLANS */
+.plans{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+padding:40px;
+border-radius:20px;
+width:300px;
+transition:0.4s;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px #00f0ff;
+}
+
+.price{
+font-size:35px;
+margin:20px 0;
+color:#00f0ff;
+}
+
+/* FORM */
+form{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input, select{
+padding:15px;
+border-radius:10px;
+border:none;
+outline:none;
+}
+
+footer{
+padding:30px;
+text-align:center;
+background:#0a0a12;
+margin-top:50px;
+}
+
+@media(max-width:768px){
+.hero h1{font-size:35px;}
+.plans{flex-direction:column;align-items:center;}
+}
+
+/* TV SLIDER PREMIUM */
+
+.tv-slider{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:40px;
+width:100%;
+min-height:70vh;
+}
+
+.tv-slider::-webkit-scrollbar{
+display:none;
+}
+
+.tv-card{
+position:relative;
+width:22%;
+height:500px;
+border-radius:20px;
+overflow:hidden;
+cursor:pointer;
+transition:0.4s;
+box-shadow:0 0 25px rgba(0,0,0,0.6);
+}
+
+.tv-card img,
+.tv-card video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.5s;
+}
+
+.tv-card video{
+opacity:0;
+}
+
+.tv-card:hover{
+transform:scale(1.08);
+box-shadow:0 0 30px #00f0ff;
+}
+
+.tv-card:hover video{
+opacity:1;
+}
+
+.tv-card:hover img{
+opacity:0;
+}
+
+.tv-name{
+position:absolute;
+bottom:20px;
+left:20px;
+font-size:22px;
+font-weight:bold;
+background:rgba(0,0,0,0.6);
+padding:8px 15px;
+border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-content">
+<h1>IPTV ULTRA PREMIUM</h1>
+<p>+15 000 Chaînes • Sport • Films • Séries • HD & 4K</p>
+<a href="#plans" class="btn">Voir les offres</a>
+</div>
+</section>
+
+<section class="section">
+<h2>Chaînes & Plateformes Incluses</h2>
+
+<div class="tv-slider">
+
+<div class="tv-card">
+<img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=800&fit=crop">
+<video muted loop>
+<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+</video>
+<div class="tv-name">Netflix</div>
+</div>
+
+<div class="tv-card">
+<img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?q=80&w=800&fit=crop">
+<video muted loop>
+<source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+</video>
+<div class="tv-name">Canal+</div>
+</div>
+
+<div class="tv-card">
+<img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=800&fit=crop">
+<video muted loop>
+<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+</video>
+<div class="tv-name">Crunchyrull</div>
+</div>
+
+<div class="tv-card">
+<img src="https://images.unsplash.com/photo-1505685296765-3a2736de412f?q=80&w=600&h=900&fit=crop">
+<video muted loop>
+<source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+</video>
+<div class="tv-name">Prime Video</div>
+</div>
+
+</div>
+</section>
+
+<!-- PLANS -->
+<section class="section" id="plans">
+<h2>Choisissez votre formule</h2>
+<div class="plans">
+
+<div class="card">
+<h3>1 Mois</h3>
+<div class="price" data-base="8000">...</div>
+<p>HD & 4K<br>Support 24/7<br>Activation 5 min</p>
+</div>
+
+<div class="card">
+<h3>6 Mois</h3><div class="price" data-base="40000">...</div>
+<p>Meilleure offre<br>Ultra HD<br>Priorité support</p>
+</div>
+
+<div class="card">
+<h3>12 Mois</h3>
+<div class="price" data-base="70000">...</div>
+<p>Premium Max<br>Tout inclus<br>Multi-écran</p>
+</div>
+
+</div>
+</section>
+
+<!-- FORMULAIRE -->
+<section class="section">
+<h2>Commander maintenant</h2>
+
+<form id="orderForm">
+<input type="text" id="name" placeholder="Votre nom" required>
+<input type="tel" id="phone" placeholder="Votre numéro" required>
+
+<select id="country">
+<option value="France">France</option>
+<option value="Congo">Afrique</option>
+<option value="Canada">Canada</option>
+<option value="Haiti">Haïti</option>
+</select>
+
+<select id="plan">
+<option value="1 Mois">1 Mois</option>
+<option value="6 Mois">6 Mois</option>
+<option value="12 Mois">12 Mois</option>
+</select>
+
+<button type="submit" class="btn">Envoyer sur WhatsApp</button>
+</form>
+
+</section>
+
+<footer>
+© 2026 IPTV Ultra Premium | Paiement Mobile Money • Crypto • Carte
+</footer>
+
+<!-- SCRIPT ANIMATION + WHATSAPP -->
+<script>
+
+/* Animation Scroll */
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll',()=>{
+sections.forEach(sec=>{
+const position = sec.getBoundingClientRect().top;
+const screenPosition = window.innerHeight / 1.3;
+
+if(position < screenPosition){
+sec.classList.add('show');
+}
+});
+});
+
+/* WhatsApp Form */
+document.getElementById('orderForm').addEventListener('submit', function(e){
+e.preventDefault();
+
+let name = document.getElementById('name').value;
+let phone = document.getElementById('phone').value;
+let country = document.getElementById('country').value;
+let plan = document.getElementById('plan').value;
+
+let message = `Bonjour, je souhaite commander IPTV Ultra Premium.%0A
+Nom: ${name}%0A
+Téléphone: ${phone}%0A
+Pays: ${country}%0A
+Formule: ${plan}`;
+
+window.open(`https://wa.me/242066973413?text=${message}`, '_blank');
+});
+</script>
+
+<script>
+/* Détection IP + adaptation prix */
+
+fetch("https://ipapi.co/json/")
+.then(res => res.json())
+.then(data => {
+
+let country = data.country_name;
+let currency = data.currency;
+
+let rates = {
+"EUR": 0.0015,
+"USD": 0.0016,
+"CAD": 0.0022,
+"HTG": 0.21,
+"XAF": 1
+};
+
+let prices = document.querySelectorAll(".price");
+
+prices.forEach(price => {
+
+let base = price.getAttribute("data-base");
+let rate = rates[currency] || 1;
+
+let converted = Math.round(base * rate);
+
+price.innerHTML = converted + " " + currency;
+
+});
+
+/* Pré-remplir automatiquement le pays */
+document.getElementById("country").value = country;
+
+})
+.catch(() => {
+console.log("IP non détectée");
+});
+</script>
+
+<script>
+/* Lecture vidéo automatique au hover */
+
+const cards = document.querySelectorAll(".tv-card");
+
+cards.forEach(card => {
+const video = card.querySelector("video");
+
+card.addEventListener("mouseenter", () => {
+video.play();
+});
+
+card.addEventListener("mouseleave", () => {
+video.pause();
+video.currentTime = 0;
+});
+});
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
+  authDomain: "harry-undersand.firebaseapp.com",
+  projectId: "harry-undersand"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, user => {
+
+  if (!user) {
+
+    // On mémorise la page actuelle
+    sessionStorage.setItem(
+      "redirectAfterLogin",
+      window.location.pathname
+    );
+
+    // Redirection vers accueil
+    window.location.href = "/?loginRequired=true";
+  }
+
+});
+</script>
+
+<!-- 🍪 Bandeau Cookies -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <p>
+      🍪 Ce site utilise des cookies pour améliorer votre expérience.
+      En continuant, vous acceptez notre utilisation des cookies.
+    </p>
+    <div class="cookie-buttons">
+      <button id="accept-cookies">Accepter</button>
+      <button id="reject-cookies">Refuser</button>
+    </div>
+  </div>
+</div>
+
+<script src="cookies.js"></script>
+
+</body>
+</html>
