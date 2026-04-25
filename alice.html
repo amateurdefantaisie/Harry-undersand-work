@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Alice — Assistant IA</title>
+
+  <!-- Open Graph (WhatsApp, Facebook, Telegram, Discord) -->
+<meta property="og:title" content="Alice — Assistant IA">
+<meta property="og:description" content="Discutez avec Alice, l’assistante officiel de l'entreprise 彡『𝐀𝐦𝐚𝐭𝐞𝐮𝐫 𝐃𝐞 𝐅𝐚𝐧𝐭𝐚𝐢𝐬𝐢𝐞 』彡">
+<meta property="og:image" content="https://files.catbox.moe/j60z6d.jpg">
+<meta property="og:url" content="https://files.catbox.moe/j60z6d.jpg">
+<meta property="og:type" content="website">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Alice — Assistant IA">
+<meta name="twitter:description" content="Discutez avec Alice, l’assistante officiel de l'entreprise 彡『𝐀𝐦𝐚𝐭𝐞𝐮𝐫 𝐃𝐞 𝐅𝐚𝐧𝐭𝐚𝐢𝐬𝐢𝐞 』彡">
+<meta name="twitter:image" content="https://files.catbox.moe/j60z6d.jpg">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="cookies.css">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N696WFVZ8G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N696WFVZ8G');
+</script>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧠</text></svg>">
+
+  <!-- SEO -->
+  <meta name="description" content="Discutez avec Alice, l’assistante IA intelligente." />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Manifest PWA inline -->
+  <link
+    rel="manifest"
+    href='data:application/json,{
+      "name":"Alice — Assistant IA",
+      "short_name":"Alice",
+      "start_url":"/alice.html",
+      "display":"standalone",
+      "background_color":"#ffffff",
+      "theme_color":"#ffffff",
+      "icons":[
+        {
+          "src":"https://files.bpcontent.cloud/2025/12/11/13/20251211133410-XE4M25HS.jpeg",
+          "sizes":"192x192",
+          "type":"image/png"
+        },
+        {
+          "src":"https://files.bpcontent.cloud/2025/12/11/13/20251211133410-XE4M25HS.jpeg",
+          "sizes":"512x512",
+          "type":"image/png"
+        }
+      ]
+    }'
+  />
+
+  <style>
+    /* RESET */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #ffffff;
+    }
+
+    /* PAGE LAYOUT */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      height: 52px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      background: #ffffff;
+      border-bottom: 1px solid #e6e6e6;
+      flex-shrink: 0;
+    }
+
+    .back-btn {
+      text-decoration: none;
+      color: #3276ea;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    /* CHAT ZONE */
+    main {
+      flex: 1;
+      background: #ffffff;
+      animation: fadeIn 0.35s ease-out;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* FOOTER */
+.footer-pro {
+  background: #ffffff;
+  color: #555;
+  padding: 12px 10px;
+  font-size: 13px;
+  border-top: 1px solid #e6e6e6;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.03);
+}
+    
+.footer-bottom {
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  letter-spacing: 0.3px;
+}
+
+.footer-bottom a {
+  color: #3276ea;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-bottom a:hover {
+  color: #000;
+}
+
+.footer-pro:hover {
+  background: #fafafa;
+  transition: 0.3s;
+}
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Mobile safe */
+    @media (max-width: 768px) {
+      header {
+        height: 48px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="/" class="back-btn">← Retour au site</a>
+  </header>
+
+  <!-- CHATBOT -->
+  <main>
+    <iframe
+      src="https://cdn.botpress.cloud/webchat/v3.5/shareable.html?configUrl=https://files.bpcontent.cloud/2025/12/10/23/20251210230142-Z03GGRUZ.json"
+      allow="microphone; clipboard-write"
+      loading="eager"
+      referrerpolicy="no-referrer"
+      title="Alice — Chatbot"
+    ></iframe>
+  </main>
+
+  <!-- FOOTER -->
+<footer class="footer-pro">
+ <!-- BAS DU FOOTER -->
+  <div class="footer-bottom" style="max-width:900px;margin:auto;">
+    © 2026 Amateur De Fantaisie — Créé par 
+    <a href="https://harry-undersand.vercel.app" target="_blank">Harry Undersand</a>
+  </div>
+
+</footer>
+
+  <!-- Service Worker inline -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      const swCode = `
+        self.addEventListener("install", e => self.skipWaiting());
+        self.addEventListener("activate", e => self.clients.claim());
+        self.addEventListener("fetch", e => {});
+      `;
+      const blob = new Blob([swCode], { type: "text/javascript" });
+      const swUrl = URL.createObjectURL(blob);
+      navigator.serviceWorker.register(swUrl);
+    }
+  </script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, addDoc, query, where, getDocs } 
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
+  authDomain: "harry-undersand.firebaseapp.com",
+  projectId: "harry-undersand"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+onAuthStateChanged(auth, user => {
+
+  if (!user) {
+
+    // On mémorise la page actuelle
+    sessionStorage.setItem(
+      "redirectAfterLogin",
+      window.location.pathname
+    );
+
+    // Redirection vers accueil
+    window.location.href = "/?loginRequired=true";
+  }
+
+});
+
+// NEWSLETTER FIREBASE
+const form = document.getElementById("newsletter-form");
+const message = document.getElementById("newsletter-message");
+
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const emailInput = document.getElementById("newsletter-email");
+    const email = emailInput.value.trim();
+
+    if (!email) return;
+
+    try {
+      // Vérifier si déjà inscrit
+      const q = query(
+        collection(db, "newsletter"),
+        where("email", "==", email)
+      );
+
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        message.textContent = "⚠️ Cet email est déjà inscrit.";
+        message.style.color = "orange";
+        return;
+      }
+
+      // Ajouter dans Firestore
+      await addDoc(collection(db, "newsletter"), {
+        email: email,
+        createdAt: new Date()
+      });
+
+      message.textContent = "✅ Inscription réussie !";
+      message.style.color = "#00ffcc";
+
+      form.reset();
+
+    } catch (error) {
+      console.error(error);
+      message.textContent = "❌ Erreur, réessayez.";
+      message.style.color = "red";
+    }
+  });
+}
+</script>
+
+<!-- 🍪 Bandeau Cookies -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <p>
+      🍪 Ce site utilise des cookies pour améliorer votre expérience.
+      En continuant, vous acceptez notre utilisation des cookies.
+    </p>
+    <div class="cookie-buttons">
+      <button id="accept-cookies">Accepter</button>
+      <button id="reject-cookies">Refuser</button>
+    </div>
+  </div>
+</div>
+
+<script src="cookies.js"></script>
+
+</body>
+</html>
