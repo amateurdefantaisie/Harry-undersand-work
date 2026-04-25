@@ -298,3 +298,41 @@ body {
     text-align: center;
     font-size: 2rem;
 }
+
+/* Centrage absolu du conteneur */
+.image-center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    width: 100%;
+}
+
+/* Style de la vignette */
+.premium-vignette {
+    max-width: 300px; /* Taille de la vignette */
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: zoom-in;
+}
+
+/* Effet au survol */
+.premium-vignette:hover {
+    transform: scale(1.05);
+    border-color: #ec4899; /* Ton rose premium */
+}
+
+/* Classe activée au clic (via JS) */
+.premium-vignette.fullscreen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2); /* Agrandissement x2 */
+    z-index: 10000;
+    max-width: 90vw;
+    max-height: 90vh;
+    cursor: zoom-out;
+    box-shadow: 0 0 100px rgba(0,0,0,0.9);
+}
