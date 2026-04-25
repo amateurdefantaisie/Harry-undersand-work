@@ -1,0 +1,6 @@
+# Dans le même dossier qu'index.html
+/services.html  /index.html  200
+/chatbot.html   /index.html  200
+/about.html     /index.html  200
+/contact.html   /index.html  200
+/*              /index.html  200
