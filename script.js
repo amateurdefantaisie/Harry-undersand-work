@@ -69,22 +69,64 @@ posts.forEach((post, index) => {
 });
 
 // EFFET PAILLETTES (simple)
-const sparkleContainer = document.createElement("div");
-document.body.appendChild(sparkleContainer);
-
 setInterval(() => {
-  const sparkle = document.createElement("div");
-  sparkle.style.position = "fixed";
-  sparkle.style.width = "5px";
-  sparkle.style.height = "5px";
-  sparkle.style.background = "white";
-  sparkle.style.top = Math.random() * window.innerHeight + "px";
-  sparkle.style.left = Math.random() * window.innerWidth + "px";
-  sparkle.style.opacity = Math.random();
-  sparkle.style.borderRadius = "50%";
-  sparkle.style.zIndex = 1000;
+  const emoji = document.createElement("div");
+  const emojis = ["💖","✨","🎉","🎊","💫"];
 
-  document.body.appendChild(sparkle);
+  emoji.innerText = emojis[Math.floor(Math.random()*emojis.length)];
 
-  setTimeout(() => sparkle.remove(), 1000);
-}, 100);
+  emoji.style.position = "fixed";
+  emoji.style.top = "-20px";
+  emoji.style.left = Math.random() * window.innerWidth + "px";
+  emoji.style.fontSize = "20px";
+  emoji.style.zIndex = 999;
+
+  document.body.appendChild(emoji);
+
+  emoji.animate([
+    { transform: "translateY(0px)", opacity: 1 },
+    { transform: "translateY(100vh)", opacity: 0 }
+  ], {
+    duration: 3000,
+    easing: "linear"
+  });
+
+  setTimeout(() => emoji.remove(), 3000);
+}, 200);
+
+function launchFireworks() {
+  for (let i = 0; i < 30; i++) {
+    createFirework();
+  }
+}
+
+function createFirework() {
+  const firework = document.createElement("div");
+
+  firework.style.position = "fixed";
+  firework.style.width = "8px";
+  firework.style.height = "8px";
+  firework.style.background = `hsl(${Math.random()*360},100%,50%)`;
+  firework.style.borderRadius = "50%";
+  firework.style.top = "50%";
+  firework.style.left = "50%";
+  firework.style.zIndex = 9999;
+
+  document.body.appendChild(firework);
+
+  const angle = Math.random() * 2 * Math.PI;
+  const distance = Math.random() * 200 + 50;
+
+  const x = Math.cos(angle) * distance;
+  const y = Math.sin(angle) * distance;
+
+  firework.animate([
+    { transform: "translate(0,0)", opacity: 1 },
+    { transform: `translate(${x}px, ${y}px)`, opacity: 0 }
+  ], {
+    duration: 1000,
+    easing: "ease-out"
+  });
+
+  setTimeout(() => firework.remove(), 1000);
+}
