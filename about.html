@@ -1,0 +1,124 @@
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⛩️</text></svg>">
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+import {
+getAuth,
+onAuthStateChanged,
+signOut
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
+authDomain: "harry-undersand.firebaseapp.com",
+projectId: "harry-undersand"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, user => {
+if (!user) {
+// Pas connecté → redirection vers page login
+window.location.href = "/";
+}
+});
+</script>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — Amateur De Fantaisie</title>
+
+<link rel="stylesheet" href="cookies.css">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N696WFVZ8G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N696WFVZ8G');
+</script>
+  
+<style>
+body{margin:0;background:#0a0a0f;color:#e1e1e1;font-family:Poppins,Arial}
+header{text-align:center;padding:45px 18px}
+h1{color:#dcdcff;margin:0}
+p{text-align:center;opacity:.9}
+nav{display:flex;justify-content:center;gap:10px;margin-top:20px}
+nav a{color:#a3a3ff;text-decoration:none;padding:8px 14px;border-radius:6px}
+nav a:hover{background:#3d3cff;color:#fff}
+.section{max-width:900px;margin:35px auto;padding:0 12px}
+.card{background:#10101c;border:1px solid #222;border-radius:12px;padding:18px;margin-top:14px}
+.btn{background:#7b3cff;color:#fff;border-radius:6px;padding:10px 18px;text-decoration:none;display:inline-block;margin-top:14px}
+.btn:hover{background:#5f29d4}
+footer{text-align:center;margin-top:40px;opacity:.6;padding:12px}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>À propos de ⛩️ Amateur De Fantaisie ⛩️</h1>
+  <p>Entreprise dédiée aux chatbots, IA, développement web et solutions digitales modernes créer et imaginer par Harry Undersand.</p>
+
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="section">
+
+  <div class="card">
+    <h3>Notre mission</h3>
+    <p>
+       Notre mission est de concevoir des solutions numériques modernes,
+    incluant des <strong>bots intelligents</strong>, des systèmes
+    d’<strong>automatisation</strong> et des projets basés sur
+    l’<strong>intelligence artificielle</strong>, afin d’aider les utilisateurs
+    et les entreprises à évoluer dans le monde digital.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>L’équipe</h3>
+    <p>
+      Développeurs — Designers — Techniciens — passionnés de technologies créatives.
+    </p>
+  </div>
+
+  <a class="btn" href="services.html">Voir nos services</a>
+
+</div>
+
+<!-- 🍪 Bandeau Cookies -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <p>
+      🍪 Ce site utilise des cookies pour améliorer votre expérience.
+      En continuant, vous acceptez notre utilisation des cookies.    
+    </p>
+    <div class="cookie-buttons">
+      <button id="accept-cookies">Accepter</button>
+      <button id="reject-cookies">Refuser</button>
+    </div>
+  </div>
+</div>
+
+<script src="cookies.js"></script>
+
+<footer>
+  © 2026 — Amateur De Fantaisie
+</footer>
+  
+<script src="/assets/js/components.js"></script>
+
+</body>
+</html>
