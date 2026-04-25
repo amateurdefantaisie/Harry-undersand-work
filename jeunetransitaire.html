@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeune Transitaire Officiel</title>
+
+<!-- Open Graph (WhatsApp, Facebook, Telegram, Discord) -->
+<meta property="og:title" content="Jeune Transitaire Officiel">
+<meta property="og:description" content="Service de Logistique et Transport">
+<meta property="og:image" content="https://files.catbox.moe/gfe3qe.jpg">
+<meta property="og:url" content="https://harry-undersand.vercel.app/jeunetransitaire.html">
+<meta property="og:type" content="website">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jeune Transitaire Officiel">
+<meta name="twitter:description" content="Service de Logistique et Transport">
+<meta name="twitter:image" content="https://files.catbox.moe/gfe3qe.jpg">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N696WFVZ8G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N696WFVZ8G');
+</script>
+
+<link rel="stylesheet" href="cookies.css">
+
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>📢</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter;background:#0a0a0f;color:#fff}
+section{padding:5.5rem 1.5rem}
+.container{max-width:1200px;margin:auto}
+h1,h2,h3{font-weight:800}
+p{color:#c7c7d1;line-height:1.7}
+
+.hero{text-align:center;padding-top:140px}
+.hero h1{font-size:3rem}
+.hero p{max-width:780px;margin:20px auto}
+
+header{
+  text-align:center;
+  padding:45px 18px;
+}
+
+nav{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#a3a3ff;
+  text-decoration:none;
+  padding:8px 14px;
+  border-radius:6px;
+}
+
+nav a:hover{
+  background:#3d3cff;
+  color:#fff;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:28px;
+margin-top:40px
+}
+
+.card{
+background:#141425;
+border:1px solid rgba(139,92,246,.3);
+border-radius:20px;
+padding:28px;
+transition:.4s;
+}
+.card:hover{
+transform:translateY(-8px);
+border-color:#8b5cf6
+}
+.card i{
+font-size:2.2rem;
+color:#8b5cf6;
+margin-bottom:14px
+}
+
+.btn{
+display:inline-block;
+margin-top:16px;
+padding:12px 24px;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+background:linear-gradient(135deg,#8b5cf6,#7c3aed);
+color:#fff
+}
+.btn-outline{
+background:none;
+border:1px solid rgba(139,92,246,.4)
+}
+
+.badge{
+display:flex;
+align-items:center;
+gap:14px;
+background:#10101c;
+border:1px solid rgba(139,92,246,.4);
+border-radius:18px;
+padding:22px;
+max-width:850px;
+margin:50px auto 0
+}
+.badge i{font-size:2.5rem;color:#8b5cf6}
+
+.reveal{opacity:0;transform:translateY(40px);transition:.8s}
+.reveal.active{opacity:1;transform:none}
+
+footer{text-align:center;padding:3rem;color:#7a7a9a}
+
+/* ===== ORDER BOX PRO ===== */
+.order-box {
+  max-width: 860px;
+  margin: 0 auto 90px;
+  background: linear-gradient(180deg,#141425,#0c0c18);
+  border: 1px solid rgba(139,92,246,.25);
+  border-radius: 28px;
+  padding: 48px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+}
+
+.order-head {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.order-head h2 {
+  font-size: 2.2rem;
+}
+
+.order-head p {
+  max-width: 560px;
+  margin: 12px auto 0;
+  color: #bdbde6;
+}
+
+/* FORM */
+.order-form input,
+.order-form textarea {
+  width: 100%;
+  margin-top: 14px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: #0a0a15;
+  border: 1px solid rgba(139,92,246,.3);
+  color: #fff;
+  font-size: .95rem;
+}
+
+.order-form textarea {
+  min-height: 130px;
+}
+
+.order-form input:focus,
+.order-form textarea:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139,92,246,.25);
+}
+
+/* SERVICES */
+.order-services {
+  margin-top: 42px;
+}
+
+.order-services h3 {
+  margin: 34px 0 14px;
+  font-size: 1.15rem;
+  color: #a78bfa;
+}
+
+.order-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 14px;
+}
+
+.order-grid button {
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(139,92,246,.3);
+  background: #0f0f1f;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .35s;
+}
+
+.order-grid button:hover {
+  background: linear-gradient(135deg,#8b5cf6,#7c3aed);
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
+/* TRUST */
+.order-trust {
+  margin-top: 38px;
+  text-align: center;
+  font-size: .9rem;
+  color: #a5a5d8;
+}
+
+.commande h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.commande h3 {
+  margin-top: 30px;
+  font-size: 1.2rem;
+  color: #a78bfa;
+}
+
+.commande input,
+.commande textarea {
+  width: 100%;
+  background: #0b0b16;
+  border: 1px solid rgba(139,92,246,.35);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-top: 12px;
+  color: #fff;
+  font-family: Inter;
+  font-size: .95rem;
+  transition: .3s;
+}
+
+.commande textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.commande input::placeholder,
+.commande textarea::placeholder {
+  color: #8b8ba7;
+}
+
+.commande input:focus,
+.commande textarea:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139,92,246,.25);
+}
+
+.commande button {
+  width: 100%;
+  margin-top: 14px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .35s;
+}
+
+.commande button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(139,92,246,.45);
+}
+
+.commande h3::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin-top: 8px;
+  background: linear-gradient(90deg,#8b5cf6,transparent);
+  border-radius: 2px;
+}
+
+.commande .trust {
+  margin-top: 28px;
+  font-size: .9rem;
+  color: #b3b3d1;
+  line-height: 1.6;
+}
+
+.order-actions{
+  display:flex;
+  gap:16px;
+  margin-top:28px;
+  flex-wrap:wrap;
+}
+
+.order-actions .btn{
+  flex:1;
+  text-align:center;
+}
+
+.order-actions i{
+  margin-right:8px;
+}
+
+/* ===== ULTRA PREMIUM UX ===== */
+
+.order-grid button.active {
+  background: linear-gradient(135deg,#8b5cf6,#7c3aed);
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(139,92,246,.35);
+}
+
+.order-box.shake {
+  animation: shake .35s;
+}
+
+@keyframes shake {
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-6px)}
+  75%{transform:translateX(6px)}
+}
+
+.input-error {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239,68,68,.25);
+}
+
+.notice {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: .9rem;
+  display: none;
+}
+
+.notice.error {
+  background: rgba(239,68,68,.12);
+  color: #fecaca;
+  border: 1px solid rgba(239,68,68,.35);
+}
+
+.notice.success {
+  background: rgba(34,197,94,.12);
+  color: #bbf7d0;
+  border: 1px solid rgba(34,197,94,.35);
+}
+
+.order-actions a.disabled {
+  opacity: .45;
+  pointer-events: none;
+}
+</style>
+</head>
+  
+<body>
+
+<!-- HERO -->
+<section class="hero reveal">
+<h1>Faites connaître votre marque partout en ligne</h1>
+<p>
+Avec nos solutions de publicité digitale, atteignez vos clients là où ils se trouvent : réseaux sociaux, moteurs de recherche et Plateformes en ligne.
+Augmentez votre visibilité, générez plus de leads et transformez vos visiteurs en clients fidèles à des campagnes ciblées et performantes. 
+</p>
+
+<h2>Jeune Transitaire Officiel</h2>
+
+<header>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="about.html">À propos</a>
+<a href="marketing-et-acquisition.html">Services</a>
+</nav>
+</header>
+
+<div>
+<a class="btn" href="https://wa.me/242056018886?text=Bonjour%20!%20Je%20souhaite%20faire%20une%20publicité.">
+Demmander une Pub
+</a>
+</div>
+
+</section>
+
+<!-- PLATEFORMES -->
+<section class="container reveal">
+<h2>📲 Plateformes compatibles</h2>
+
+<div class="grid">
+<div class="card"><i class="fab fa-whatsapp"></i><h3>WhatsApp</h3><p>Diffusion de messages promotionnels ciblés.</p></div>
+<div class="card"><i class="fab fa-instagram"></i><h3>Instagram</h3><p>Publicités visuelles, stories et messages sponsorisés.</p></div>
+<div class="card"><i class="fab fa-facebook-messenger"></i><h3>Messenger</h3><p>Campagnes publicitaires conversationnelles.</p></div>
+<div class="card"><i class="fab fa-telegram"></i><h3>Telegram</h3><p>Diffusion de publicités via bots et canaux.</p></div>
+<div class="card"><i class="fab fa-discord"></i><h3>Discord</h3><p>Promotion de marques dans des communautés ciblées.</p></div>
+<div class="card"><i class="fab fa-facebook"></i><h3>Facebook</h3><p>Publicités sponsorisées et messages automatisés.</p></div>
+<div class="card"><i class="fab fa-pinterest"></i><h3>Pinterest</h3><p>Publicités visuelles pour trafic et ventes.</p></div>
+<div class="card"><i class="fab fa-linkedin"></i><h3>LinkedIn</h3><p>Publicité B2B et génération de leads.</p></div>
+<div class="card"><i class="fas fa-cloud"></i><h3>Bluesky</h3><p>Visibilité de marque sur réseau émergent.</p></div>
+<div class="card"><i class="fab fa-snapchat"></i><h3>Snapchat</h3><p>Publicités interactives à fort engagement.</p></div>
+<div class="card"><i class="fab fa-twitter"></i><h3>Twitter</h3><p>Publicités en temps réel et notoriété.</p></div>
+<div class="card"><i class="fab fa-tiktok"></i><h3>TikTok</h3><p>Publicités vidéo courtes et virales.</p></div>
+<div class="card"><i class="fab fa-youtube"></i><h3>Youtube</h3><p>Publicités vidéo avant et pendant les contenus.</p></div>
+<div class="card"><i class="fas fa-comments"></i><h3>Chat / Messagerie</h3><p>Publicité conversationnelle automatisée.</p></div>
+<div class="card"><i class="fas fa-globe"></i><h3>Site Web</h3><p>Bannières, pop-ups et chat publicitaire.</p></div>
+</div>
+</section>
+
+<!-- FONCTIONNALITÉS -->
+<section class="container reveal">
+<h2>⚙️ Fonctionnalités clés</h2>
+
+<div class="grid">
+<div class="card"><i class="fas fa-robot"></i><p>Réponses automatiques intelligentes</p></div>
+<div class="card"><i class="fas fa-clock"></i><p>Disponibilité 24/7</p></div>
+<div class="card"><i class="fas fa-cart-shopping"></i><p>Prise de commandes automatique</p></div>
+<div class="card"><i class="fas fa-brain"></i><p>IA conversationnelle</p></div>
+<div class="card"><i class="fas fa-database"></i><p>Collecte de données & leads</p></div>
+<div class="card"><i class="fas fa-shield-halved"></i><p>Sécurité & confidentialité</p></div>
+</div>
+</section>
+
+<!-- BADGE CONFIANCE -->
+<section class="container reveal">
+<div class="badge">
+<i class="fas fa-shield-check"></i>
+<div>
+<h3>Service Vérifié & Fiable</h3>
+<p>
+Support WhatsApp • Données sécurisées • Configuration professionnelle •
+Accompagnement continu
+</p>
+</div>
+</div>
+</section>
+
+<!-- PACKS CHATBOT -->
+<section class="container reveal">
+<h2>📦 Packs Chatbot</h2>
+
+<div class="grid">
+
+<div class="card">
+<i class="fas fa-bolt"></i>
+<h3>Starter</h3>
+<p>
+✔ 1 plateforme<br>
+✔ Réponses automatiques<br>
+✔ Mise en place rapide
+</p>
+<a class="btn" href="https://wa.me/242064687352?text=Bonjour%20!%20Je%20souhaite%20commander%20un%20chatbot%20Starter.">
+Commander
+</a>
+</div>
+
+<div class="card">
+<i class="fas fa-briefcase"></i>
+<h3>Business</h3>
+<p>
+✔ Multi-plateformes<br>
+✔ Prise de commandes<br>
+✔ Support prioritaire
+</p>
+<a class="btn" href="https://wa.me/242064687352?text=Bonjour%20!%20Je%20souhaite%20un%20chatbot%20Business.">
+Commander
+</a>
+</div>
+
+<div class="card">
+<i class="fas fa-crown"></i>
+<h3>Premium IA</h3>
+<p>
+✔ IA avancée<br>
+✔ Automatisation complète<br>
+✔ Solution sur mesure
+</p>
+<a class="btn" href="https://wa.me/242064687352?text=Bonjour%20!%20Je%20souhaite%20un%20chatbot%20IA%20Premium.">
+Commander
+</a>
+</div>
+
+</div>
+</section>
+
+<!-- PERSONNALISÉ -->
+<section class="container reveal">
+<h2>✨ Chatbot personnalisé</h2>
+<p>
+Besoin spécifique ?  
+Nous créons un chatbot 100 % adapté à votre activité.
+</p>
+
+<a class="btn btn-outline" href="https://wa.me/242064687352?text=Bonjour%20!%20Je%20souhaite%20un%20chatbot%20personnalis%C3%A9.">
+Demander un devis
+</a>
+</section>
+
+<section class="container reveal">
+  <div class="order-box">
+
+    <div class="order-head">
+      <h2>🛒 Passer une commande</h2>
+      <p>Remplissez les informations et envoyez votre demande instantanément.</p>
+    </div>
+
+    <div class="order-form">
+      <input id="nom" placeholder="Nom / Entreprise">
+      <input id="contact" placeholder="Email ou WhatsApp">
+      <textarea id="details" placeholder="Objectif, plateforme, budget…"></textarea>
+    </div>
+
+    <div class="order-services">
+      <h3>📌 Choisir un service</h3>
+
+      <div class="order-grid">
+        <button onclick="selectService('Chatbot WhatsApp – Business')">Chatbot WhatsApp – Business</button>
+        <button onclick="selectService('Publicité Réseaux Sociaux')">Publicité Réseaux Sociaux</button>
+        <button onclick="selectService('Hébergement Web')">Hébergement Web</button>
+        <button onclick="selectService('Streaming Premium')">Streaming Premium</button>
+      </div>
+    </div>
+
+    <div class="order-actions">
+      <a id="btn-whatsapp" class="btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> Envoyer sur WhatsApp
+      </a>
+
+      <a id="btn-email" class="btn btn-outline">
+        <i class="fas fa-envelope"></i> Envoyer par Email
+      </a>
+    </div>
+
+
+    <div id="notice" class="notice"></div>
+
+    <div class="order-trust">
+      ✔ Réponse rapide • ✔ Données sécurisées • ✔ Paiement après validation
+    </div>
+
+  </div>
+</section>
+
+<script src="js/sheets.js"></script>
+
+<footer>
+© 2026 Amateur De Fantaisie
+</footer>
+
+<script>
+const observer=new IntersectionObserver(e=>{
+e.forEach(el=>{
+if(el.isIntersecting)el.target.classList.add("active");
+});
+},{threshold:0.15});
+document.querySelectorAll(".reveal").forEach(x=>observer.observe(x));
+</script>
+
+<script>
+let serviceChoisi = "";
+
+const nomInput = document.getElementById("nom");
+const contactInput = document.getElementById("contact");
+const detailsInput = document.getElementById("details");
+const notice = document.getElementById("notice");
+const box = document.querySelector(".order-box");
+
+const btnWhatsapp = document.getElementById("btn-whatsapp");
+const btnEmail = document.getElementById("btn-email");
+
+function isEmailOrPhone(value){
+  return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value) || /^[0-9+\s]{6,}$/.test(value);
+}
+
+function showNotice(type, text){
+  notice.className = "notice " + type;
+  notice.innerText = text;
+  notice.style.display = "block";
+}
+
+function validate(){
+  let valid = true;
+  notice.style.display = "none";
+
+  [nomInput, contactInput].forEach(i => i.classList.remove("input-error"));
+
+  if(!nomInput.value.trim()){
+    nomInput.classList.add("input-error");
+    valid = false;
+  }
+
+  if(!isEmailOrPhone(contactInput.value.trim())){
+    contactInput.classList.add("input-error");
+    valid = false;
+  }
+
+  if(!serviceChoisi){
+    valid = false;
+  }
+
+  btnWhatsapp.classList.toggle("disabled", !valid);
+  btnEmail.classList.toggle("disabled", !valid);
+
+  return valid;
+}
+
+function selectService(service){
+  serviceChoisi = service;
+
+  document.querySelectorAll(".order-grid button").forEach(b=>{
+    b.classList.remove("active");
+  });
+
+  event.target.classList.add("active");
+  showNotice("success","Service sélectionné : " + service);
+  updateLinks();
+}
+
+function updateLinks(){
+  if(!validate()){
+    box.classList.add("shake");
+    setTimeout(()=>box.classList.remove("shake"),350);
+    return;
+  }
+
+  const message = `
+📦 NOUVELLE COMMANDE
+-------------------
+👤 Nom : ${nomInput.value}
+📞 Contact : ${contactInput.value}
+🛠 Service : ${serviceChoisi}
+📝 Détails : ${detailsInput.value || "—"}
+`;
+
+  const encoded = encodeURIComponent(message);
+
+  btnWhatsapp.href = "https://wa.me/242064687352?text=" + encoded;
+  btnEmail.href = "mailto:jeunetransitaireofficiel@gmail.com?subject=Nouvelle commande&body=" + encoded;
+}
+
+[nomInput, contactInput, detailsInput].forEach(el=>{
+  el.addEventListener("input", updateLinks);
+});
+</script>
+
+<!-- 🍪 Bandeau Cookies -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <p>
+      🍪 Ce site utilise des cookies pour améliorer votre expérience.
+      En continuant, vous acceptez notre utilisation des cookies.
+    </p>
+    <div class="cookie-buttons">
+      <button id="accept-cookies">Accepter</button>
+      <button id="reject-cookies">Refuser</button>
+    </div>
+  </div>
+</div>
+
+<script src="cookies.js"></script>
+
+</body>
+</html>
