@@ -13,7 +13,7 @@ const welcome = document.getElementById("welcome-screen");
 const closeBtn = document.getElementById("close-welcome");
 const countdownEl = document.getElementById("countdown");
 
-let timeLeft = 10;
+let timeLeft = 2;
 
 const timer = setInterval(() => {
   timeLeft--;
