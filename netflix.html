@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abonnements Netflix | Standard • Premium • Ultra HD</title>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N696WFVZ8G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N696WFVZ8G');
+</script>
+
+<link rel="stylesheet" href="cookies.css">
+
+<meta name="description" content="Abonnez-vous à Netflix : Standard, Premium et Ultra HD. Paiement sécurisé Mobile Money & Carte. Activation rapide.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⛩️</text></svg>">
+
+<!-- Open Graph (WhatsApp, Facebook, Telegram, Discord) -->
+<meta property="og:title" content="Abonnements Netflix | Offres Standard • Premium • Ultra HD">
+<meta property="og:description" content="Films • Séries • Sports • Chaînes Premium • Streaming HD & 4K.">
+<meta property="og:image" content="https://files.catbox.moe/mmzmk7.jpg">
+<meta property="og:url" content="https://harry-undersand.vercel.app/netflix.html">
+<meta property="og:type" content="website">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Abonnements MyCanal | Offres Standard, SteemHD & Premium">
+<meta name="twitter:description" content="Films • Séries • Sports • Chaînes Premium • Streaming HD & 4K">
+<meta name="twitter:image" content="https://files.catbox.moe/mmzmk7.jpg">
+
+<style>
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#000;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* IMAGE PRINCIPALE FIXE */
+.theme-background{
+    position:fixed;
+    inset:0;
+    background:url("https://files.catbox.moe/3iuax0.jpg") center/cover no-repeat;
+    z-index:-1;
+}
+    
+/* CONTENU AU DESSUS */
+#main-content{
+    position:relative;
+    z-index:2;
+}
+
+/* SECTIONS AVEC EFFET FLOU */
+header,
+.section,
+.payment,
+footer{
+    backdrop-filter: blur(12px);
+    background: rgba(0,0,0,0.55);
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+/* HEADER */
+header{
+    min-height:90vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
+}
+
+header h1{
+    font-size:60px;
+    font-weight:800;
+    color:#E50914;
+}
+
+header p{
+    font-size:20px;
+    max-width:600px;
+    opacity:0.9;
+}
+
+/* BOUTON */
+.btn-main{
+    background:#E50914;
+    padding:15px 35px;
+    border-radius:5px;
+    color:white;
+    font-weight:700;
+    text-decoration:none;
+    margin-top:25px;
+    transition:0.3s;
+}
+
+.btn-main:hover{
+    background:#b20710;
+    transform:scale(1.05);
+}
+
+/* SECTIONS */
+.section{
+    padding:100px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.section h2{
+    text-align:center;
+    font-size:36px;
+    margin-bottom:60px;
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    padding:30px;
+    border-radius:15px;
+    background:rgba(0,0,0,0.65);
+    backdrop-filter: blur(15px);
+    border:1px solid rgba(255,255,255,0.08);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 30px rgba(229,9,20,0.5);
+}
+
+.price{
+    font-size:30px;
+    color:#E50914;
+    margin:20px 0;
+}
+
+button{
+    background:#E50914;
+    border:none;
+    padding:12px 25px;
+    color:white;
+    font-weight:600;
+    border-radius:6px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#b20710;
+}
+
+/* BADGE */
+.badge{
+    background:#E50914;
+    padding:6px 12px;
+    font-size:12px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+/* PAYMENT */
+.payment{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.countdown{
+    font-size:26px;
+    color:#E50914;
+    font-weight:700;
+    margin-top:10px;
+}
+
+/* FOOTER */
+footer{
+    padding:40px;
+    text-align:center;
+}
+
+/* WHATSAPP */
+.floating-whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:14px 18px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    z-index:5;
+}
+
+.dark-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.65);
+    z-index:0;
+}
+
+/* RESPONSIVE GLOBAL */
+@media (max-width:1024px){
+    header h1{
+        font-size:40px;
+    }
+}
+
+@media (max-width:768px){
+
+    header{
+        min-height:70vh;
+        padding:30px 15px;
+    }
+
+    header h1{
+        font-size:32px;
+    }
+
+    header p{
+        font-size:16px;
+    }
+
+    .section{
+        padding:60px 15px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .floating-whatsapp{
+        bottom:15px;
+        right:15px;
+        padding:10px 14px;
+        font-size:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="theme-background"></div>
+<div class="dark-overlay"></div> 
+    
+<!-- TON SITE -->
+<div id="main-content">
+  <!-- tout ton site ici -->
+
+<header>
+<h1>NETFLIX</h1>
+<p>Films • Séries • Documentaires • 4K Ultra HD</p>
+<a href="#plans" class="btn-main">Voir les abonnements</a>
+</header>
+
+<section class="section" id="plans">
+<h2>Choisissez votre formule</h2>
+
+<div class="cards">
+
+<div class="card">
+<span class="badge">Standard</span>
+<h3>Netflix Standard</h3>
+<div class="price">5 000 FCFA / mois</div>
+<ul>
+<li>Streaming HD</li>
+<li>2 écrans simultanés</li>
+<li>Catalogue complet</li>
+<li>Support inclus</li>
+</ul>
+<button onclick="payNow('Netflix Standard',5000)">S'abonner</button>
+</div>
+
+<div class="card">
+<span class="badge">🔥 Populaire</span>
+<h3>Netflix Premium</h3>
+<div class="price">8 000 FCFA / mois</div>
+<ul>
+<li>Full HD</li>
+<li>4 écrans simultanés</li>
+<li>Contenu exclusif</li>
+<li>Activation rapide</li>
+</ul>
+<button onclick="payNow('Netflix Premium',8000)">S'abonner</button>
+</div>
+
+<div class="card">
+<span class="badge">👑 Ultra HD</span>
+<h3>Netflix Ultra HD</h3>
+<div class="price">12 000 FCFA / mois</div>
+<ul>
+<li>4K Ultra HD</li>
+<li>5 écrans</li>
+<li>Qualité maximale</li>
+<li>Support VIP</li>
+</ul>
+<button onclick="payNow('Netflix Ultra HD',12000)">S'abonner</button>
+</div>
+
+</div>
+</section>
+
+<section class="payment">
+<h2>🔥 Promotion -10% limitée</h2>
+<div id="countdown" class="countdown"></div>
+
+<h3>Moyens de paiement</h3>
+<p>MTN Mobile Money • Airtel Money • Carte bancaire • Virement</p>
+<p>Activation en moins de 10 minutes</p>
+</section>
+
+<footer>
+<p>© 2026 Abonnements Netflix - Service indépendant</p>
+</footer>
+
+<a href="https://wa.me/242066973413" class="floating-whatsapp">💬 WhatsApp</a>
+</div>
+    
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+
+<script>
+
+function payNow(planName, planPrice){
+
+  let finalPrice = planPrice * 0.9; // promo -10%
+
+  FlutterwaveCheckout({
+    public_key: "FLWPUBK_TEST-9931cc8c6f73f7fd8193a1a08f197e32-X",
+    tx_ref: "NETFLIX-" + Date.now(),
+    amount: finalPrice,
+    currency: "XAF",
+    payment_options: "card, mobilemoney, mobilemoneyfr, ussd",
+
+    customer: {
+      email: "client@email.com",
+      phone_number: "+242000000000",
+      name: "Client Netflix",
+    },
+
+    callback: function (response) {
+
+      if(response.status === "successful"){
+
+        const message =
+        "Bonjour, j'ai payé l'abonnement " +
+        planName +
+        " (" + finalPrice + " FCFA). Référence : " +
+        response.transaction_id;
+
+        window.location.href =
+        "https://wa.me/242066973413?text=" +
+        encodeURIComponent(message);
+
+      } else {
+        alert("Paiement annulé.");
+      }
+
+    },
+
+    customizations: {
+      title: "Abonnement Netflix",
+      description: planName,
+    }
+
+  });
+
+}
+
+/* Animation scroll */
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+        }
+    });
+},{threshold:0.2});
+
+cards.forEach(card => observer.observe(card));
+
+/* Countdown */
+const countdownDate = new Date();
+countdownDate.setDate(countdownDate.getDate() + 3);
+
+setInterval(function(){
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+
+    const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+    const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+    const seconds = Math.floor((distance % (1000*60))/1000);
+
+    document.getElementById("countdown").innerHTML =
+    hours + "h " + minutes + "m " + seconds + "s";
+},1000);
+
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
+  authDomain: "harry-undersand.firebaseapp.com",
+  projectId: "harry-undersand"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, user => {
+
+  if (!user) {
+
+    // On mémorise la page actuelle
+    sessionStorage.setItem(
+      "redirectAfterLogin",
+      window.location.pathname
+    );
+
+    // Redirection vers accueil
+    window.location.href = "/?loginRequired=true";
+  }
+
+});
+</script>
+
+<!-- 🍪 Bandeau Cookies -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <p>
+      🍪 Ce site utilise des cookies pour améliorer votre expérience.
+      En continuant, vous acceptez notre utilisation des cookies.
+    </p>
+    <div class="cookie-buttons">
+      <button id="accept-cookies">Accepter</button>
+      <button id="reject-cookies">Refuser</button>
+    </div>
+  </div>
+</div>
+
+<script src="cookies.js"></script>
+
+</body>
+</html>
