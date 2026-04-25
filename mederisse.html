@@ -17,12 +17,20 @@
 <body>
 
   <!-- Écran d'accueil avec paillettes -->
-<div id="welcome-screen">
-  <div class="welcome-content">
-    <span id="close-welcome">✖</span>
-    <h1>🎉 Surprise !!! 🎉</h1>
-    <p>Une explosion de bonheur t’attend 💖✨</p>
-    <p id="countdown">Fermeture dans 10s...</p>
+<audio id="birthday-music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+</audio>
+
+<div id="welcome-screen" class="glass-overlay">
+  <div class="welcome-card">
+    <div class="cake-container" id="cake-trigger">
+       <div class="cake">🎂</div>
+       <div class="flame">✨</div>
+    </div>
+    <h1>Mederisse Odyssée</h1>
+    <p>L'odyssée d'une année exceptionnelle commence ici.</p>
+    <button id="close-welcome" class="btn-premium">Entrer dans l'Odyssée</button>
+    <p id="countdown">Fermeture automatique dans 10s</p>
   </div>
 </div>
 
