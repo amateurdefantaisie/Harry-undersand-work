@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Publicités</title>
+
+<style>
+body{
+  background:#0f172a;
+  color:white;
+  font-family:Arial;
+  padding:20px;
+}
+
+/* CARD */
+.card{
+  max-width:700px;
+  margin:auto;
+  background:#111b21;
+  padding:25px;
+  border-radius:20px;
+  border:1px solid rgba(139,92,246,.3);
+}
+
+/* INPUT */
+input, select{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:10px;
+  border:none;
+  background:#020617;
+  color:white;
+}
+
+/* BUTTON */
+button{
+  padding:12px 20px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.add-btn{
+  background:linear-gradient(135deg,#8b5cf6,#7c3aed);
+  color:white;
+}
+
+/* LIST */
+#adsList{
+  margin-top:30px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.ad-item{
+  background:#020617;
+  padding:15px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.ad-item img{
+  width:100%;
+  max-height:90px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.delete-btn{
+  margin-top:10px;
+  background:#dc2626;
+  color:white;
+}
+
+h2, h3{
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>📢 Gestion des publicités</h2>
+
+<h3>➕ Ajouter une pub</h3>
+
+<input id="title" placeholder="Nom entreprise">
+<input id="image" placeholder="URL image">
+<input id="link" placeholder="Lien">
+
+<select id="page">
+  <option value="/mycanal.html">Page MyCanal</option>
+  <option value="/insolites.html">Page Insolites</option>
+  <option value="/index.html">Accueil</option>
+</select>
+
+<select id="plan">
+  <option value="standard">Standard</option>
+  <option value="pro">Pro</option>
+  <option value="premium">Premium</option>
+</select>
+
+<button class="add-btn" onclick="addAd()">Ajouter publicité</button>
+
+<h3>📊 Publicités actives</h3>
+
+<div id="adsList"></div>
+
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  deleteDoc,
+  doc,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* CONFIG FIREBASE */
+const firebaseConfig = {
+  apiKey: "AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
+  authDomain: "harry-undersand.firebaseapp.com",
+  projectId: "harry-undersand"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+/* AJOUTER PUB */
+window.addAd = async function(){
+
+  const ad = {
+    title: document.getElementById("title").value,
+    image: document.getElementById("image").value,
+    link: document.getElementById("link").value,
+    page: document.getElementById("page").value,
+    plan: document.getElementById("plan").value,
+    views: 0,
+    maxViews: 10000,
+    active: true,
+    startDate: new Date().toISOString(),
+    endDate: new Date(Date.now() + 30*24*60*60*1000).toISOString()
+  };
+
+  await addDoc(collection(db, "ads"), ad);
+
+  alert("✅ Pub ajoutée !");
+};
+
+/* AFFICHER PUBS */
+onSnapshot(collection(db, "ads"), (snapshot) => {
+
+  const container = document.getElementById("adsList");
+  container.innerHTML = "";
+
+  snapshot.forEach(docSnap => {
+
+    const ad = docSnap.data();
+    const id = docSnap.id;
+
+    container.innerHTML += `
+      <div class="ad-item">
+        <strong>${ad.title}</strong>
+        <img src="${ad.image}">
+        <p>Plan: ${ad.plan}</p>
+        <p>👁️ ${ad.views} vues</p>
+        <button class="delete-btn" onclick="deleteAd('${id}')">Supprimer</button>
+      </div>
+    `;
+  });
+});
+
+/* SUPPRIMER */
+window.deleteAd = async function(id){
+  if(confirm("Supprimer cette pub ?")){
+    await deleteDoc(doc(db, "ads", id));
+  }
+};
+</script>
+
+</body>
+</html>
