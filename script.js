@@ -8,12 +8,29 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// WELCOME SCREEN (10 secondes)
-window.onload = () => {
-  setTimeout(() => {
-    document.getElementById("welcome-screen").style.display = "none";
-  }, 10000);
-};
+// WELCOME SCREEN (10 secondes
+const welcome = document.getElementById("welcome-screen");
+const closeBtn = document.getElementById("close-welcome");
+const countdownEl = document.getElementById("countdown");
+
+let timeLeft = 10;
+
+const timer = setInterval(() => {
+  timeLeft--;
+  countdownEl.innerText = `Fermeture dans ${timeLeft}s...`;
+
+  if (timeLeft <= 0) {
+    closeWelcome();
+  }
+}, 1000);
+
+function closeWelcome() {
+  welcome.style.display = "none";
+  clearInterval(timer);
+  launchFireworks();
+}
+
+closeBtn.addEventListener("click", closeWelcome);
 
 // LIKES SIMPLES
 const likeButtons = document.querySelectorAll(".actions button:first-child");
