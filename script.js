@@ -36,3 +36,18 @@
 
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
+
+document.querySelector('.zoom-trigger').addEventListener('click', function(e) {
+    e.preventDefault(); // Empêche d'ouvrir le lien externe
+    const img = this.querySelector('img');
+    
+    // Alterne la classe fullscreen
+    img.classList.toggle('fullscreen');
+    
+    // Ajoute un flou en arrière-plan si l'image est grande
+    if(img.classList.contains('fullscreen')) {
+        document.body.style.overflow = 'hidden'; // Bloque le scroll
+    } else {
+        document.body.style.overflow = 'auto';
+    }
+});
