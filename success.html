@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Paiement réussi</title>
+
+<style>
+body{
+  background:#0a0a0f;
+  color:#fff;
+  font-family:Inter,Arial;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  text-align:center;
+}
+
+.box{
+  background:#111122;
+  padding:40px;
+  border-radius:20px;
+  border:1px solid rgba(139,92,246,.3);
+}
+
+h1{
+  color:#8b5cf6;
+}
+
+.btn{
+  margin-top:20px;
+  padding:12px 24px;
+  border:none;
+  border-radius:25px;
+  background:#8b5cf6;
+  color:#fff;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h1>✅ Paiement en cours</h1>
+  <p>Veuillez valider sur votre téléphone.</p>
+
+  <p id="status">⏳ Vérification du paiement...</p>
+
+  <button class="btn" onclick="window.location.href='/'">
+    Retour à l'accueil
+  </button>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const orderId = params.get("orderId");
+
+// 🔁 Vérifier statut toutes les 3 secondes
+async function checkStatus(){
+
+  const res = await fetch("/api/check-status?orderId=" + orderId);
+  const data = await res.json();
+
+  if(data.status === "Payé"){
+    document.getElementById("status").innerText = "✅ Paiement confirmé !";
+  }
+
+  if(data.status === "Échoué"){
+    document.getElementById("status").innerText = "❌ Paiement échoué";
+  }
+}
+
+setInterval(checkStatus, 3000);
+</script>
+
+</body>
+</html>
