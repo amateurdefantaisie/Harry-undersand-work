@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Messagerie Client</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N696WFVZ8G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N696WFVZ8G');
+</script>
+
+<!-- Open Graph (WhatsApp, Facebook, Telegram, Discord) -->
+<meta property="og:title" content="Espace de messagerie client">
+<meta property="og:description" content="Chatbots IA, Streaming Premium, Hébergement Cloud et solutions digitales modernes.">
+<meta property="og:image" content="https://files.catbox.moe/7p2g2y.jpg">
+<meta property="og:url" content="https://harry-undersand.vercel.app/chat.html">
+<meta property="og:type" content="website">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Espace de messagerie client">
+<meta name="twitter:description" content="Chatbots IA, Streaming Premium, Hébergement Cloud et automatisation digitale.">
+<meta name="twitter:image" content="https://files.catbox.moe/7p2g2y.jpg">
+
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💬</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="cookies.css">
+  
+<style>
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* BODY */
+body{
+  display:flex;
+  height:100vh;
+  background:#0b141a;
+  color:white;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:30%;
+  background:#111b21;
+  border-right:1px solid #2a3942;
+  display:flex;
+  flex-direction:column;
+}
+
+.sidebar-header{
+  padding:15px;
+  font-size:18px;
+  font-weight:bold;
+  border-bottom:1px solid #2a3942;
+}
+
+/* LISTE CHATS */
+.chat-list{
+  flex:1;
+  overflow-y:auto;
+}
+
+.chat-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+  border-bottom:1px solid #2a3942;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.chat-item:hover{
+  background:#202c33;
+}
+
+.chat-avatar{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.chat-info{
+  flex:1;
+}
+
+.chat-name{
+  font-weight:600;
+}
+
+.chat-last{
+  font-size:12px;
+  color:#9ca3af;
+}
+
+/* CHAT AREA */
+.chat-area{
+  width:70%;
+  display:flex;
+  flex-direction:column;
+}
+
+/* HEADER */
+.chat-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:15px;
+  background:#202c33;
+  border-bottom:1px solid #2a3942;
+}
+
+.chat-header img{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+}
+
+.chat-header .info{
+  flex:1;
+}
+
+.chat-header .name{
+  font-weight:600;
+}
+
+.chat-header .status{
+  font-size:12px;
+  color:#9ca3af;
+}
+
+/* MESSAGES */
+.messages{
+  flex:1;
+  padding:15px;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+}
+
+/* MESSAGE */
+.message{
+  max-width:60%;
+  padding:10px;
+  margin-bottom:10px;
+  border-radius:10px;
+  font-size:14px;
+  position:relative;
+  word-wrap:break-word;
+}
+
+/* MOI */
+.me{
+  background:#005c4b;
+  margin-left:auto;
+}
+
+/* AUTRE */
+.other{
+  background:#202c33;
+}
+
+/* IMAGE MESSAGE */
+.message img{
+  max-width:200px;
+  border-radius:10px;
+  margin-top:5px;
+}
+
+/* HEURE */
+.time{
+  font-size:10px;
+  opacity:.6;
+  margin-top:4px;
+  text-align:right;
+}
+
+/* INPUT */
+.chat-input{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px;
+  background:#202c33;
+}
+
+/* INPUT TEXT */
+.chat-input input[type="text"]{
+  flex:1;
+  padding:10px;
+  border-radius:20px;
+  border:none;
+  outline:none;
+}
+
+/* FILE */
+.chat-input input[type="file"]{
+  color:white;
+}
+
+/* BUTTON */
+.chat-input button{
+  padding:10px 15px;
+  border:none;
+  border-radius:20px;
+  background:#00a884;
+  color:white;
+  cursor:pointer;
+}
+
+/* SCROLL */
+::-webkit-scrollbar{
+  width:5px;
+}
+::-webkit-scrollbar-thumb{
+  background:#2a3942;
+}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .sidebar{
+    width:40%;
+  }
+  .chat-area{
+    width:60%;
+  }
+}
+
+@media(max-width:600px){
+  .sidebar{
+    display:none;
+  }
+  .chat-area{
+    width:100%;
+  }
+}
+</style>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4304218039779695"
+crossorigin="anonymous"></script>
+  
+</head>
+  
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+  <div class="sidebar-header" style="display:flex;justify-content:space-between;align-items:center;">
+  💬 Messagerie
+  <button id="newChatBtn" style="padding:5px 10px;border:none;border-radius:5px;cursor:pointer;">➕</button>
+  </div>
+
+  <div id="userModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000a;justify-content:center;align-items:center;">
+
+  <div style="background:#111b21;padding:20px;width:300px;border-radius:10px;">
+    <h3>Nouvelle discussion</h3>
+    <div id="userList"></div>
+    <button onclick="closeModal()">Fermer</button>
+  </div>
+
+  </div>
+
+  <!-- LISTE DES CONVERSATIONS -->
+  <div id="chatList" class="chat-list">
+    <!-- Les chats seront injectés ici -->
+  </div>
+
+</div>
+
+
+<!-- CHAT AREA -->
+<div class="chat-area">
+
+  <!-- HEADER -->
+  <div class="chat-header" id="chatHeader" style="display:none">
+
+    <img id="chatAvatar" src="https://i.imgur.com/6VBx3io.png">
+
+    <div class="info">
+      <div class="name" id="chatName">Nom</div>
+      <div class="status" id="chatStatus">Hors ligne</div>
+    </div>
+
+  </div>
+
+  <!-- MESSAGES -->
+  <div id="messages" class="messages">
+    <!-- Messages injectés ici -->
+  </div>
+
+  <!-- INPUT -->
+  <div class="chat-input">
+
+    <!-- INPUT TEXTE -->
+    <input 
+      type="text" 
+      id="messageInput" 
+      placeholder="Écrire un message..."
+    >
+
+    <!-- IMAGE -->
+    <input 
+      type="file" 
+      id="imageInput" 
+      accept="image/*"
+    >
+
+    <!-- BOUTON -->
+    <button id="sendBtn">
+      Envoyer
+    </button>
+
+  </div>
+
+</div>
+
+<script type="module">
+
+/* 🔥 IMPORT FIREBASE */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+
+import {
+  getAuth,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  where,
+  onSnapshot,
+  orderBy,
+  doc,
+  updateDoc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-storage.js";
+
+
+/* 🔥 CONFIG FIREBASE */
+const app = initializeApp({
+  apiKey: "AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
+  authDomain: "harry-undersand.firebaseapp.com",
+  projectId: "harry-undersand"
+});
+
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+
+/* 🔥 VARIABLES */
+let currentUser;
+let currentChatId;
+
+
+onAuthStateChanged(auth, async user => {
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  currentUser = user;
+
+  // 🟢 utilisateur en ligne
+  await updateDoc(doc(db, "users", user.uid), {
+    online: true
+  });
+
+  loadChats();
+});
+
+
+/* 💬 CHARGER LES CONVERSATIONS */
+function loadChats() {
+
+  const q = query(
+    collection(db, "chats"),
+    where("participants", "array-contains", currentUser.uid)
+  );
+
+  onSnapshot(q, snapshot => {
+
+    const list = document.getElementById("chatList");
+    list.innerHTML = "";
+
+    snapshot.forEach(docSnap => {
+
+      const chat = docSnap.data();
+
+      const div = document.createElement("div");
+      div.className = "chat-item";
+
+      div.innerHTML = `
+        <img class="chat-avatar" src="https://i.imgur.com/6VBx3io.png">
+        <div class="chat-info">
+          <div class="chat-name">${chat.name || "Discussion"}</div>
+          <div class="chat-last">${chat.lastMessage || ""}</div>
+        </div>
+      `;
+
+      div.onclick = () => openChat(docSnap.id, chat);
+
+      list.appendChild(div);
+
+    });
+
+  });
+
+}
+
+
+/* 📂 OUVRIR UN CHAT */
+async function openChat(chatId, chatData) {
+
+  currentChatId = chatId;
+
+  document.getElementById("chatHeader").style.display = "flex";
+  document.getElementById("chatName").textContent = chatData.name || "Discussion";
+
+  const otherUserId = chatData.participants.find(id => id !== currentUser.uid);
+
+  // 🔥 écoute chat (typing + status)
+  onSnapshot(doc(db, "chats", chatId), async (docSnap) => {
+
+    const data = docSnap.data();
+    if (!data) return;
+
+    // ✍️ typing
+    if (data.typing && data.typing !== currentUser.uid) {
+      document.getElementById("chatStatus").textContent = "✍️ En train d'écrire...";
+    }
+
+    // 👤 statut utilisateur
+    if (otherUserId) {
+      const userDoc = await getDoc(doc(db, "users", otherUserId));
+      const userData = userDoc.data();
+
+      if (userData) {
+        document.getElementById("chatAvatar").src = userData.photo;
+
+        if (!data.typing) {
+          document.getElementById("chatStatus").textContent =
+            userData.online ? "🟢 En ligne" : "Hors ligne";
+        }
+      }
+    }
+
+  });
+
+  // ✅ déplacé ici (IMPORTANT)
+  loadMessages(chatId);
+}
+
+/* 🔥 OUVRIR MODAL */
+document.getElementById("newChatBtn").onclick = openUserModal;
+
+function openUserModal() {
+  document.getElementById("userModal").style.display = "flex";
+  loadUsers();
+}
+
+function closeModal() {
+  document.getElementById("userModal").style.display = "none";
+}
+  
+/* 📩 CHARGER MESSAGES */
+function loadMessages(chatId) {
+
+  const q = query(
+    collection(db, "messages"),
+    where("chatId", "==", chatId),
+    orderBy("timestamp")
+  );
+
+  onSnapshot(q, snapshot => {
+
+    const box = document.getElementById("messages");
+    box.innerHTML = "";
+
+    snapshot.forEach(docSnap => {
+
+      const msg = docSnap.data();
+
+      // ✔ vu (corrigé)
+      if (
+        msg.senderId !== currentUser.uid &&
+        !(msg.seenBy || []).includes(currentUser.uid)
+      ) {
+        updateDoc(docSnap.ref, {
+          seenBy: [...(msg.seenBy || []), currentUser.uid]
+        });
+      }
+
+      const div = document.createElement("div");
+      div.className = "message " + (msg.senderId === currentUser.uid ? "me" : "other");
+
+      let content = "";
+
+      if (msg.text) content += msg.text;
+
+      if (msg.imageUrl) {
+        content += `<br><img src="${msg.imageUrl}">`;
+      }
+
+      if (msg.senderId === currentUser.uid) {
+        content += `<div class="time">
+          ${new Date(msg.timestamp).toLocaleTimeString()}
+          ${msg.seenBy?.length > 1 ? "✔✔" : "✔"}
+        </div>`;
+      } else {
+        content += `<div class="time">
+          ${new Date(msg.timestamp).toLocaleTimeString()}
+        </div>`;
+      }
+
+      div.innerHTML = content;
+      box.appendChild(div);
+
+    });
+
+    box.scrollTop = box.scrollHeight;
+
+  });
+
+}
+
+function loadUsers() {
+
+  const list = document.getElementById("userList");
+  list.innerHTML = "Chargement...";
+
+  onSnapshot(collection(db, "users"), snapshot => {
+
+    list.innerHTML = "";
+
+    snapshot.forEach(docSnap => {
+
+      const user = docSnap.data();
+
+      // ❌ éviter soi-même
+      if (user.uid === currentUser.uid) return;
+
+      const div = document.createElement("div");
+      div.style.padding = "10px";
+      div.style.cursor = "pointer";
+
+      div.innerHTML = `
+        <img src="${user.photo}" width="30" style="border-radius:50%">
+        ${user.name}
+      `;
+
+      div.onclick = () => createPrivateChat(user);
+
+      list.appendChild(div);
+
+    });
+
+  });
+
+}
+
+async function createPrivateChat(user) {
+
+  // 🔍 vérifier si chat existe déjà
+  const q = query(
+    collection(db, "chats"),
+    where("participants", "array-contains", currentUser.uid)
+  );
+
+  const snapshot = await new Promise(resolve => {
+    onSnapshot(q, resolve);
+  });
+
+  let existingChat = null;
+
+  snapshot.forEach(docSnap => {
+    const chat = docSnap.data();
+
+    if (
+      chat.participants.includes(user.uid) &&
+      chat.participants.length === 2
+    ) {
+      existingChat = { id: docSnap.id, ...chat };
+    }
+  });
+
+  if (existingChat) {
+    openChat(existingChat.id, existingChat);
+    closeModal();
+    return;
+  }
+
+  // ➕ créer nouveau chat
+  const newChat = await addDoc(collection(db, "chats"), {
+    participants: [currentUser.uid, user.uid],
+    name: user.name,
+    typing: null,
+    lastMessage: ""
+  });
+
+  openChat(newChat.id, {
+    participants: [currentUser.uid, user.uid],
+    name: user.name
+  });
+
+  closeModal();
+}
+
+/* 🚀 ENVOYER MESSAGE */
+document.getElementById("sendBtn").onclick = sendMessage;
+
+async function sendMessage() {
+
+  if (!currentChatId) {
+    alert("Choisis une discussion");
+    return;
+  }
+
+  const textInput = document.getElementById("messageInput");
+  const fileInput = document.getElementById("imageInput");
+
+  const text = textInput.value;
+  const file = fileInput.files[0];
+
+  let imageUrl = "";
+
+  if (file) {
+    const storageRef = ref(storage, "images/" + Date.now());
+    await uploadBytes(storageRef, file);
+    imageUrl = await getDownloadURL(storageRef);
+  }
+
+  if (!text && !imageUrl) return;
+
+  await addDoc(collection(db, "messages"), {
+    chatId: currentChatId,
+    senderId: currentUser.uid,
+    text,
+    imageUrl,
+    timestamp: Date.now(),
+    seenBy: [currentUser.uid]
+  });
+
+  textInput.value = "";
+  fileInput.value = "";
+}
+
+
+/* ✍️ TYPING */
+let typingTimeout;
+
+document.getElementById("messageInput").addEventListener("input", async () => {
+
+  if (!currentChatId) return;
+
+  await updateDoc(doc(db, "chats", currentChatId), {
+    typing: currentUser.uid
+  });
+
+  clearTimeout(typingTimeout);
+
+  typingTimeout = setTimeout(async () => {
+    await updateDoc(doc(db, "chats", currentChatId), {
+      typing: null
+    });
+  }, 2000);
+
+});
+
+
+/* 🔴 OFFLINE */
+window.addEventListener("beforeunload", async () => {
+  if (currentUser) {
+    await updateDoc(doc(db, "users", currentUser.uid), {
+      online: false,
+      lastSeen: Date.now()
+    });
+  }
+});
+
+</script>
+
+</body>
+</html>
