@@ -1,124 +1,106 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Joyeux Anniversaire Mederisse Odyssée 🎉</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mederisse Odyssée | 2026 🎉</title>
 
-  <link rel="icon" type="image/svg+xml"
-  href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⛩️</text></svg>">
+    <meta property="og:title" content="Joyeux Anniversaire Mederisse">
+    <meta property="og:description" content="Une odyssée digitale créée par Harry Undersand.">
+    <meta property="og:image" content="https://files.catbox.moe/bsnyom.png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
 
-  <link rel="stylesheet" href="cookies.css">
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Écran d'accueil avec paillettes -->
-<audio id="birthday-music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
-</audio>
-
-<div id="welcome-screen" class="glass-overlay">
-  <div class="welcome-card">
-    <div class="cake-container" id="cake-trigger">
-       <div class="cake">🎂</div>
-       <div class="flame">✨</div>
-    </div>
-    <h1>Mederisse Odyssée</h1>
-    <p>L'odyssée d'une année exceptionnelle commence ici.</p>
-    <button id="close-welcome" class="btn-premium">Entrer dans l'Odyssée</button>
-    <p id="countdown">Fermeture automatique dans 10s</p>
-  </div>
-</div>
-
-  <!-- Banderoles / guirlandes -->
-  <header>
-    <h1>🎉 Joyeux Anniversaire Mederisse 🎉</h1>
-    <p>De la part de Harry Undersand 💜</p>
-  </header>
-
-  <!-- Section message -->
-  <section id="messages">
-    <h2>💌 Messages</h2>
-    <p>Que cette journée soit remplie de bonheur, de joie et d'amour !</p>
-    <p>Tu es une personne incroyable ❤️</p>
-  </section>
-
-  <!-- Section posts (photos/vidéos) -->
-  <section id="posts">
-    <h2>📸 Souvenirs</h2>
-
-    <!-- Images -->
-    <div class="post">
-      <img src="https://files.catbox.moe/5zlqrq.jpg" alt="photo">
-      <div class="actions">
-        <button>❤️ Like</button>
-        <button>💬 Commenter</button>
-      </div>
-      <input type="text" placeholder="Écrire un commentaire...">
+    <div id="welcome-overlay" class="premium-overlay">
+        <div class="glass-card">
+            <div class="cake-icon" id="cake-main">🎂</div>
+            <h1 class="reveal-text">Mederisse Odyssée</h1>
+            <p>Une expérience interactive exclusive</p>
+            
+            <div class="welcome-footer">
+                <button id="start-experience" class="btn-main">
+                    DÉCOUVRIR <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <div id="auto-close-timer">Fermeture dans <span>10</span>s</div>
+                <span id="manual-close">Passer <i class="fa-solid fa-xmark"></i></span>
+            </div>
+        </div>
     </div>
 
-    <div class="post">
-      <img src="https://files.catbox.moe/txw10j.jpg" alt="photo">
-      <div class="actions">
-        <button>❤️ Like</button>
-        <button>💬 Commenter</button>
-      </div>
-      <input type="text" placeholder="Écrire un commentaire...">
+    <div class="music-controller" id="music-player">
+        <div class="music-info">
+            <div class="disc">🎵</div>
+            <span>Birthday Mix - 2026</span>
+        </div>
+        <button id="play-pause"><i class="fa-solid fa-play"></i></button>
+        <audio id="bg-audio" loop>
+            <source src="https://files.catbox.moe/t61aa7.mp3" type="audio/mpeg">
+        </audio>
     </div>
 
-    <div class="post">
-      <img src="https://files.catbox.moe/d8w88k.jpg" alt="photo">
-      <div class="actions">
-        <button>❤️ Like</button>
-        <button>💬 Commenter</button>
-      </div>
-      <input type="text" placeholder="Écrire un commentaire...">
-    </div>
+    <main class="main-content">
+        <header class="hero">
+            <div class="garland-premium"></div>
+            <h2 class="handwriting">Joyeux Anniversaire</h2>
+            <h1 class="gradient-text">Mederisse Odyssée</h1>
+            <p class="hero-sub">Par Harry Undersand</p>
+        </header>
 
-    <div class="post">
-      <img src="https://files.catbox.moe/twifwy.jpg" alt="photo">
-      <div class="actions">
-        <button>❤️ Like</button>
-        <button>💬 Commenter</button>
-      </div>
-      <input type="text" placeholder="Écrire un commentaire...">
-    </div>
+        <section class="chat-section">
+            <div class="chat-bubble left">
+                <span class="sender">Harry Undersand</span>
+                <p>Que cette journée soit le début d'une aventure incroyable. Tu es une étoile ! ✨</p>
+                <span class="time">00:01</span>
+            </div>
+            <div class="chat-bubble right">
+                <span class="sender">Mederisse</span>
+                <p>Merci Harry ! C'est magnifique... ❤️</p>
+                <span class="time">00:02</span>
+            </div>
+        </section>
 
-    <!-- Vidéos -->
-    <div class="post">
-      <video controls width="300">
-        <source src="https://files.catbox.moe/qnyb82.mp4" type="video/mp4">
-      </video>
-      <div class="actions">
-        <button>❤️ Like</button>
-        <button>💬 Commenter</button>
-      </div>
-      <input type="text" placeholder="Écrire un commentaire...">
-    </div>
+        <section class="gallery-grid">
+            <div class="post-card">
+                <div class="post-media">
+                    <img src="https://files.catbox.moe/5zlqrq.jpg" alt="Souvenir">
+                    <div class="overlay-actions">
+                        <button class="like-trigger"><i class="fa-solid fa-heart"></i> <span class="count">0</span></button>
+                    </div>
+                </div>
+                <div class="post-footer">
+                    <input type="text" placeholder="Ajouter un commentaire..." class="comment-input">
+                    <div class="comments-list"></div>
+                </div>
+            </div>
 
-    <div class="post">
-      <video controls width="300">
-        <source src="https://files.catbox.moe/p59csd.mp4" type="video/mp4">
-      </video>
-      <div class="actions">
-        <button>❤️ Like</button>
-        <button>💬 Commenter</button>
-      </div>
-      <input type="text" placeholder="Écrire un commentaire...">
-    </div>
+            <div class="post-card">
+                <div class="post-media">
+                    <video src="https://files.catbox.moe/qnyb82.mp4" loop muted playsinline></video>
+                    <button class="video-play-btn"><i class="fa-solid fa-play"></i></button>
+                </div>
+                <div class="post-footer">
+                    <div class="actions">
+                        <button class="like-trigger"><i class="fa-solid fa-heart"></i> <span class="count">0</span></button>
+                    </div>
+                    <input type="text" placeholder="Votre message..." class="comment-input">
+                </div>
+            </div>
+        </section>
+    </main>
 
-  </section>
+    <footer>
+        <p>Designé avec excellence pour une personne d'exception.</p>
+        <span>© 2026 Harry Undersand Architecture</span>
+    </footer>
 
-  <script src="script.js"></script>
-
-  <!-- Footer -->
-  <footer>
-    <p>Créé avec amour par Harry Undersand 💕</p>
-  </footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
