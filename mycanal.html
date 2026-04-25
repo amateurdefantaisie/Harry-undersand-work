@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abonnements MyCanal | Offres Standard, SteemHD & Premium</title>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N696WFVZ8G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N696WFVZ8G');
+</script>
+
+<link rel="stylesheet" href="cookies.css">
+
+<meta name="description" content="Abonnez-vous à MyCanal : Bouquet Standard, SteemHD et Premium. Films, séries, sport, HD, 4K. Activation rapide et assistance technique 7j/7.">
+
+<!-- Open Graph (WhatsApp, Facebook, Telegram, Discord) -->
+<meta property="og:title" content="Abonnements MyCanal | Offres Standard, SteemHD & Premium">
+<meta property="og:description" content="Films • Séries • Sports • Chaînes Premium • Streaming HD & 4K.">
+<meta property="og:image" content="https://files.catbox.moe/7v2l4b.jpg">
+<meta property="og:url" content="https://harry-undersand.vercel.app/mycanal.html">
+<meta property="og:type" content="website">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Abonnements MyCanal | Offres Standard, SteemHD & Premium">
+<meta name="twitter:description" content="Films • Séries • Sports • Chaînes Premium • Streaming HD & 4K">
+<meta name="twitter:image" content="https://files.catbox.moe/7v2l4b.jpg">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⛩️</text></svg>">
+
+<style>
+body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background: linear-gradient(135deg,#000000,#0f172a,#111827);
+    background-attachment: fixed;
+    color:white;
+}
+html{
+scroll-behavior:smooth;
+}
+header{
+    background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(15,23,42,0.9)),
+    url('https://images.unsplash.com/photo-1593784991095-a205069470b6');
+    background-size: cover;
+    background-position: center;
+    min-height: 90vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    padding:40px 20px;
+}
+header p{
+    font-size:18px;
+    opacity:0.8;
+}
+header h1{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+header p{
+    font-size:18px;
+    opacity:0.8;
+    max-width:600px;
+}
+.btn{
+    display:inline-block;
+    margin:15px 10px;
+    padding:12px 25px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+}
+.btn-primary{
+    background:#ffcc00;
+    color:black;
+}
+.btn-whatsapp{
+    background:#25D366;
+    color:white;
+}
+.section{
+    padding:70px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+.section h2{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:32px;
+}
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+.card{
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding:30px;
+    border-radius:25px;
+    transition:0.4s ease;
+    opacity:0;
+    transform:translateY(40px);
+    background-size: cover;
+    background-position: center;
+}
+.card:hover{
+    transform: translateY(-12px) scale(1.02);
+    background: rgba(255,255,255,0.08);
+}
+.price{
+    font-size:28px;
+    color:#ffcc00;
+    margin:15px 0;
+}
+ul{
+    padding-left:18px;
+}
+.badge{
+    background:#ffcc00;
+    color:black;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+.table{
+    width:100%;
+    border-collapse:collapse;
+}
+.table th,.table td{
+    padding:15px;
+    border:1px solid #333;
+    text-align:center;
+}
+footer{
+    background:#111;
+    text-align:center;
+    padding:30px;
+    margin-top:40px;
+}
+.floating-whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:15px 18px;
+    border-radius:50px;
+    font-weight:bold;
+    text-decoration:none;
+}
+.btn-premium{
+    position:relative;
+    background: linear-gradient(135deg,#ffcc00,#ff9900);
+    color:black;
+    padding:16px 40px;
+    border-radius:50px;
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    transition:0.4s ease;
+    box-shadow: 0 0 25px rgba(255,204,0,0.5);
+}
+
+/* Hover premium */
+.btn-premium:hover{
+    transform: translateY(-5px) scale(1.06);
+    box-shadow: 0 0 40px rgba(255,204,0,0.9);
+}
+
+/* Effet lumière */
+.btn-premium::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-75%;
+    width:50%;
+    height:100%;
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0.2),
+        rgba(255,255,255,0.6),
+        rgba(255,255,255,0.2)
+    );
+    transform: skewX(-25deg);
+    transition:0.6s;
+}
+
+.btn-premium:hover::before{
+    left:130%;
+}
+
+/* Badge promo */
+.badge-promo{
+    position:absolute;
+    top:-12px;
+    right:-15px;
+    background:#ff0000;
+    color:white;
+    font-size:11px;
+    font-weight:bold;
+    padding:6px 12px;
+    border-radius:20px;
+    animation: pulseBadge 1.5s infinite;
+    box-shadow:0 0 15px rgba(255,0,0,0.6);
+    z-index:2;
+}
+
+/* Animation badge */
+@keyframes pulseBadge{
+    0%{ transform:scale(1); }
+    50%{ transform:scale(1.1); }
+    100%{ transform:scale(1); }
+}
+
+/* Icône SVG */
+.icon-svg{
+    width:22px;
+    height:22px;
+    animation: floatIcon 1.5s ease-in-out infinite;
+}
+
+/* Animation icône */
+@keyframes floatIcon{
+    0%{ transform: translateY(0); }
+    50%{ transform: translateY(-4px); }
+    100%{ transform: translateY(0); }
+}
+.icon-svg{
+    width:22px;
+    height:22px;
+    animation: bounceMoney 1.2s infinite;
+}
+
+/* Animation sac */
+@keyframes bounceMoney{
+    0%{ transform: translateY(0); }
+    30%{ transform: translateY(-6px); }
+    50%{ transform: translateY(0); }
+    70%{ transform: translateY(-3px); }
+    100%{ transform: translateY(0); }
+}
+button.btn-premium{
+    border:none;
+    cursor:pointer;
+}
+
+.ads{
+  margin:40px auto;
+  max-width:900px;
+}
+
+.ads img{
+  width:100%;
+  border-radius:20px;
+  transition:0.5s;
+}
+
+.ads img:hover{
+  transform:scale(1.03);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🎬 Abonnements MyCanal</h1>
+<p>Films • Séries • Sports • Chaînes Premium • Streaming HD & 4K</p>
+<a href="#bouquets" class="btn btn-primary">Voir les bouquets</a>
+<a href="https://wa.me/242066973413" class="btn btn-whatsapp">Commander via WhatsApp</a>
+</header>
+
+<div class="ads ad-top"></div>
+  
+<section style="text-align:center;padding:40px 20px;">
+<h2 style="color:#ffcc00;">🔥 Promotion Limitée -10%</h2>
+<p>Offre valable jusqu'à :</p>
+<div id="countdown" style="font-size:28px;font-weight:bold;margin-top:15px;"></div>
+</section>
+
+<section class="section" id="bouquets">
+<h2>📦 Nos Bouquets Disponibles</h2>
+
+<div class="cards">
+
+<div class="card">
+<span class="badge">Économique</span>
+<h3>Bouquet Standard</h3>
+<div class="price">7 000 FCFA / mois</div>
+<ul>
+<li>Chaînes nationales & internationales</li>
+<li>Films et séries populaires</li>
+<li>Chaînes jeunesse</li>
+<li>Streaming HD</li>
+<li>1 appareil connecté</li>
+<li>Installation rapide</li>
+</ul>
+<button class="btn btn-primary"
+onclick="payNow('Standard',7000)">
+S'abonner
+</button>
+</div>
+
+<div class="card">
+<span class="badge">🔥 Le plus vendu</span>
+<h3>Bouquet SteemHD</h3>
+<div class="price">12 000 FCFA / mois</div>
+<ul>
+<li>Toutes les chaînes Standard</li>
+<li>Chaînes sport premium</li>
+<li>Films récents & exclusifs</li>
+<li>Full HD</li>
+<li>2 appareils connectés</li>
+<li>Support prioritaire</li>
+</ul>
+<button class="btn btn-primary"
+onclick="payNow('SteemHD',12000)">
+S'abonner
+</button>
+</div>
+
+<div class="card">
+<span class="badge">👑 Premium</span>
+<h3>Bouquet Premium</h3>
+<div class="price">18 000 FCFA / mois</div>
+<ul>
+<li>Toutes les chaînes Standard + SteemHD</li>
+<li>Contenus exclusifs</li>
+<li>Streaming 4K Ultra HD</li>
+<li>3 appareils connectés</li>
+<li>Assistance VIP</li>
+<li>Activation prioritaire</li>
+</ul>
+<button class="btn btn-primary"
+onclick="payNow('Premium',18000)">
+S'abonner
+</button>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<h2>📊 Tableau Comparatif</h2>
+<table class="table">
+<tr>
+<th>Fonctionnalités</th>
+<th>Standard</th>
+<th>SteemHD</th>
+<th>Premium</th>
+</tr>
+<tr>
+<td>Qualité HD</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>4K Ultra HD</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Sport Premium</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Multi-écran</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</table>
+</section>
+
+<section class="section">
+<h2>💳 Moyens de Paiement</h2>
+<ul>
+<li>📱 MTN Mobile Money</li>
+<li>📱 Airtel Money</li>
+<li>💳 Carte bancaire</li>
+<li>🏦 Virement bancaire</li>
+</ul>
+<p>🔒 Paiement sécurisé – Activation en moins de 15 minutes</p>
+</section>
+
+<section class="section">
+<h2>🛠 Assistance Technique</h2>
+<ul>
+<li>Installation à distance</li>
+<li>Configuration Smart TV</li>
+<li>Support Android / PC</li>
+<li>Assistance WhatsApp 7j/7</li>
+<li>Renouvellement rapide</li>
+</ul>
+</section>
+
+<section class="section">
+<h2>⭐ Témoignages</h2>
+<p>⭐⭐⭐⭐⭐ “Installation rapide et image parfaite !”</p>
+<p>⭐⭐⭐⭐⭐ “Très bon service client et activation immédiate.”</p>
+</section>
+
+<section class="section" style="text-align:center;">
+<h2>🎯 Prêt à vous abonner ?</h2>
+<p>Rejoignez des centaines de clients satisfaits dès aujourd'hui.</p>
+<a href="https://wa.me/242066973413" class="btn btn-whatsapp">Commander Maintenant</a>
+</section>
+
+<div class="ads ad-middle"></div>
+
+<script>
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+        }
+    });
+}, {threshold:0.2});
+
+cards.forEach(card => observer.observe(card));
+</script>
+
+<script>
+const countdownDate = new Date();
+countdownDate.setDate(countdownDate.getDate() + 3);
+
+const countdownFunction = setInterval(function(){
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+    days + "j " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+
+    if(distance < 0){
+        clearInterval(countdownFunction);
+        document.getElementById("countdown").innerHTML = "Offre expirée";
+    }
+}, 1000);
+</script>
+
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+
+<a href="https://wa.me/242066973413?text=Je%20veux%20profiter%20de%20la%20promotion%20-10%" 
+   class="btn btn-premium">
+
+    <span class="badge-promo">-10%</span>
+
+    <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C10 2 9 4 9 4h6s-1-2-3-2zm-6 6c0 6 3 12 6 12s6-6 6-12H6z"/>
+    </svg>
+
+    Payer maintenant
+</a> 
+<script>
+function payNow(planName, planPrice){
+
+  FlutterwaveCheckout({
+    public_key: "FLWPUBK_TEST-9931cc8c6f73f7fd8193a1a08f197e32-X",
+    tx_ref: "MYCANAL-" + Date.now(),
+    amount: planPrice,
+    currency: "XAF",
+    payment_options: "card, mobilemoney, mobilemoneyfr, ussd",
+
+    customer: {
+      email: "amateurdefantaisieclient@email.com",
+      phone_number: "+242000000000",
+      name: "Client MyCanal",
+    },
+
+    callback: function (response) {
+
+      if(response.status === "successful"){
+
+        alert("✅ Paiement réussi pour le bouquet " + planName);
+
+        // Message WhatsApp automatique
+        const message = 
+        "Bonjour, j'ai effectué le paiement du bouquet " 
+        + planName + 
+        " (" + planPrice + " FCFA). Voici ma référence : " 
+        + response.transaction_id;
+
+        const whatsappURL =
+        "https://wa.me/242066973413?text=" 
+        + encodeURIComponent(message);
+
+        // Redirection automatique
+        window.location.href = whatsappURL;
+
+      } else {
+        alert("❌ Paiement annulé.");
+      }
+    },
+
+    customizations: {
+      title: "Abonnement MyCanal",
+      description: "Paiement du bouquet " + planName,
+    },
+
+  });
+
+}
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
+  authDomain: "harry-undersand.firebaseapp.com",
+  projectId: "harry-undersand"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// 🔐 AUTH (TON CODE INTACT)
+onAuthStateChanged(auth, user => {
+
+  if (!user) {
+
+    sessionStorage.setItem(
+      "redirectAfterLogin",
+      window.location.pathname
+    );
+
+    setTimeout(() => {
+      window.location.href = "/?loginRequired=true";
+    }, 1500); // laisse 1.5s pour charger pubs
+  }
+
+});
+
+// =======================
+// 🔥 SYSTEME DE PUB
+// =======================
+
+// récupérer la page actuelle
+const currentPage = window.location.pathname;
+
+// stock des pubs
+let adsList = [];
+
+// charger les pubs depuis Firebase
+async function loadAds(){
+  try {
+    const snapshot = await getDocs(collection(db, "ads"));
+
+    adsList = [];
+
+    snapshot.forEach(doc => {
+      const ad = doc.data();
+
+      // filtrer par page
+      if(currentPage.includes(ad.page)){
+        adsList.push(ad);
+      }
+    });
+
+    startAdsRotation();
+
+  } catch(e){
+    console.error("Erreur chargement pubs :", e);
+  }
+}
+
+// afficher une pub aléatoire
+function showAd(selector){
+  const container = document.querySelector(selector);
+
+  if(!container || adsList.length === 0) return;
+
+  const randomAd = adsList[Math.floor(Math.random() * adsList.length)];
+
+  container.innerHTML = `
+    <a href="${randomAd.link}" target="_blank">
+      <img src="${randomAd.image}" style="width:100%;border-radius:20px;">
+    </a>
+  `;
+}
+
+// rotation automatique
+function startAdsRotation(){
+
+  // affichage initial
+  showAd(".ad-top");
+  showAd(".ad-middle");
+  showAd(".ad-bottom");
+
+  // rotation toutes les 10 secondes
+  setInterval(() => {
+    showAd(".ad-top");
+    showAd(".ad-middle");
+    showAd(".ad-bottom");
+  }, 10000);
+}
+
+// lancer
+window.addEventListener("DOMContentLoaded", () => {
+  loadAds();
+});
+
+</script>
+
+<!-- 🍪 Bandeau Cookies -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <p>
+      🍪 Ce site utilise des cookies pour améliorer votre expérience.
+      En continuant, vous acceptez notre utilisation des cookies.
+    </p>
+    <div class="cookie-buttons">
+      <button id="accept-cookies">Accepter</button>
+      <button id="reject-cookies">Refuser</button>
+    </div>
+  </div>
+</div>
+
+<script src="cookies.js"></script>
+
+<div class="ads ad-bottom"></div>
+
+<footer>
+<p>© 2026 Abonnements MyCanal - Service indépendant</p>
+</footer>
+
+<a href="https://wa.me/242066973413" class="floating-whatsapp">💬 WhatsApp</a>
+
+</body>
+</html>
