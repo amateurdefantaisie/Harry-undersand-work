@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commande & Devis — Amateur De Fantaisie</title>
+
+<link rel="stylesheet" href="cookies.css">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N696WFVZ8G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N696WFVZ8G');
+</script>
+  
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⛩️</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Inter,Arial;
+  background:#0a0a0f;
+  color:#e5e7eb;
+}
+:root{
+  --violet:#8b5cf6;
+  --violet-dark:#7c3aed;
+  --card:#111122;
+  --border:rgba(139,92,246,.25);
+}
+
+section{padding:5rem 1.5rem}
+.container{max-width:1200px;margin:auto}
+h1,h2,h3{font-weight:800}
+p{color:#c7c7d1;line-height:1.8}
+h2{margin-bottom:1rem}
+
+/* HERO */
+.hero{text-align:center;padding-top:6rem}
+.hero h1{font-size:2.8rem;color:#fff}
+.hero p{max-width:750px;margin:1.2rem auto}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;
+  margin-top:3rem;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:26px;
+  transition:.3s;
+}
+.card:hover{transform:translateY(-6px);border-color:var(--violet)}
+.card i{font-size:2.2rem;color:var(--violet);margin-bottom:14px}
+
+/* BUTTONS */
+.btn{
+  display:inline-block;
+  padding:14px 26px;
+  border-radius:30px;
+  background:linear-gradient(135deg,var(--violet),var(--violet-dark));
+  color:#fff;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+}
+.btn-outline{
+  background:none;
+  border:1px solid var(--border);
+}
+.btn:hover{opacity:.9}
+
+/* FORM */
+form{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:32px;
+  margin-top:3rem;
+}
+label{display:block;margin-top:18px;font-weight:600}
+input,select,textarea{
+  width:100%;
+  margin-top:6px;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #2a2a44;
+  background:#0a0a15;
+  color:#fff;
+}
+textarea{min-height:120px;resize:vertical}
+
+/* TRUST */
+.trust p{margin-bottom:2.5rem}
+
+/* FOOTER */
+footer{text-align:center;padding:3rem;color:#777}
+
+/* ===== MODAL LOGIN ===== */
+#loginModal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(6px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.modal-box{
+  background:#0f0f1e;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:38px;
+  max-width:420px;
+  width:92%;
+  text-align:center;
+  animation:pop .3s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.85);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+.modal-box i{
+  font-size:2.8rem;
+  color:var(--violet);
+  margin-bottom:14px;
+}
+
+.google-btn{
+  margin-top:22px;
+  width:100%;
+  padding:14px;
+  border-radius:30px;
+  border:none;
+  background:#fff;
+  color:#111;
+  font-weight:700;
+  cursor:pointer;
+}
+.google-btn i{margin-right:8px}
+
+/* HIDE */
+.hidden{display:none}
+
+.btn{
+  display:inline-block;
+  padding:14px 26px;
+  border-radius:30px;
+  background:linear-gradient(135deg,var(--violet),var(--violet-dark));
+  color:#fff;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 10px 25px rgba(139,92,246,0.4);
+}
+
+#paymentModal{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.modal-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(6px);
+}
+
+.modal-actions{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+}
+
+.modal-actions button{
+  flex:1;
+}
+
+#paymentModal{
+  opacity:1;
+  transition:0.3s;
+}
+
+#paymentModal.hidden{
+  opacity:0;
+  pointer-events:none;
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Commande & Demande de Devis</h1>
+  <p>
+    Passez commande facilement pour vos abonnements Streaming ou
+    demandez un devis personnalisé pour vos projets IA, Chatbots,
+    Hébergement et Solutions Digitales avancées.
+  </p>
+</section>
+
+<!-- COMMANDE RAPIDE -->
+<section class="container">
+<h2>🚀 Commande rapide — Streaming & Premium</h2>
+<p>Cliquez sur un service pour payer directement via Mobile Money.</p>
+  
+<div class="grid">
+
+<div class="card">
+<i class="fas fa-film"></i>
+<h3>Netflix</h3>
+<p>Abonnements HD, Full HD, 4K, multi-écrans.</p>
+<button class="btn" onclick="envoyerCommande('Netflix','Premium',3000, event)">
+Payer maintenant
+</button>
+</div>
+
+<div class="card">
+<i class="fas fa-tv"></i>
+<h3>Prime Video</h3>
+<p>Films, séries et contenus exclusifs Amazon.</p>
+<button class="btn" onclick="envoyerCommande('Prime Video','Standard',3000, event)">
+Payer maintenant
+</button>
+</div>
+
+<div class="card">
+<i class="fas fa-dragon"></i>
+<h3>Crunchyroll / Wakanim</h3>
+<p>Animes premium, HD, accès complet.</p>
+<button class="btn" onclick="envoyerCommande('Crunchyroll','Standard',2500, event)">
+Payer maintenant
+</button>
+</div>
+
+<div class="card">
+<i class="fas fa-video"></i>
+<h3>MyCanal</h3>
+<p>Canal+ Afrique, sport, films et séries.</p>
+<button class="btn" onclick="envoyerCommande('MyCanal','Premium',2500, event)">
+Payer maintenant
+</button>
+</div>
+
+</div>
+</section>
+
+<!-- DEVIS -->
+<section class="container">
+<h2>📄 Demande de devis personnalisé</h2>
+<p>
+Expliquez-nous votre besoin. Nous analyserons votre projet et
+vous proposerons la meilleure solution adaptée à votre budget.
+</p>
+
+<form onsubmit="sendDevis();return false;">
+
+<label>Type de service</label>
+<select id="service">
+<option>Chatbot IA</option>
+<option>Intelligence Artificielle</option>
+<option>Hébergement Cloud</option>
+<option>Développement Web</option>
+<option>Automatisation WhatsApp</option>
+<option>Autre</option>
+</select>
+
+<label>Plateforme souhaitée</label>
+<select id="platform">
+<option>WhatsApp</option>
+<option>Instagram</option>
+<option>Facebook</option>
+<option>Telegram</option>
+<option>Site Web</option>
+<option>Multi-plateformes</option>
+</select>
+
+<label>Budget estimé (optionnel)</label>
+<input id="budget" placeholder="Ex: 50 000 FCFA / 100€">
+
+<label>Description détaillée</label>
+<textarea id="message" placeholder="Expliquez précisément votre besoin, vos objectifs et délais."></textarea>
+
+<button class="btn" type="submit">Envoyer la demande sur WhatsApp</button>
+
+</form>
+</section>
+
+<!-- TRUST -->
+<section class="container trust">
+<h2>🤝 Pourquoi nous faire confiance ?</h2>
+<p>
+Nous accompagnons particuliers, créateurs et entreprises dans leur transformation digitale
+grâce à des solutions fiables, sécurisées et évolutives.
+</p>
+<p>
+Notre approche repose sur la transparence, la performance, la sécurité
+et un support humain constant avant, pendant et après la livraison.
+</p>
+
+<!-- 💳 MODAL PAIEMENT -->
+<div id="paymentModal" class="hidden">
+  <div class="modal-overlay"></div>
+
+  <div class="modal-box">
+    <h3>💳 Paiement Mobile Money</h3>
+    <p>Entrez votre numéro pour recevoir la demande</p>
+
+    <input id="phoneInput" placeholder="Ex: 066123456" />
+
+    <div class="modal-actions">
+      <button onclick="closePaymentModal()" class="btn-outline">
+        Annuler
+      </button>
+      <button onclick="confirmPayment()" class="btn">
+        Payer maintenant
+      </button>
+    </div>
+  </div>
+</div>
+  
+<script src="js/sheets.js"></script>
+
+<footer>© 2026 Amateur De Fantaisie — Harry Undersand</footer>
+
+<script>
+function sendDevis(){
+const s=document.getElementById("service").value;
+const p=document.getElementById("platform").value;
+const b=document.getElementById("budget").value;
+const m=document.getElementById("message").value;
+
+const text=`Bonjour ! Je souhaite un devis personnalisé.%0A
+Service : ${s}%0A
+Plateforme : ${p}%0A
+Budget : ${b}%0A
+Détails : ${m}`;
+
+window.open(`https://wa.me/242066973413?text=${text}`,"_blank");
+}
+</script>
+
+<script>
+const observer=new IntersectionObserver(e=>{
+e.forEach(el=>{
+if(el.isIntersecting)el.target.classList.add("active");
+});
+},{threshold:0.15});
+document.querySelectorAll(".reveal").forEach(x=>observer.observe(x));
+</script>
+
+<!-- FIREBASE AUTH -->
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+import { 
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+// ============================
+// CONFIG FIREBASE
+// ============================
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
+  authDomain: "harry-undersand.firebaseapp.com",
+  projectId: "harry-undersand"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const provider = new GoogleAuthProvider();
+
+let currentUser = null;
+
+// ============================
+// AUTH STATE
+// ============================
+
+onAuthStateChanged(auth, user => {
+  if (!user) {
+    console.log("❌ Non connecté");
+    return;
+  }
+
+  currentUser = user;
+  console.log("✅ Connecté :", user.email);
+});
+
+// ============================
+// LOGIN GOOGLE
+// ============================
+
+window.loginGoogle = async () => {
+  try {
+    await signInWithPopup(auth, provider);
+  } catch (e) {
+    alert("Connexion annulée");
+  }
+};
+
+// ============================
+// VARIABLES PAIEMENT
+// ============================
+
+let selectedService = "";
+let selectedPlan = "";
+let selectedPrice = 0;
+
+// ============================
+// OUVRIR MODAL
+// ============================
+
+window.envoyerCommande = function(service, plan, price, event){
+
+  event.stopPropagation();
+  
+  if(!currentUser){
+    alert("Vous devez être connecté");
+    return;
+  }
+
+  selectedService = service;
+  selectedPlan = plan;
+  selectedPrice = price;
+
+  document.getElementById("paymentModal").classList.remove("hidden");
+};
+
+// ============================
+// FERMER MODAL
+// ============================
+
+window.closePaymentModal = function(){
+  document.getElementById("paymentModal").classList.add("hidden");
+  document.getElementById("phoneInput").value = "";
+};
+
+// ============================
+// FORMAT NUMERO
+// ============================
+
+function formatPhone(phone){
+  phone = phone.replace(/\D/g, "");
+
+  if(phone.startsWith("242")) return phone;
+  if(phone.startsWith("0")) return "242" + phone.slice(1);
+
+  return "242" + phone;
+}
+
+// ============================
+// CONFIRMER PAIEMENT
+// ============================
+
+window.confirmPayment = async function(){
+
+  const btn = event.target;
+  const phoneInput = document.getElementById("phoneInput");
+
+  let phone = phoneInput.value.trim();
+
+  if(!phone){
+    alert("Numéro requis");
+    return;
+  }
+
+  phone = formatPhone(phone);
+
+  if(phone.length < 11){
+    alert("Numéro invalide");
+    return;
+  }
+
+  btn.innerText = "Paiement...";
+  btn.disabled = true;
+
+  const orderId = "CMD-" + Date.now();
+
+  try{
+
+    // 💳 API paiement
+    const paiement = await fetch("/api/create-payment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        phone,
+        amount: selectedPrice,
+        orderId
+      })
+    });
+
+    const data = await paiement.json();
+
+    if(!paiement.ok){
+      console.error(data);
+      throw new Error("Erreur API");
+    }
+
+    console.log("✅ Paiement OK :", data);
+
+    // 💾 FIRESTORE
+    await addDoc(collection(db,"orders"),{
+      orderId,
+      userId: currentUser.uid,
+      email: currentUser.email,
+      service: selectedService,
+      plan: selectedPlan,
+      amount: selectedPrice,
+      status:"En attente",
+      createdAt: Date.now()
+    });
+
+    // 🔔 Notification
+    await addDoc(collection(db,"notifications"),{
+      userId: currentUser.uid,
+      message:`Commande ${selectedService} (${selectedPlan})`,
+      read:false,
+      createdAt: Date.now()
+    });
+
+    alert("📲 Vérifiez votre téléphone !");
+    closePaymentModal();
+
+    window.location.href = "/success.html?orderId=" + orderId;
+
+  } catch(e){
+    console.error(e);
+    alert("Erreur paiement. Réessayez.");
+  }
+
+  btn.innerText = "Payer maintenant";
+  btn.disabled = false;
+};
+
+// ============================
+// CLICK OVERLAY = FERMER
+// ============================
+
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.querySelector(".modal-overlay");
+
+  if(overlay){
+    overlay.addEventListener("click", closePaymentModal);
+  }
+});
+
+</script>
+  
+<!-- 🍪 Bandeau Cookies -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <p>
+      🍪 Ce site utilise des cookies pour améliorer votre expérience.
+      En continuant, vous acceptez notre utilisation des cookies.
+    </p>
+    <div class="cookie-buttons">
+      <button id="accept-cookies">Accepter</button>
+      <button id="reject-cookies">Refuser</button>
+    </div>
+  </div>
+</div>
+
+<script src="cookies.js"></script>
+
+</body>
+</html>
