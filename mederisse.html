@@ -3,104 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mederisse Odyssée | 2026 🎉</title>
+    <title>Joyeux Anniversaire - 12 Mars 🎂</title>
 
-    <meta property="og:title" content="Joyeux Anniversaire Mederisse">
-    <meta property="og:description" content="Une odyssée digitale créée par Harry Undersand.">
-    <meta property="og:image" content="https://files.catbox.moe/bsnyom.png">
+<!-- Open Graph (WhatsApp, Facebook, Telegram, Discord) -->
+<meta property="og:title" content="Harry Undersand — Joyeux Anniversaire">
+<meta property="og:description" content="En ce jour du 12 Mars, je souhaite à Elles un Joyeux Anniversaire.">
+<meta property="og:image" content="https://files.catbox.moe/bsnyom.png">
+<meta property="og:url" content="https://harry-undersand.vercel.app/anniversaire.html">
+<meta property="og:type" content="website">
 
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Harry Undersand — Développeur & Architecte IA">
+<meta name="twitter:description" content="En ce jour du 12 Mars, je souhaite à Elles un Joyeux Anniversaire.">
+<meta name="twitter:image" content="https://files.catbox.moe/bsnyom.png">
     
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🥳</text></svg>">
 
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="welcome-overlay" class="premium-overlay">
-        <div class="glass-card">
-            <div class="cake-icon" id="cake-main">🎂</div>
-            <h1 class="reveal-text">Mederisse Odyssée</h1>
-            <p>Une expérience interactive exclusive</p>
-            
-            <div class="welcome-footer">
-                <button id="start-experience" class="btn-main">
-                    DÉCOUVRIR <i class="fa-solid fa-chevron-right"></i>
-                </button>
-                <div id="auto-close-timer">Fermeture dans <span>10</span>s</div>
-                <span id="manual-close">Passer <i class="fa-solid fa-xmark"></i></span>
-            </div>
-        </div>
-    </div>
-
-    <div class="music-controller" id="music-player">
-        <div class="music-info">
-            <div class="disc">🎵</div>
-            <span>Birthday Mix - 2026</span>
-        </div>
-        <button id="play-pause"><i class="fa-solid fa-play"></i></button>
-        <audio id="bg-audio" loop>
+    <div class="audio-player" id="playerContainer">
+        <i class="fa-solid fa-music"></i>
+        <button onclick="toggleMusic()" id="musicBtn" style="background:none; border:none; color:white; font-weight:800; cursor:pointer; font-family: inherit;">CLIQUEZ POUR LA MUSIQUE 🎵</button>
+        <audio id="bgMusic" loop>
             <source src="https://files.catbox.moe/t61aa7.mp3" type="audio/mpeg">
         </audio>
     </div>
 
-    <main class="main-content">
+    <div class="container">
         <header class="hero">
-            <div class="garland-premium"></div>
-            <h2 class="handwriting">Joyeux Anniversaire</h2>
-            <h1 class="gradient-text">Mederisse Odyssée</h1>
-            <p class="hero-sub">Par Harry Undersand</p>
+            <span class="special-font">Une journée inoubliable...</span>
+            <h1 class="text-gradient">Joyeux Anniversaire !</h1>
+            <p style="color: var(--muted); font-size: 1.1rem;">Pour les femmes qui illuminent ma vie :<br><strong>Maman, Ma Sœur & Erica</strong></p>
         </header>
 
-        <section class="chat-section">
-            <div class="chat-bubble left">
-                <span class="sender">Harry Undersand</span>
-                <p>Que cette journée soit le début d'une aventure incroyable. Tu es une étoile ! ✨</p>
-                <span class="time">00:01</span>
-            </div>
-            <div class="chat-bubble right">
-                <span class="sender">Mederisse</span>
-                <p>Merci Harry ! C'est magnifique... ❤️</p>
-                <span class="time">00:02</span>
-            </div>
-        </section>
-
-        <section class="gallery-grid">
-            <div class="post-card">
-                <div class="post-media">
-                    <img src="https://files.catbox.moe/5zlqrq.jpg" alt="Souvenir">
-                    <div class="overlay-actions">
-                        <button class="like-trigger"><i class="fa-solid fa-heart"></i> <span class="count">0</span></button>
-                    </div>
+        <section class="photo-section">
+            <h2 style="text-align: center; margin-bottom: 40px;"><i class="fa-solid fa-camera-retro"></i> Galerie de Bonheur</h2>
+            <div class="photo-grid">
+                <div class="photo-card">
+                    <img src="https://files.catbox.moe/jl49lo.jpg" alt="Maman">
+                    <div class="photo-caption">Ma Reine 👑</div>
                 </div>
-                <div class="post-footer">
-                    <input type="text" placeholder="Ajouter un commentaire..." class="comment-input">
-                    <div class="comments-list"></div>
+                <div class="photo-card">
+                    <img src="https://files.catbox.moe/bazmei.jpg" alt="Soeur">
+                    <div class="photo-caption">Ma Complice ❤️</div>
                 </div>
-            </div>
-
-            <div class="post-card">
-                <div class="post-media">
-                    <video src="https://files.catbox.moe/qnyb82.mp4" loop muted playsinline></video>
-                    <button class="video-play-btn"><i class="fa-solid fa-play"></i></button>
+                <div class="photo-card">
+                    <img src="https://files.catbox.moe/ywmf65.jpg" alt="Erica">
+                    <div class="photo-caption">Mon futur 👪</div>
                 </div>
-                <div class="post-footer">
-                    <div class="actions">
-                        <button class="like-trigger"><i class="fa-solid fa-heart"></i> <span class="count">0</span></button>
-                    </div>
-                    <input type="text" placeholder="Votre message..." class="comment-input">
+                <div class="photo-card">
+                    <img src="https://files.catbox.moe/rvc5r5.png" alt="Mes Femmes">
+                    <div class="photo-caption">Mes femmes 🫶</div>
                 </div>
             </div>
         </section>
-    </main>
 
-    <footer>
-        <p>Designé avec excellence pour une personne d'exception.</p>
-        <span>© 2026 Harry Undersand Architecture</span>
-    </footer>
+        <section class="video-section">
+            <h2 style="text-align: center; margin: 60px 0 30px;"><i class="fa-solid fa-film"></i> Messages Spéciaux</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="https://files.catbox.moe/afaejt.mp4" type="video/mp4">
+                    </video>
+                    <p style="padding: 15px; text-align: center; font-weight: 700;">Un petit mot pour vous... 🗣️</p>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="https://files.catbox.moe/ghjxti.mp4" type="video/mp4">
+                    </video>
+                    <p style="padding: 15px; text-align: center; font-weight: 700;">Nos meilleurs moments ✨</p>
+                </div>
+            </div>
+        </section>
 
+        <section class="letter-section">
+            <div class="letter">
+                <h3><i class="fa-solid fa-heart"></i> Pour Maman</h3>
+                <p>"Maman, tu es mon premier amour et ma force tranquille. Ton courage a tracé mon chemin. Que ce 12 mars te rende au centuple toute la douceur que tu nous donnes chaque jour. Je t'aime infiniment."</p>
+            </div>
+            <div class="letter">
+                <h3><i class="fa-solid fa-star"></i> Pour ma Sœurette</h3>
+                <p>"À ma complice de toujours, ma sœur. Brille toujours aussi fort. Que cette nouvelle année t'apporte autant de rires que nous en avons partagé. Je serai toujours là, à tes côtés."</p>
+            </div>
+        </section>
+
+        <section class="gift-section">
+            <i class="fa-solid fa-gift" style="font-size: 3.5rem; color: var(--gold); margin-bottom: 25px; display: block;"></i>
+            <h2 style="font-size: 1.8rem; margin-bottom: 15px;">Une petite surprise ?</h2>
+            <p style="color: var(--muted); margin-bottom: 30px;">Parce que vous méritez le meilleur...</p>
+            <button class="btn-gift" onclick="revealGift()">DÉCOUVRIR LE CADEAU 🎁</button>
+
+            <div id="secretMessage">
+                <i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; margin-bottom: 15px;"></i><br>
+                ALERTE : Portefeuille en maintenance (0%...) 😖<br>
+                Mais mon AMOUR pour vous est à 1.000.000% ! 🤲<br><br>
+                <span style="font-size: 1rem; color: var(--text); opacity: 0.8;">Je prépare un rattrapage légendaire, promis ! 😉</span>
+            </div>
+        </section>
+
+        <footer>
+            <p>Codé avec ❤️ par Harry Undersand</p>
+            <p style="margin-top: 10px; opacity: 0.5;">© 2026 — 12 Mars</p>
+        </footer>
+    </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
