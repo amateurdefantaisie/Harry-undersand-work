@@ -1,0 +1,301 @@
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+import {
+getAuth,
+onAuthStateChanged,
+signOut
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
+authDomain: "harry-undersand.firebaseapp.com",
+projectId: "harry-undersand"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, user => {
+if (!user) {
+// Pas connecté → redirection vers page login
+window.location.href = "/";
+}
+});
+</script>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pack Streaming Premium — Amateur De Fantaisie</title>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N696WFVZ8G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N696WFVZ8G');
+</script>
+
+<link rel="stylesheet" href="cookies.css">
+
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⛩️</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter;background:#0a0a0f;color:#fff}
+section{padding:5.5rem 1.5rem}
+.container{max-width:1200px;margin:auto}
+h1,h2,h3{font-weight:800}
+p{color:#c7c7d1;line-height:1.7}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:40px}
+
+.hero{text-align:center;padding-top:140px}
+.hero h1{font-size:3rem}
+.hero p{max-width:800px;margin:18px auto}
+
+.badges{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+margin-top:28px
+}
+.badge{
+background:#141425;
+border:1px solid rgba(139,92,246,.35);
+padding:10px 16px;
+border-radius:30px;
+font-size:.9rem;
+display:flex;
+align-items:center;
+gap:8px;
+}
+.badge i{color:#8b5cf6}
+
+.card{
+background:#141425;
+border:1px solid rgba(139,92,246,.3);
+border-radius:20px;
+padding:30px;
+transition:.3s;
+}
+.card:hover{transform:translateY(-6px);border-color:#8b5cf6}
+.card i{font-size:2.2rem;color:#8b5cf6;margin-bottom:14px}
+
+.price{
+font-size:2rem;
+color:#8b5cf6;
+margin:10px 0;
+font-weight:800
+}
+
+ul{padding-left:18px}
+ul li{margin-bottom:8px;color:#d1d1e6}
+
+.btn{
+display:inline-block;
+margin-top:18px;
+padding:14px 26px;
+border-radius:30px;
+font-weight:600;
+text-decoration:none;
+background:linear-gradient(135deg,#8b5cf6,#7c3aed);
+color:white;
+}
+
+.trust{
+background:#0f0f1c;
+border-top:1px solid rgba(139,92,246,.25);
+border-bottom:1px solid rgba(139,92,246,.25);
+}
+
+footer{text-align:center;padding:3rem;color:#7a7a9a}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<h1>🎬 Packs Streaming Premium</h1>
+<p>
+Profitez des meilleures plateformes de streaming avec des packs fiables, activés rapidement,
+sécurisés et accompagnés d’un support WhatsApp dédié.
+</p>
+
+<div class="badges">
+<div class="badge"><i class="fas fa-shield-check"></i> Service vérifié</div>
+<div class="badge"><i class="fas fa-bolt"></i> Activation rapide</div>
+<div class="badge"><i class="fas fa-lock"></i> Paiement sécurisé</div>
+<div class="badge"><i class="fas fa-headset"></i> Support 24/7</div>
+</div>
+</section>
+
+<!-- PACKS -->
+<section class="container">
+<h2>🔥 Nos Packs Disponibles</h2>
+
+<div class="grid">
+
+<!-- PACK CINÉMA -->
+<div class="card">
+<i class="fas fa-film"></i>
+<h3>Pack Cinéma</h3>
+<p>Idéal pour les amateurs de films et séries.</p>
+<div class="price">Netflix + Prime Video</div>
+<ul>
+<li>HD / Full HD</li>
+<li>Multi-écrans</li>
+<li>Activation rapide</li>
+<li>Support WhatsApp</li>
+</ul>
+<a class="btn" href="https://wa.me/242066973413?text=Bonjour%20!%20Je%20souhaite%20commander%20le%20Pack%20Cin%C3%A9ma%20(Netflix%20+%20Prime%20Video).">Commander</a>
+</div>
+
+<!-- PACK ANIME -->
+<div class="card">
+<i class="fas fa-dragon"></i>
+<h3>Pack Anime</h3>
+<p>Le meilleur du streaming japonais.</p>
+<div class="price">Crunchyroll + Wakanim</div>
+<ul>
+<li>Animes sans pub</li>
+<li>Accès premium</li>
+<li>Qualité HD</li>
+<li>Compatibilité mobile & TV</li>
+</ul>
+<a class="btn" href="https://wa.me/242066973413?text=Salut%20!%20Je%20veux%20le%20Pack%20Anime%20(Crunchyroll%20+%20Wakanim).">Commander</a>
+</div>
+
+<!-- PACK FAMILLE -->
+<div class="card">
+<i class="fas fa-users"></i>
+<h3>Pack Famille</h3>
+<p>Divertissement pour toute la maison.</p>
+<div class="price">Netflix + MyCanal</div>
+<ul>
+<li>Multi-profils</li>
+<li>Contrôle parental</li>
+<li>Multi-écrans</li>
+<li>Assistance dédiée</li>
+</ul>
+<a class="btn" href="https://wa.me/242066973413?text=Bonjour%20!%20Je%20souhaite%20le%20Pack%20Famille%20(Netflix%20+%20MyCanal).">Commander</a>
+</div>
+
+<!-- PACK ULTIME -->
+<div class="card">
+<i class="fas fa-crown"></i>
+<h3>Pack Ultime</h3>
+<p>Tout le streaming en un seul pack.</p>
+<div class="price">Netflix + Prime + IPTV</div>
+<ul>
+<li>Films, séries, TV & sport</li>
+<li>Qualité premium</li>
+<li>Accès international</li>
+<li>Support prioritaire</li>
+</ul>
+<a class="btn" href="https://wa.me/242066973413?text=Bonjour%20!%20Je%20souhaite%20le%20Pack%20Ultime%20Streaming.">Commander</a>
+</div>
+
+</div>
+</section>
+
+<!-- CONFIANCE -->
+<section class="trust">
+<div class="container">
+<h2>🔒 Pourquoi nos packs sont fiables ?</h2>
+<p>
+Nos packs streaming sont sélectionnés pour leur stabilité, leur compatibilité multi-appareils
+et leur sécurité. Chaque abonnement est activé manuellement, testé et accompagné d’un support
+WhatsApp réactif pour garantir une expérience fluide et sans interruption.
+</p>
+</div>
+</section>
+
+<footer>
+© 2026 Amateur De Fantaisie — Packs Streaming vérifiés par Harry Undersand
+</footer>
+
+<script>
+const observer=new IntersectionObserver(e=>{
+e.forEach(el=>{
+if(el.isIntersecting)el.target.classList.add("active");
+});
+},{threshold:0.15});
+document.querySelectorAll(".reveal").forEach(x=>observer.observe(x));
+</script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+import { 
+getAuth, 
+onAuthStateChanged 
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+import { 
+getFirestore, 
+collection, 
+addDoc, 
+serverTimestamp 
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+const app = initializeApp({
+apiKey:"AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
+authDomain:"harry-undersand.firebaseapp.com",
+projectId:"harry-undersand"
+});
+
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let currentUser = null;
+
+onAuthStateChanged(auth, user => {
+if(!user){
+window.location.href = "login.html";
+} else {
+currentUser = user;
+}
+});
+
+window.createOrder = async (service, pack, price) => {
+if(!currentUser) return;
+
+await addDoc(collection(db,"orders"),{
+userId: currentUser.uid,
+service: service,
+pack: pack,
+price: price,
+status: "En attente",
+createdAt: serverTimestamp()
+});
+
+alert("✅ Commande envoyée avec succès !");
+window.location.href = "dashboard.html";
+};
+</script>
+
+<!-- 🍪 Bandeau Cookies -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <p>
+      🍪 Ce site utilise des cookies pour améliorer votre expérience.
+      En continuant, vous acceptez notre utilisation des cookies.
+    </p>
+    <div class="cookie-buttons">
+      <button id="accept-cookies">Accepter</button>
+      <button id="reject-cookies">Refuser</button>
+    </div>
+  </div>
+</div>
+
+<script src="cookies.js"></script>
+
+</body>
+</html>
