@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry Undersand Studio | Plateforme Intelligente</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- CSS INTÉGRÉ --- */
+        :root {
+            --primary: #38bdf8;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        body.light-theme {
+            --bg-dark: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body { background: var(--bg-dark); color: var(--text-main); transition: 0.3s; line-height: 1.6; }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 8%; background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo { color: var(--primary); font-weight: 700; font-size: 22px; }
+
+        .btn {
+            padding: 10px 20px; border-radius: 8px; border: none;
+            cursor: pointer; font-weight: 600; transition: 0.3s;
+        }
+        .btn-primary { background: var(--primary); color: white; }
+
+        /* Menu Profil */
+        .profile-wrapper { position: relative; display: none; }
+        .profile-img {
+            width: 40px; height: 40px; border-radius: 50%;
+            border: 2px solid var(--primary); cursor: pointer;
+        }
+        .dropdown {
+            display: none; position: absolute; right: 0; top: 50px;
+            background: var(--bg-card); min-width: 200px; border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); padding: 10px 0;
+        }
+        .dropdown.show { display: block; }
+        .dropdown a, .dropdown-item {
+            padding: 10px 20px; display: flex; align-items: center;
+            gap: 10px; color: var(--text-main); text-decoration: none; font-size: 14px;
+        }
+        .dropdown a:hover { background: rgba(56, 189, 248, 0.1); }
+
+        /* Hero & Content */
+        .hero { text-align: center; padding: 100px 20px; }
+        .hero h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        
+        .modal {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+            justify-content: center; align-items: center; z-index: 2000;
+        }
+        .modal-content { background: var(--bg-card); padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; text-align: center; }
+        
+        .auth-btn {
+            width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px;
+            border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .google-btn { background: white; color: #333; }
+        .wa-btn { background: #25d366; color: white; }
+
+        footer { padding: 40px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">H.U Studio</div>
+        <nav id="main-nav">
+            <button id="login-trigger" class="btn btn-primary" onclick="openModal()">Connexion</button>
+            
+            <div id="user-profile" class="profile-wrapper">
+                <img id="user-avatar" class="profile-img" src="" onclick="toggleDropdown()">
+                <div id="profile-dropdown" class="dropdown">
+                    <a href="profile.html"><i class="fas fa-user"></i> Profil</a>
+                    <div class="dropdown-item">
+                        <i class="fas fa-adjust"></i>
+                        <select onchange="changeTheme(this.value)" style="background:none; border:none; color:inherit;">
+                            <option value="dark">Sombre</option>
+                            <option value="light">Clair</option>
+                        </select>
+                    </div>
+                    <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                    <a href="#" onclick="logout()" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Quitter</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Propulsez vos idées avec l'IA</h2>
+            <p>Chatbots WhatsApp, Streaming et Architecture Web.</p>
+            <br>
+            <button class="btn btn-primary" onclick="window.location.href='https://wa.me/242066973413?text=Bonjour,%20je%20souhaite%20un%20devis'">
+                <i class="fab fa-whatsapp"></i> Nous contacter
+            </button>
+        </section>
+    </main>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h3>Rejoindre le Studio</h3>
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Choisissez votre mode de connexion</p>
+            
+            <button class="auth-btn google-btn" onclick="loginGoogle()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" width="20">
+                Google
+            </button>
+
+            <button class="auth-btn wa-btn" onclick="window.location.href='https://wa.me/242066973413?text=Connexion%20Harry%20Undersand'">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </button>
+            
+            <button class="btn" style="background:none; color:var(--text-muted);" onclick="closeModal()">Fermer</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Harry Undersand Studio</p>
+        <p style="font-size: 12px; color: var(--text-muted);">RCCM: CG-BZV-01-2026-B12-XXXXX | NIU: M XXXXXXX X</p>
+        <a href="privacy.html" style="color: var(--primary); font-size: 12px; text-decoration: none;">Politique de Confidentialité</a>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBdo7NO1PnAa90PhEhuzpllkB1ESGZu3J8",
+            authDomain: "harry-undersand.firebaseapp.com",
+            projectId: "harry-undersand"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        // Fonctions globales (attachées à window pour le HTML)
+        window.openModal = () => document.getElementById('loginModal').style.display = 'flex';
+        window.closeModal = () => document.getElementById('loginModal').style.display = 'none';
+        
+        window.toggleDropdown = () => document.getElementById('profile-dropdown').classList.toggle('show');
+
+        window.loginGoogle = async () => {
+            try {
+                const result = await signInWithPopup(auth, provider);
+                if (result.user) closeModal();
+            } catch (err) {
+                console.error("Erreur:", err);
+                alert("La connexion a échoué.");
+            }
+        };
+
+        window.logout = () => signOut(auth);
+
+        window.changeTheme = (theme) => {
+            document.body.classList.toggle('light-theme', theme === 'light');
+            localStorage.setItem('theme', theme);
+        };
+
+        // Surveillance de l'utilisateur
+        onAuthStateChanged(auth, (user) => {
+            const loginBtn = document.getElementById('login-trigger');
+            const profileWrapper = document.getElementById('user-profile');
+            const avatar = document.getElementById('user-avatar');
+
+            if (user) {
+                loginBtn.style.display = 'none';
+                profileWrapper.style.display = 'block';
+                avatar.src = user.photoURL || "https://ui-avatars.com/api/?name=" + user.displayName;
+            } else {
+                loginBtn.style.display = 'block';
+                profileWrapper.style.display = 'none';
+            }
+        });
+
+        // Fermeture automatique des menus
+        window.onclick = (e) => {
+            if (e.target.id === 'loginModal') closeModal();
+            if (!e.target.matches('.profile-img')) {
+                document.getElementById('profile-dropdown').classList.remove('show');
+            }
+        };
+    </script>
+</body>
+</html>
