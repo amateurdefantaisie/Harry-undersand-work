@@ -792,10 +792,24 @@ canvas{
   padding:20px;
 }
 
+.stats-table-card {
+    overflow-x: auto; /* Force le scroll à l'intérieur du cadre */
+    -webkit-overflow-scrolling: touch;
+}
+  
 @media(max-width:900px){
-  .charts-grid{
-    grid-template-columns:1fr;
-  }
+  .services-grid, .platform-grid {
+        display: flex; /* Aligne en ligne pour permettre le scroll gauche-droite */
+        overflow-x: auto;
+        padding-bottom: 20px;
+        gap: 20px;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .service-card, .platform-card {
+        min-width: 280px; /* Force une largeur pour créer le dépassement */
+        scroll-snap-align: start;
+    }
 }
 
 /* ================= HEATMAP ================= */
